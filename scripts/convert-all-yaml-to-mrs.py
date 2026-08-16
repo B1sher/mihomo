@@ -7,16 +7,11 @@
 - Подсети: 192.168.1.0/24 → IP-CIDR,192.168.1.0/24
 - IP: 1.1.1.1 → IP-CIDR,1.1.1.1/32
 - Процессы: PROCESS-NAME,... (остаются как есть)
-
-Логика:
-1. rules/ads/*.yaml — сливаются в один ads.mrs
-2. rules/direct.yaml — direct.mrs
-3. rules/proxy.yaml — proxy.mrs
-4. rules/programs/*.yaml — каждый в свой .mrs
-5. Любой другой YAML — в .mrs с тем же именем
+- Комментарии в конце строк: - PROCESS-NAME,foo.exe # comment → вырезаются
 """
 
 import sys
+import re
 import ipaddress
 import yaml
 import subprocess
@@ -29,17 +24,24 @@ MIHOMO_BIN = "mihomo"
 ADS_DIR = RULES_ROOT / "ads"
 PROGRAMS_DIR = RULES_ROOT / "programs"
 
+def strip_comment(item: str) -> str:
+    """Вырезает комментарий # из строки."""
+    # Если # внутри кавычек — не трогаем (упрощённо)
+    if '#' in item:
+        item = item.split('#')[0].strip()
+    return item
+
 def classify_item(item: str) -> str:
     """Определяет тип строки и возвращает готовое правило."""
-    item = item.strip()
+    item = strip_comment(item.strip())
     if not item:
         return ""
 
-    # Если это PROCESS-NAME правило — оставляем как есть
+    # PROCESS-NAME
     if item.upper().startswith("PROCESS-NAME"):
         return item
 
-    # Если это IP или подсеть
+    # IP или подсеть
     if "/" in item:
         try:
             ipaddress.ip_network(item, strict=False)
@@ -53,7 +55,7 @@ def classify_item(item: str) -> str:
         except ValueError:
             pass
 
-    # Всё остальное — домен
+    # Домен
     return f"DOMAIN-SUFFIX,{item}"
 
 def extract_items_from_yaml(yaml_path: Path) -> list[str]:
@@ -81,7 +83,6 @@ def extract_items_from_yaml(yaml_path: Path) -> list[str]:
     except Exception as e:
         print(f"⚠️ Ошибка чтения {yaml_path}: {e}", file=sys.stderr)
 
-    # Классифицируем и убираем дубликаты
     seen = set()
     unique = []
     for item in items:
@@ -110,7 +111,7 @@ def convert_to_mrs(items: list[str], output_path: Path):
 
     if result.returncode != 0:
         print(f"❌ Ошибка конвертации {output_path.name}: {result.stderr}", file=sys.stderr)
-        # Пробуем без IP-CIDR (только домены)
+        # Fallback: только домены
         domain_only = [r for r in items if r.startswith("DOMAIN-SUFFIX,")]
         if domain_only:
             tmp_file2 = Path(f"/tmp/{output_path.stem}_domains.txt")
@@ -121,9 +122,9 @@ def convert_to_mrs(items: list[str], output_path: Path):
             print(f"🔄 Fallback: {' '.join(cmd2)}")
             result2 = subprocess.run(cmd2, capture_output=True, text=True)
             if result2.returncode == 0:
-                print(f"✅ {output_path.name}: {len(domain_only)} доменов (без IP)")
+                print(f"✅ {output_path.name}: {len(domain_only)} доменов")
             else:
-                print(f"❌ Fallback тоже упал: {result2.stderr}", file=sys.stderr)
+                print(f"❌ Fallback упал: {result2.stderr}", file=sys.stderr)
                 output_path.touch()
         else:
             output_path.touch()
@@ -137,7 +138,7 @@ def main():
 
     DIST_DIR.mkdir(exist_ok=True)
 
-    # 1. Ads — слияние всех YAML в rules/ads/
+    # Ads
     if ADS_DIR.exists():
         ads_items = []
         for yaml_file in sorted(ADS_DIR.glob("*.yaml")):
@@ -145,32 +146,31 @@ def main():
             ads_items.extend(extract_items_from_yaml(yaml_file))
         convert_to_mrs(ads_items, DIST_DIR / "ads.mrs")
 
-    # 2. Direct
+    # Direct
     direct_file = RULES_ROOT / "direct.yaml"
     if direct_file.exists():
         print(f"📄 Direct: {direct_file.name}")
         convert_to_mrs(extract_items_from_yaml(direct_file), DIST_DIR / "direct.mrs")
 
-    # 3. Proxy
+    # Proxy
     proxy_file = RULES_ROOT / "proxy.yaml"
     if proxy_file.exists():
         print(f"📄 Proxy: {proxy_file.name}")
         convert_to_mrs(extract_items_from_yaml(proxy_file), DIST_DIR / "proxy.mrs")
 
-    # 4. Programs — PROCESS-NAME (classical)
+    # Programs
     if PROGRAMS_DIR.exists():
         for yaml_file in sorted(PROGRAMS_DIR.glob("*.yaml")):
             print(f"📄 Programs: {yaml_file.name}")
             output_name = yaml_file.stem + ".mrs"
             convert_to_mrs(extract_items_from_yaml(yaml_file), DIST_DIR / output_name)
 
-    # 5. Все остальные YAML
+    # Остальные
     for yaml_file in sorted(RULES_ROOT.rglob("*.yaml")):
         if ADS_DIR in yaml_file.parents or PROGRAMS_DIR in yaml_file.parents:
             continue
         if yaml_file.name in ("direct.yaml", "proxy.yaml"):
             continue
-
         print(f"📄 Прочее: {yaml_file.relative_to(RULES_ROOT)}")
         output_name = yaml_file.stem + ".mrs"
         convert_to_mrs(extract_items_from_yaml(yaml_file), DIST_DIR / output_name)
