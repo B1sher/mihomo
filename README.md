@@ -5,28 +5,28 @@
 ```
 
 rules/
-├── ads/                          # Рекламные и трекерные домены (блокировка)
-│   ├── pc.yaml                   # 💻 Телеметрия Windows, драйверов, игровых лаунчеров
-│   ├── android.yaml              # 📱 Мобильная реклама, трекеры приложений, телеметрия вендоров
-│   └── crossplatform.yaml        # ⛔ Универсальные рекламные сети и аналитика
+├── ads/                          # Рекламные и трекерные домены (REJECT)
+│   ├── pc.yaml                   # 💻 Windows
+│   ├── android.yaml              # 📱 Мобилки
+│   └── crossplatform.yaml        # ⛔ Кроссплатформа
 │       ↓ (слияние)
-│       → dist/ads.mrs            # classical
+│       → dist/ads.mrs
 │
 ├── programs/                     # Программы и игры (PROCESS-NAME)
 │   ├── programs_pc_direct.yaml   # 🎮 ПК — процессы напрямую
-│   │   → dist/programs_pc_direct.mrs     # rule
+│   │   → dist/programs_pc_direct.mrs
 │   ├── programs_pc_proxy.yaml    # 🔀 ПК — процессы через прокси
-│   │   → dist/programs_pc_proxy.mrs      # rule
+│   │   → dist/programs_pc_proxy.mrs
 │   ├── programs_phone_direct.yaml # 📱 Телефон — приложения напрямую
-│   │   → dist/programs_phone_direct.mrs  # rule
+│   │   → dist/programs_phone_direct.mrs
 │   └── programs_phone_proxy.yaml  # 📱 Телефон — приложения через прокси
-│       → dist/programs_phone_proxy.mrs   # rule
+│       → dist/programs_phone_proxy.mrs
 │
-├── direct.yaml                   # 🌐 Домены и IP для прямого подключения
-│   → dist/direct.mrs             # classical
+├── direct.yaml                   # 🌐 Домены и IP прямо
+│   → dist/direct.mrs
 │
 └── proxy.yaml                    # 🔀 Домены и IP через прокси
-→ dist/proxy.mrs              # classical
+→ dist/proxy.mrs
 
 ```
 
@@ -66,7 +66,7 @@ payload:
 | −`rules/ads/*.yaml` | classical | `dist/ads.mrs` (слияние) |
 | −`rules/direct.yaml` | classical | `dist/direct.mrs` |
 | −`rules/proxy.yaml` | classical | `dist/proxy.mrs` |
-| −`rules/programs/*.yaml` | rule | `dist/<имя>.mrs` (каждый отдельно) |
+| −`rules/programs/*.yaml` | rule | `dist/<имя>.mrs` |
 | −Любой новый YAML | classical | `dist/<имя>.mrs` |
 ⚙
 
