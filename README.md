@@ -34,7 +34,7 @@ rules/
 ### Домены, IP и подсети (classical)
 
 В `direct.yaml`, `proxy.yaml`, `ads/*.yaml` сейчас только домены.
->Что бы писать вперемешку, нужно в rule-providers указать behavior: classical
+>Что бы писать вперемешку, нужно в `rule-providers` указать `behavior: classical`
 
 ```yaml
 # Домен
@@ -47,7 +47,7 @@ rules/
 - "1.1.1.1"               # → IP-CIDR,1.1.1.1/32
 ```
 
-### Процессы (rule, PROCESS-NAME)
+### Процессы
 
 В `programs/*.yaml`:
 
@@ -59,7 +59,7 @@ payload:
 
 ## Сборка
 
-Один workflow автоматически конвертирует все YAML в `rules/` при пуше, кроме rules/programs/:
+Один workflow автоматически конвертирует все YAML в `rules/` при пуше, кроме `rules/programs/`:
 
 | Источник ↕▾ | Тип ↕▾ | Выход ↕▾ |
 |---|---|---|
