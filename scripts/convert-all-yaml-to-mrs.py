@@ -2,16 +2,17 @@
 """
 Универсальный конвертер YAML → .mrs для Mihomo.
 
-Всё собирается как classical. Поддерживает:
-- Домены: example.com → DOMAIN-SUFFIX,example.com
-- Подсети: 192.168.1.0/24 → IP-CIDR,192.168.1.0/24
-- IP: 1.1.1.1 → IP-CIDR,1.1.1.1/32
-- Процессы: PROCESS-NAME,... (остаются как есть)
-- Комментарии в конце строк: - PROCESS-NAME,foo.exe # comment → вырезаются
+Обрабатывает только доменные списки (domain):
+- rules/ads/*.yaml — сливаются в один ads.mrs
+- rules/direct.yaml — direct.mrs
+- rules/proxy.yaml — proxy.mrs
+- Любой другой YAML (кроме programs/) — в .mrs с тем же именем
+
+rules/programs/*.yaml — НЕ конвертируются в .mrs.
+Они подключаются в Mihomo напрямую как YAML (format: yaml, behavior: classical).
 """
 
 import sys
-import re
 import ipaddress
 import yaml
 import subprocess
@@ -24,22 +25,11 @@ MIHOMO_BIN = "mihomo"
 ADS_DIR = RULES_ROOT / "ads"
 PROGRAMS_DIR = RULES_ROOT / "programs"
 
-def strip_comment(item: str) -> str:
-    """Вырезает комментарий # из строки."""
-    # Если # внутри кавычек — не трогаем (упрощённо)
-    if '#' in item:
-        item = item.split('#')[0].strip()
-    return item
-
 def classify_item(item: str) -> str:
     """Определяет тип строки и возвращает готовое правило."""
-    item = strip_comment(item.strip())
+    item = item.strip()
     if not item:
         return ""
-
-    # PROCESS-NAME
-    if item.upper().startswith("PROCESS-NAME"):
-        return item
 
     # IP или подсеть
     if "/" in item:
@@ -59,7 +49,7 @@ def classify_item(item: str) -> str:
     return f"DOMAIN-SUFFIX,{item}"
 
 def extract_items_from_yaml(yaml_path: Path) -> list[str]:
-    """Извлекает элементы из YAML."""
+    """Извлекает домены из YAML (без payload)."""
     items = []
     try:
         with open(yaml_path, "r", encoding="utf-8") as f:
@@ -72,14 +62,7 @@ def extract_items_from_yaml(yaml_path: Path) -> list[str]:
                 elif isinstance(item, dict):
                     items.extend(str(k) for k in item.keys())
         elif isinstance(data, dict):
-            if "payload" in data and isinstance(data["payload"], list):
-                for item in data["payload"]:
-                    if isinstance(item, str):
-                        items.append(item)
-                    elif isinstance(item, dict):
-                        items.extend(str(k) for k in item.keys())
-            else:
-                items.extend(str(k) for k in data.keys())
+            items.extend(str(k) for k in data.keys())
     except Exception as e:
         print(f"⚠️ Ошибка чтения {yaml_path}: {e}", file=sys.stderr)
 
@@ -94,9 +77,9 @@ def extract_items_from_yaml(yaml_path: Path) -> list[str]:
     return unique
 
 def convert_to_mrs(items: list[str], output_path: Path):
-    """Конвертирует список правил в .mrs (classical)."""
+    """Конвертирует домены в .mrs (domain)."""
     if not items:
-        print(f"⚠️ {output_path.name}: нет правил, создаю пустой .mrs")
+        print(f"⚠️ {output_path.name}: нет доменов, создаю пустой .mrs")
         output_path.touch()
         return
 
@@ -105,12 +88,13 @@ def convert_to_mrs(items: list[str], output_path: Path):
         for item in items:
             f.write(f"{item}\n")
 
+    # Сначала пробуем classical (поддержка доменов и IP)
     cmd = [MIHOMO_BIN, "convert-ruleset", "classical", "text", str(tmp_file), str(output_path)]
     print(f"🔄 {' '.join(cmd)}")
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     if result.returncode != 0:
-        print(f"❌ Ошибка конвертации {output_path.name}: {result.stderr}", file=sys.stderr)
+        print(f"⚠️ Classical упал, пробую domain fallback...")
         # Fallback: только домены
         domain_only = [r for r in items if r.startswith("DOMAIN-SUFFIX,")]
         if domain_only:
@@ -138,7 +122,7 @@ def main():
 
     DIST_DIR.mkdir(exist_ok=True)
 
-    # Ads
+    # Ads — слияние
     if ADS_DIR.exists():
         ads_items = []
         for yaml_file in sorted(ADS_DIR.glob("*.yaml")):
@@ -158,25 +142,22 @@ def main():
         print(f"📄 Proxy: {proxy_file.name}")
         convert_to_mrs(extract_items_from_yaml(proxy_file), DIST_DIR / "proxy.mrs")
 
-    # Programs
-    if PROGRAMS_DIR.exists():
-        for yaml_file in sorted(PROGRAMS_DIR.glob("*.yaml")):
-            print(f"📄 Programs: {yaml_file.name}")
-            output_name = yaml_file.stem + ".mrs"
-            convert_to_mrs(extract_items_from_yaml(yaml_file), DIST_DIR / output_name)
-
-    # Остальные
+    # Другие YAML (кроме programs/ — они идут напрямую)
     for yaml_file in sorted(RULES_ROOT.rglob("*.yaml")):
-        if ADS_DIR in yaml_file.parents or PROGRAMS_DIR in yaml_file.parents:
+        if ADS_DIR in yaml_file.parents:
+            continue
+        if PROGRAMS_DIR in yaml_file.parents:
             continue
         if yaml_file.name in ("direct.yaml", "proxy.yaml"):
             continue
+
         print(f"📄 Прочее: {yaml_file.relative_to(RULES_ROOT)}")
         output_name = yaml_file.stem + ".mrs"
         convert_to_mrs(extract_items_from_yaml(yaml_file), DIST_DIR / output_name)
 
     print("\n✅ Все конвертации завершены")
     print(f"📦 Результаты в {DIST_DIR}/")
+    print(f"ℹ️ Programs (rules/programs/) не конвертируются — используются напрямую как YAML")
 
 if __name__ == "__main__":
     main()
