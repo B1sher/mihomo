@@ -9,7 +9,8 @@ rules/
 │   ├── pc.yaml                   # 💻 Windows
 │   ├── android.yaml              # 📱 Мобилки
 │   └── crossplatform.yaml        # ⛔ Кроссплатформа
-│       ↓ (слияние)
+│       ↓ (слияние всех трёх)
+│       ↓ (конвертация в mrs)
 │       → dist/ads.mrs
 │
 ├── programs/                     # Программы и игры (PROCESS-NAME)
@@ -19,9 +20,11 @@ rules/
 │   └── programs_phone_proxy.yaml  # 📱 Телефон — приложения через прокси
 │
 ├── direct.yaml                   # 🌐 Домены и IP прямо
+│   ↓ (конвертация в mrs)
 │   → dist/direct.mrs
 │
 └── proxy.yaml                    # 🔀 Домены и IP через прокси
+    ↓ (конвертация в mrs)
     → dist/proxy.mrs
 
 ```
