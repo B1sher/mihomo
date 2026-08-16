@@ -66,7 +66,7 @@ payload:
 | −`rules/ads/*.yaml` | classical | `dist/ads.mrs` (слияние) |
 | −`rules/direct.yaml` | classical | `dist/direct.mrs` |
 | −`rules/proxy.yaml` | classical | `dist/proxy.mrs` |
-| −`rules/programs/*.yaml` | rule | `dist/<имя>.mrs` |
+| −`rules/programs/*.yaml` | classical | `dist/<имя>.mrs` |
 | −Любой новый YAML | classical | `dist/<имя>.mrs` |
 ⚙
 
