@@ -39,7 +39,7 @@ jobs:
       - name: Build MRS
         run: |
           mkdir -p dist
-          mihomo convert-ruleset classical /tmp/combined-programs-proxy.txt dist/programs_proxy.mrs
+          mihomo convert-ruleset classical text /tmp/combined-programs-proxy.txt dist/programs_proxy.mrs
 
       - name: Commit and push
         run: |

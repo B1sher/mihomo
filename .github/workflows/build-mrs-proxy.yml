@@ -39,7 +39,7 @@ jobs:
       - name: Build MRS
         run: |
           mkdir -p dist
-          mihomo convert-ruleset domain /tmp/combined-proxy.txt dist/proxy.mrs
+          mihomo convert-ruleset domain text /tmp/combined-proxy.txt dist/proxy.mrs
 
       - name: Commit and push
         run: |
