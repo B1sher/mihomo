@@ -39,7 +39,12 @@ jobs:
       - name: Build MRS
         run: |
           mkdir -p dist
-          mihomo convert-ruleset classical text /tmp/combined-programs-proxy.txt dist/programs_proxy.mrs
+          if [ -s /tmp/combined-programs-proxy.txt ]; then
+            mihomo convert-ruleset classical text /tmp/combined-programs-proxy.txt dist/programs_proxy.mrs
+          else
+            echo "No rules, creating empty .mrs"
+            touch dist/programs_proxy.mrs
+          fi
 
       - name: Commit and push
         run: |

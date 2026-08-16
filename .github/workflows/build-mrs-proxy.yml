@@ -39,7 +39,12 @@ jobs:
       - name: Build MRS
         run: |
           mkdir -p dist
-          mihomo convert-ruleset domain text /tmp/combined-proxy.txt dist/proxy.mrs
+          if [ -s /tmp/combined-proxy.txt ]; then
+            mihomo convert-ruleset domain text /tmp/combined-proxy.txt dist/proxy.mrs
+          else
+            echo "No domains, creating empty .mrs"
+            touch dist/proxy.mrs
+          fi
 
       - name: Commit and push
         run: |

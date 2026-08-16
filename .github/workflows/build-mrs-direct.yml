@@ -39,7 +39,12 @@ jobs:
       - name: Build MRS
         run: |
           mkdir -p dist
-          mihomo convert-ruleset domain text /tmp/combined-direct.txt dist/direct.mrs
+          if [ -s /tmp/combined-direct.txt ]; then
+            mihomo convert-ruleset domain text /tmp/combined-direct.txt dist/direct.mrs
+          else
+            echo "No domains, creating empty .mrs"
+            touch dist/direct.mrs
+          fi
 
       - name: Commit and push
         run: |

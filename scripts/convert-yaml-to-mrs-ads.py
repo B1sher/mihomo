@@ -5,6 +5,7 @@
 
 Читает: rules/ads/*.yaml
 Пишет: /tmp/combined-ads.txt в формате DOMAIN-SUFFIX,domain.com
+Если доменов нет — создаёт пустой файл и выходит с кодом 0.
 """
 
 import sys
@@ -52,12 +53,21 @@ def main():
         print(f"   Найдено доменов: {len(domains)}")
         all_domains.extend(domains)
 
+    # Убираем пустые строки и дубликаты
     seen = set()
     unique_domains = []
     for d in all_domains:
-        if d not in seen:
+        d = d.strip()
+        if d and d not in seen:
             seen.add(d)
             unique_domains.append(d)
+
+    # Если доменов нет — создаём пустой файл
+    if not unique_domains:
+        print("⚠️ Доменов нет — создаю пустой файл")
+        OUTPUT_FILE.write_text("", encoding="utf-8")
+        print(f"📦 Файл для конвертации: {OUTPUT_FILE}")
+        sys.exit(0)
 
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         for domain in unique_domains:
