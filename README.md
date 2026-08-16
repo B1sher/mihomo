@@ -34,7 +34,7 @@ rules/
 ### Домены, IP и подсети (classical)
 
 В `direct.yaml`, `proxy.yaml`, `ads/*.yaml` сейчас только домены.
-Что бы писать вперемешку, нужно в rule-providers указать behavior: classical:
+>Что бы писать вперемешку, нужно в rule-providers указать behavior: classical
 
 ```yaml
 # Домен
