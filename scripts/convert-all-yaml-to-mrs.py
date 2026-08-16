@@ -3,15 +3,14 @@
 Универсальный конвертер YAML → .mrs для Mihomo.
 
 Обрабатывает только доменные списки (domain):
-- rules/ads/*.yaml — сливаются в один ads.mrs
-- rules/direct.yaml — direct.mrs
-- rules/proxy.yaml — proxy.mrs
-- Любой другой YAML (кроме programs/) — в .mrs с тем же именем
+- rules/ads/pc.yaml + crossplatform.yaml → mrs/ads_pc.mrs
+- rules/ads/android.yaml + crossplatform.yaml → mrs/ads_mobile.mrs
+- rules/direct.yaml → mrs/direct.mrs
+- rules/proxy.yaml → mrs/proxy.mrs
+- Любой другой YAML (кроме programs/) → mrs/<имя>.mrs
 
 rules/programs/*.yaml — НЕ конвертируются в .mrs.
 Они подключаются в Mihomo напрямую как YAML (format: yaml, behavior: classical).
-
-Выходные файлы: mrs/*.mrs
 """
 
 import sys
@@ -78,6 +77,17 @@ def extract_items_from_yaml(yaml_path: Path) -> list[str]:
 
     return unique
 
+def merge_unique(*item_lists: list[str]) -> list[str]:
+    """Сливает несколько списков, убирая дубликаты."""
+    seen = set()
+    unique = []
+    for items in item_lists:
+        for item in items:
+            if item and item not in seen:
+                seen.add(item)
+                unique.append(item)
+    return unique
+
 def convert_to_mrs(items: list[str], output_path: Path):
     """Конвертирует домены в .mrs (domain)."""
     if not items:
@@ -124,13 +134,43 @@ def main():
 
     MRS_DIR.mkdir(exist_ok=True)
 
-    # Ads — слияние
+    # Ads — разделяем на PC и Mobile
     if ADS_DIR.exists():
-        ads_items = []
+        pc_items = []
+        android_items = []
+        crossplatform_items = []
+
+        pc_file = ADS_DIR / "pc.yaml"
+        android_file = ADS_DIR / "android.yaml"
+        crossplatform_file = ADS_DIR / "crossplatform.yaml"
+
+        if pc_file.exists():
+            print(f"📄 Ads PC: {pc_file.name}")
+            pc_items = extract_items_from_yaml(pc_file)
+
+        if android_file.exists():
+            print(f"📄 Ads Android: {android_file.name}")
+            android_items = extract_items_from_yaml(android_file)
+
+        if crossplatform_file.exists():
+            print(f"📄 Ads Crossplatform: {crossplatform_file.name}")
+            crossplatform_items = extract_items_from_yaml(crossplatform_file)
+
+        # ads_pc.mrs = pc + crossplatform
+        ads_pc = merge_unique(pc_items, crossplatform_items)
+        convert_to_mrs(ads_pc, MRS_DIR / "ads_pc.mrs")
+
+        # ads_mobile.mrs = android + crossplatform
+        ads_mobile = merge_unique(android_items, crossplatform_items)
+        convert_to_mrs(ads_mobile, MRS_DIR / "ads_mobile.mrs")
+
+        # Обрабатываем другие YAML в ads/ (если появятся)
         for yaml_file in sorted(ADS_DIR.glob("*.yaml")):
-            print(f"📄 Ads: {yaml_file.name}")
-            ads_items.extend(extract_items_from_yaml(yaml_file))
-        convert_to_mrs(ads_items, MRS_DIR / "ads.mrs")
+            if yaml_file.name in ("pc.yaml", "android.yaml", "crossplatform.yaml"):
+                continue
+            print(f"📄 Ads прочее: {yaml_file.name}")
+            output_name = f"ads_{yaml_file.stem}.mrs"
+            convert_to_mrs(extract_items_from_yaml(yaml_file), MRS_DIR / output_name)
 
     # Direct
     direct_file = RULES_ROOT / "direct.yaml"
@@ -144,7 +184,7 @@ def main():
         print(f"📄 Proxy: {proxy_file.name}")
         convert_to_mrs(extract_items_from_yaml(proxy_file), MRS_DIR / "proxy.mrs")
 
-    # Другие YAML (кроме programs/ — они идут напрямую)
+    # Другие YAML (кроме ads/ и programs/)
     for yaml_file in sorted(RULES_ROOT.rglob("*.yaml")):
         if ADS_DIR in yaml_file.parents:
             continue

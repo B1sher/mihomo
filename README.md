@@ -9,9 +9,10 @@ rules/
 │   ├── pc.yaml                     # 💻 Windows
 │   ├── android.yaml                # 📱 Мобилки
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
-│       ↓ (слияние всех трёх)
-│       ↓ (конвертация в mrs)
-│       → mrs/ads.mrs
+│       ↓ (слияние)                 
+│       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
+│       → mrs/ads_pc.mrs
+│       → mrs/ads_phone.mrs
 │
 ├── programs/                       # Программы и игры (PROCESS-NAME)
 │   ├── programs_pc_direct.yaml     # 🎮 ПК — процессы напрямую
