@@ -34,8 +34,8 @@ rules/
 
 ### Домены, IP и подсети (classical)
 
-В `direct.yaml`, `proxy.yaml`, `ads/*.yaml` сейчас только домены.
->Что бы писать вперемешку, нужно в `rule-providers` указать `behavior: classical`
+В `direct.yaml`, `proxy.yaml`, `ads/*.yaml` сейчас только домены.  
+Что бы писать вперемешку, нужно в `rule-providers` указать `behavior: classical`
 
 ```yaml
 # Домен
@@ -74,7 +74,7 @@ payload:
 Если в списке ads/direct/proxy 
 
 >только домены, то в rule-providers нужно указывать `behavior: domain`  
->если только подсети, то `behavior: ipcidr`
+>если только подсети, то `behavior: ipcidr`  
 >если и то, и другое, то `behavior: classical`
 
 
