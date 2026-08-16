@@ -6,7 +6,7 @@
 
 payload:
   # Roblox
-  - PROCESS-NAME,RobloxPlayerLauncher.exe
-  - PROCESS-NAME,RobloxPlayerBeta.exe
-  - PROCESS-NAME,RobloxStudioLauncherBeta.exe
-  - PROCESS-NAME,RobloxStudioBeta.exe
+  - PROCESS-NAME,RobloxPlayerLauncher.exe        # Лаунчер Roblox
+  - PROCESS-NAME,RobloxPlayerBeta.exe            # Клиент Roblox
+  - PROCESS-NAME,RobloxStudioLauncherBeta.exe    # Лаунчер Roblox Studio
+  - PROCESS-NAME,RobloxStudioBeta.exe            # Roblox Studio

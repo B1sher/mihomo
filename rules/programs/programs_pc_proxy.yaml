@@ -5,4 +5,4 @@
 # ============================================
 
 payload:
-  - PROCESS-NAME,example.exe # Заглушка
+#  - PROCESS-NAME,example.exe # Пример
