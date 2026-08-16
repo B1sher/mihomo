@@ -26,15 +26,12 @@ jobs:
       - name: Install Python dependencies
         run: pip install pyyaml
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: "1.22"
-
-      - name: Install mihomo
+      - name: Download mihomo binary
         run: |
-          go install github.com/MetaCubeX/mihomo@latest
-          echo "$HOME/go/bin" >> $GITHUB_PATH
+          curl -L -o mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/v1.19.29/mihomo-linux-amd64-v1.19.29.gz
+          gunzip mihomo.gz
+          chmod +x mihomo
+          sudo mv mihomo /usr/local/bin/
 
       - name: Extract rules from YAML
         run: python scripts/convert-yaml-to-mrs-programs-direct.py
