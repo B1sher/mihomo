@@ -73,8 +73,10 @@ payload:
 Важно:
 Если в списке ads/direct/proxy 
 
->только домены, то в rule-providers нужно указывать behavior: domain  
->если добавить туда подсети, то behavior: classical
+>только домены, то в rule-providers нужно указывать `behavior: domain`  
+>если только подсети, то `behavior: ipcidr`
+>если и то, и другое, то `behavior: classical`
+
 
 Иначе не читает >:( 
 В programs с процессами только yaml
