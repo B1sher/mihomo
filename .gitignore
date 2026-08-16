@@ -1,0 +1,7 @@
+# Токены и секреты — НИКОГДА не пушить
+setup-token.bat
+push-rules.bat
+
+# Локальные артефакты
+*.log
+.DS_Store
