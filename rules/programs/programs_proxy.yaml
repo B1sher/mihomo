@@ -3,9 +3,8 @@
 # ============================================
 # Формат: PROCESS-NAME или PROCESS-NAME-REGEX
 # ============================================
-
+#
 payload:
-
   #Roblox
   #- PROCESS-NAME,RobloxPlayerLauncher.exe # Launcher
   #- PROCESS-NAME,RobloxPlayerBeta.exe # Roblox client
