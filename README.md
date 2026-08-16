@@ -68,7 +68,7 @@ payload:
 | `rules/direct.yaml` | http | domain | mrs | `mrs/direct.mrs` |
 | `rules/proxy.yaml` | http | domain | mrs | `mrs/proxy.mrs` |
 | `rules/programs/*.yaml` | http | classical | yaml | не изменяется |
-| Любой новый YAML | http | domain | mrs | `mrs/<имя>.mrs` |
+| Любой новый YAML | http | любой | mrs | `mrs/<имя>.mrs` |
 
 Важно:
 Если в списке ads/direct/proxy 
