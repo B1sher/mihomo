@@ -1,0 +1,53 @@
+name: Build MRS Direct Ruleset
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "rules/direct.yaml"
+      - "scripts/convert-yaml-to-mrs-direct.py"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Install mihomo
+        run: |
+          go install github.com/MetaCubeX/mihomo@latest
+          echo "$HOME/go/bin" >> $GITHUB_PATH
+
+      - name: Extract domains from YAML
+        run: python scripts/convert-yaml-to-mrs-direct.py
+
+      - name: Build MRS
+        run: |
+          mkdir -p dist
+          mihomo convert-ruleset domain /tmp/combined-direct.txt dist/direct.mrs
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist/direct.mrs
+          git commit -m "chore: rebuild direct.mrs [skip ci]" || exit 0
+          git push

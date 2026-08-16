@@ -1,0 +1,53 @@
+# ============================================
+# Кроссплатформа ⛔ — универсальные рекламные
+# сети и аналитика
+# ============================================
+
+# Google реклама и телеметрия
+- "doubleclick.net"                    # Рекламная сеть DoubleClick
+- "pagead2.googlesyndication.com"      # Google AdSense
+- "adservice.google.com"               # Google AdService
+- "google-analytics.com"               # Google Analytics
+- "firebaselogging.googleapis.com"     # Firebase логи
+- "jnn-pa.googleapis.com"              # Google телеметрия
+- "www.google-analytics.com"           # Google Analytics (www)
+
+# Яндекс реклама и телеметрия
+- "an.yandex.ru"                       # Яндекс рекламная сеть
+- "awaps.yandex.net"                   # Яндекс AWAPS
+- "context.modules.yandex.ru"          # Яндекс контекстная реклама
+- "mc.yandex.ru"                       # Яндекс Метрика
+- "ext.metrika.yandex.net"             # Яндекс Метрика (расширенная)
+
+# Criteo & Taboola рекламные сети
+- "criteo.com"                         # Ретаргетинг Criteo
+- "criteo.net"                         # Ретаргетинг Criteo (зеркало)
+- "taboola.com"                        # Нативная реклама Taboola
+
+# Соцсети и мессенджеры
+- "top-fwz1.mail.ru"                   # Шпион активности Mail.ru
+- "t.vk.com"                           # Рекламный шпион ВК
+- "dit.whatsapp.net"                   # Телеметрия WhatsApp
+
+# Аналитика и трекеры
+- "hotjar.com"                         # Шпион активности Hotjar
+- "magicbot.link"                      # Рекламный бот-шпион
+- "trk.pinterest.com"                  # Телеметрия Pinterest
+- "w3-reporting.reddit.com"            # Телеметрия Reddit
+- "alb.reddit.com"                     # Reddit шпион
+- "dc-telemetry.net"                   # Телеметрия Discord
+- "discordstatus.com"                  # Фоновый сбор данных Discord
+- "sr-client-cfg.eu.amplitude.com"     # Amplitude конфиг
+- "api.eu.amplitude.com"               # Amplitude API
+- "api.statsigcdn.com"                 # Облачный трекер Statsig
+- "ups.analytics.yahoo.com"            # Yahoo аналитика
+- "csp-reporting.cloudflare.com"       # Cloudflare отчёты безопасности
+- "kiwi.mdldb.net"                     # Рекламный трекер
+- "events.statsigapi.net"              # Телеметрия Statsig
+- "volces.com"                         # Телеметрия ByteDance
+- "sg-fp.apitd.net"                    # ByteDance шпион
+- "intake-logging.wikimedia.org"       # Телеметрия Wikipedia
+- "analytics.ahrefs.com"               # Аналитика Ahrefs
+- "mon.tiktokv.com"                    # TikTok системная метрика
+- "mcs-va.tiktokv.com"                 # TikTok маркетинговый трекер
+- "agl010.pro"                         # Рекламная сеть

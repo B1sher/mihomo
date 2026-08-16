@@ -1,0 +1,20 @@
+# ============================================
+# PC 💻 — телеметрия десктопных приложений,
+# драйверов и игровых лаунчеров
+# ============================================
+
+# Microsoft телеметрия
+- "telemetry.microsoft.com"          # Телеметрия Microsoft
+- "events.data.microsoft.com"        # Телеметрия событий Microsoft
+- "activity.windows.com"             # Активность Windows
+- "settings-win.data.microsoft.com"  # Настройки Windows телеметрия
+
+# NVIDIA телеметрия
+- "prod.otel.kaizen.nvidia.com"      # NVIDIA OpenTelemetry
+- "events.telemetry.data.nvidia.com" # Телеметрия событий NVIDIA
+- "gx.nvidia.com"                    # NVIDIA GeForce Experience
+
+# Телеметрия игровых лаунчеров
+- "telemetry.thesims3.com"           # Телеметрия The Sims 3
+- "telemetry.ea.com"                 # Телеметрия EA
+- "et.epicgames.com"                 # Телеметрия Epic Games
