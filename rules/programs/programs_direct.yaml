@@ -1,33 +1,12 @@
 # ============================================
-# 🎮 Programs Direct — программы/игры для
-# прямого подключения (PROCESS-NAME)
+# 🎮 Programs Direct — программы/игры
 # ============================================
 # Формат: PROCESS-NAME или PROCESS-NAME-REGEX
 # ============================================
 
 payload:
-  # Unreal Engine games
-  - PROCESS-NAME-REGEX,(?i).*Win64-Shipping.*
-
-  # Aimbeast
-  - PROCESS-NAME-REGEX,Aimbeast.*
-
-  # Among Us
-  - PROCESS-NAME,Among Us.exe
-
-  # Apex Legends
-  - PROCESS-NAME,ApexLauncher.exe # Launcher
-  - PROCESS-NAME,r5apex_dx12.exe # Apex Legends (DX12)
-
-  # BattleBit Remastered
-  - PROCESS-NAME-REGEX,BattleBit.*
-
-  # Content Warning
-  - PROCESS-NAME,Content Warning.exe
-
-  # Counter-Strike 2
-  - PROCESS-NAME,cs2.exe
-
-  # Euro Truck Simulator 2 / American Trucks Simulator
-  - PROCESS-NAME,eurotrucks2.exe
-  - PROCESS-NAME,amtrucks.exe
+  #Roblox
+  - PROCESS-NAME,RobloxPlayerLauncher.exe # Launcher
+  - PROCESS-NAME,RobloxPlayerBeta.exe # Roblox client
+  - PROCESS-NAME,RobloxStudioLauncherBeta.exe # Studio Launcher
+  - PROCESS-NAME,RobloxStudioBeta.exe # Roblox Studio

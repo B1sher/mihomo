@@ -1,52 +1,46 @@
 # ============================================
-# Android 📱 — мобильная реклама, трекеры
-# приложений, телеметрия вендоров
+# Android 📱 — мобильная реклама
 # ============================================
+
+# Другое
+
+
 
 # AppLovin мобильная реклама
 - "applovin.com"    # Мобильная рекламная сеть AppLovin
 - "applovin.col"    # Домен обхода фильтров AppLovin
 - "applvn.com"      # Домен обхода фильтров AppLovin (зеркало)
 - "applvn.col"      # Домен обхода фильтров AppLovin (зеркало, TLD .col)
-
 # InMobi мобильная реклама
 - "inmobi.com"      # Мобильная реклама InMobi
 - "inmobi.col"      # Домен обхода фильтров InMobi (TLD .col)
-
 # Pangle / TikTok реклама
 - "pangle.io"           # Рекламная сеть Pangle (ByteDance)
 - "i18n-pglstatp.com"   # Трекер Pangle
 - "sgsnssdk.com"        # SDK ByteDance
-
 # Яндекс мобильная реклама и телеметрия
 - "startup.mobile.yandex.net"     # Сборщик логов Яндекс (мобильный)
 - "startup.mobile.yandex.nes"     # Сборщик логов Яндекс (мобильный, резерв)
 - "report.appmetrica.yandex.net"  # AppMetrica отчёты
-
 # Google реклама в приложениях
 - "mediation.goog"          # Google AdMob медиация
 - "admob.googleapis.com"    # Google AdMob API
-
 # Facebook реклама в приложениях
 - "an.facebook.com"         # Facebook Audience Network
-
 # Unity Ads & Vungle — видеореклама
 - "unity3d.com"             # Unity Ads
 - "vungle.com"              # Видеореклама Vungle
-
 # Крупнейшие мобильные трекеры
 - "adjust.com"              # Мобильный трекер Adjust
 - "adjust.io"               # Мобильный трекер Adjust (зеркало)
 - "appsflyer.com"           # Мобильная атрибуция AppsFlyer
 - "kochava.com"             # Мобильный трекер Kochava
 - "branch.io"               # Deeplink-трекер Branch
-
 # Apple реклама и телеметрия
 - "iad-apple.com"           # Apple iAd реклама
 - "ads.apple.com"           # Реклама Apple
 - "securemetrics.apple.com" # Телеметрия Apple
 - "诊断.apple.com"          # Диагностика Apple (punycode)
-
 # Xiaomi / Redmi / POCO
 - "tracking.miui.com"                    # Телеметрия MIUI
 - "data.mioffice.cn"                     # Телеметрия Mi Office
@@ -54,13 +48,11 @@
 - "sdkconfig.ad.xiaomi.com"              # Конфиг рекламы Xiaomi
 - "tracking.intl.miui.com"               # Международная телеметрия MIUI
 - "anonymous.support.miui.com"           # Анонимная поддержка MIUI
-
 # Samsung телеметрия
 - "samsunganalytics-api.com"                          # Аналитика Samsung
 - "samsung-com-cn.vhost.pandora.xiaomi.com"           # Samsung CN (через Xiaomi)
 - "log-config.samsungdm.com"                          # Конфиг логов Samsung
 - "errlog.samsungdm.com"                              # Логи ошибок Samsung
-
 # Huawei / Honor телеметрия
 - "log.hicloud.com"              # Логи Huawei
 - "metrics.data.hicloud.com"     # Метрики Huawei
@@ -68,13 +60,11 @@
 - "grs.hicloud.com"              # GRS Huawei
 - "ads.huawei.com"               # Реклама Huawei
 - "metrics.unihonor.com"         # Метрики Honor
-
 # Realme / OPPO / OnePlus / Vivo
 - "allawnos.com"                       # Телеметрия ColorOS
 - "heytapmobile.com"                   # Телеметрия OPPO/Realme
 - "log.dcs.oppomobile.com"             # Логи OPPO
 - "telemetry.vivosmartphone.com"       # Телеметрия Vivo
-
 # Pixel / Google базовая телеметрия Android
 - "android-api.crashlytics.com"  # Crashlytics Android
 - "play.googleapis.com/log"      # Google Play логи
