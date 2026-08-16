@@ -6,6 +6,4 @@
 # ============================================
 
 payload:
-  # Добавляйте процессы ниже
-  # Пример:
-  # - PROCESS-NAME,com.example.app
+  - PROCESS-NAME,com.example.app # Заглушка
