@@ -75,4 +75,5 @@ payload:
 >только домены, то в rule-providers нужно указывать behavior: domain  
 >если добавить туда подсети, то behavior: classical
 
-Иначе не читает >:( В programs с процессами только yaml
+Иначе не читает >:( 
+В programs с процессами только yaml
