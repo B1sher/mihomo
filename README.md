@@ -13,10 +13,14 @@ rules/
 │       → dist/ads.mrs            # domain
 │
 ├── programs/                     # Программы и игры (PROCESS-NAME)
-│   ├── programs_direct.yaml      # 🎮 Процессы для прямого подключения
-│   │   → dist/programs_direct.mrs # rule
-│   └── programs_proxy.yaml       # 🔀 Процессы через прокси
-│       → dist/programs_proxy.mrs # rule
+│   ├── programs_pc_direct.yaml   # 🎮 ПК — процессы напрямую
+│   │   → dist/programs_pc_direct.mrs     # rule
+│   ├── programs_pc_proxy.yaml    # 🔀 ПК — процессы через прокси
+│   │   → dist/programs_pc_proxy.mrs      # rule
+│   ├── programs_phone_direct.yaml # 📱 Телефон — приложения напрямую
+│   │   → dist/programs_phone_direct.mrs  # rule
+│   └── programs_phone_proxy.yaml  # 📱 Телефон — приложения через прокси
+│       → dist/programs_phone_proxy.mrs   # rule
 │
 ├── direct.yaml                   # 🌐 Домены для прямого подключения
 │   → dist/direct.mrs             # domain
