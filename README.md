@@ -62,13 +62,13 @@ payload:
 
 Один workflow автоматически конвертирует все YAML в `rules/` при пуше, кроме `rules/programs/`:
 
-| Источник ↕▾ | Type ↕▾ | Behavior ↕▾ | Format ↕▾ | Выход ↕▾ |
-|---|---|---|
-| −`rules/ads/*.yaml` | http | domain | mrs | `dist/ads_pc.mrs и ads_phone.mrs` |
-| −`rules/direct.yaml` | http | domain | mrs | `dist/direct.mrs` |
-| −`rules/proxy.yaml` | http | domain | mrs | `dist/proxy.mrs` |
-| −`rules/programs/*.yaml` | http | classical | yaml | `не изменяется` |
-| −Любой новый YAML | http | any | mrs | `dist/<имя>.mrs` |
+| Источник | Type | Behavior | Format | Выход |
+|----------|------|----------|--------|-------|
+| `rules/ads/*.yaml` | http | domain | mrs | `mrs/ads_pc.mrs` и `mrs/ads_mobile.mrs` |
+| `rules/direct.yaml` | http | domain | mrs | `mrs/direct.mrs` |
+| `rules/proxy.yaml` | http | domain | mrs | `mrs/proxy.mrs` |
+| `rules/programs/*.yaml` | http | classical | yaml | не изменяется |
+| Любой новый YAML | http | domain | mrs | `mrs/<имя>.mrs` |
 
 Важно:
 Если в списке ads/direct/proxy 
