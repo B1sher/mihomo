@@ -22,7 +22,7 @@ rules/
 │   → dist/direct.mrs
 │
 └── proxy.yaml                    # 🔀 Домены и IP через прокси
-→ dist/proxy.mrs
+    → dist/proxy.mrs
 
 ```
 
