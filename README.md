@@ -1,64 +1,39 @@
-# 🛡️ Personal Mih
-```
+# Mihomo Rules
 
-📁 repo/
-├── rules/
-│   ├── ads/
-│   │   ├── pc.yaml              ← 💻 PC телеметрия
-│   │   ├── android.yaml         ← 📱 Android реклама/трекеры
-│   │   └── crossplatform.yaml   ← ⛔ Кроссплатформенная реклама
-│   ├── programs/
-│   │   ├── programs_direct.yaml ← 🎮 Программы напрямую (PROCESS-NAME)
-│   │   └── programs_proxy.yaml  ← 🔀 Программы через прокси (PROCESS-NAME)
-│   ├── direct.yaml              ← 🌐 Домены для прямого подключения
-│   └── proxy.yaml               ← 🔀 Домены через прокси
-├── scripts/
-│   └── convert-all-yaml-to-mrs.py
-├── .github/workflows/
-│   └── build-all-mrs.yml
-└── dist/
-├── ads.mrs
-├── direct.mrs
-├── proxy.mrs
-├── programs_direct.mrs
-└── programs_proxy.mrs
+## Дерево проекта
 
 ```
 
-## 🔧
-```
-
-### Rule (PROCESS-NAME) rules
-
-```
-rule-prov
-```
-
-## ✏️ Форматы YAML
-
-### Domain (обычные домены)
-
-```
-
-```
-
-### Rule (PROCESS-NAME)
-
-```
-payload:
-  - PROCESS-NAME
-```
-
-## ℹ️ Примечание
-
-- `ads/` — все YAML сливаются в один `ads.mrs`
-- `programs/` — каждый YAML даёт отдельный .mrs
-- Новые YAML в других подпапках обрабатываются автоматически
-- Пустые YAML создают пустой .mrs (без ошибок)
+rules/
+├── ads/                          # Рекламные и трекерные домены (блокировка)
+│   ├── pc.yaml                   # 💻 Телеметрия Windows, драйверов, игровых лаунчеров
+│   ├── android.yaml              # 📱 Мобильная реклама, трекеры приложений, телеметрия вендоров
+│   └── crossplatform.yaml        # ⛔ Универсальные рекламные сети и аналитика
+│       ↓ (слияние)
+│       → dist/ads.mrs            # domain
+│
+├── programs/                     # Программы и игры (PROCESS-NAME)
+│   ├── programs_direct.yaml      # 🎮 Процессы для прямого подключения
+│   │   → dist/programs_direct.mrs # rule
+│   └── programs_proxy.yaml       # 🔀 Процессы через прокси
+│       → dist/programs_proxy.mrs # rule
+│
+├── direct.yaml                   # 🌐 Домены для прямого подключения
+│   → dist/direct.mrs             # domain
+│
+└── proxy.yaml                    # 🔀 Домены через прокси
+→ dist/proxy.mrs              # domain
 
 ```
 
-</B
-```
+## Сборка
 
-Теперь при добавлении любого нового YAML в `rules/` — он подхватится без правок workflow. 🚀
+Один workflow автоматически конвертирует все YAML в `rules/` при пуше:
+
+| Источник | Тип | Выход |
+|----------|-----|-------|
+| `rules/ads/*.yaml` | domain | `dist/ads.mrs` (слияние) |
+| `rules/direct.yaml` | domain | `dist/direct.mrs` |
+| `rules/proxy.yaml` | domain | `dist/proxy.mrs` |
+| `rules/programs/*.yaml` | rule | `dist/<имя>.mrs` (каждый отдельно) |
+| Любой новый YAML | авто | `dist/<имя>.mrs` |
