@@ -10,6 +10,8 @@
 
 rules/programs/*.yaml — НЕ конвертируются в .mrs.
 Они подключаются в Mihomo напрямую как YAML (format: yaml, behavior: classical).
+
+Выходные файлы: mrs/*.mrs
 """
 
 import sys
@@ -19,7 +21,7 @@ import subprocess
 from pathlib import Path
 
 RULES_ROOT = Path("rules")
-DIST_DIR = Path("dist")
+MRS_DIR = Path("mrs")
 MIHOMO_BIN = "mihomo"
 
 ADS_DIR = RULES_ROOT / "ads"
@@ -120,7 +122,7 @@ def main():
         print(f"❌ Директория {RULES_ROOT} не найдена", file=sys.stderr)
         sys.exit(1)
 
-    DIST_DIR.mkdir(exist_ok=True)
+    MRS_DIR.mkdir(exist_ok=True)
 
     # Ads — слияние
     if ADS_DIR.exists():
@@ -128,19 +130,19 @@ def main():
         for yaml_file in sorted(ADS_DIR.glob("*.yaml")):
             print(f"📄 Ads: {yaml_file.name}")
             ads_items.extend(extract_items_from_yaml(yaml_file))
-        convert_to_mrs(ads_items, DIST_DIR / "ads.mrs")
+        convert_to_mrs(ads_items, MRS_DIR / "ads.mrs")
 
     # Direct
     direct_file = RULES_ROOT / "direct.yaml"
     if direct_file.exists():
         print(f"📄 Direct: {direct_file.name}")
-        convert_to_mrs(extract_items_from_yaml(direct_file), DIST_DIR / "direct.mrs")
+        convert_to_mrs(extract_items_from_yaml(direct_file), MRS_DIR / "direct.mrs")
 
     # Proxy
     proxy_file = RULES_ROOT / "proxy.yaml"
     if proxy_file.exists():
         print(f"📄 Proxy: {proxy_file.name}")
-        convert_to_mrs(extract_items_from_yaml(proxy_file), DIST_DIR / "proxy.mrs")
+        convert_to_mrs(extract_items_from_yaml(proxy_file), MRS_DIR / "proxy.mrs")
 
     # Другие YAML (кроме programs/ — они идут напрямую)
     for yaml_file in sorted(RULES_ROOT.rglob("*.yaml")):
@@ -153,10 +155,10 @@ def main():
 
         print(f"📄 Прочее: {yaml_file.relative_to(RULES_ROOT)}")
         output_name = yaml_file.stem + ".mrs"
-        convert_to_mrs(extract_items_from_yaml(yaml_file), DIST_DIR / output_name)
+        convert_to_mrs(extract_items_from_yaml(yaml_file), MRS_DIR / output_name)
 
     print("\n✅ Все конвертации завершены")
-    print(f"📦 Результаты в {DIST_DIR}/")
+    print(f"📦 Результаты в {MRS_DIR}/")
     print(f"ℹ️ Programs (rules/programs/) не конвертируются — используются напрямую как YAML")
 
 if __name__ == "__main__":
