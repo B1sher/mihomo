@@ -5,25 +5,25 @@
 ```
 
 rules/
-├── ads/                          # Рекламные и трекерные домены (REJECT)
-│   ├── pc.yaml                   # 💻 Windows
-│   ├── android.yaml              # 📱 Мобилки
-│   └── crossplatform.yaml        # ⛔ Кроссплатформа
+├── ads/                            # Рекламные и трекерные домены (REJECT)
+│   ├── pc.yaml                     # 💻 Windows
+│   ├── android.yaml                # 📱 Мобилки
+│   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние всех трёх)
 │       ↓ (конвертация в mrs)
 │       → mrs/ads.mrs
 │
-├── programs/                     # Программы и игры (PROCESS-NAME)
-│   ├── programs_pc_direct.yaml   # 🎮 ПК — процессы напрямую
-│   ├── programs_pc_proxy.yaml    # 🔀 ПК — процессы через прокси
-│   ├── programs_phone_direct.yaml # 📱 Телефон — приложения напрямую
-│   └── programs_phone_proxy.yaml  # 📱 Телефон — приложения через прокси
+├── programs/                       # Программы и игры (PROCESS-NAME)
+│   ├── programs_pc_direct.yaml     # 🎮 ПК — процессы напрямую
+│   ├── programs_pc_proxy.yaml      # 🔀 ПК — процессы через прокси
+│   ├── programs_phone_direct.yaml  # 📱 Телефон — приложения напрямую
+│   └── programs_phone_proxy.yaml   # 📱 Телефон — приложения через прокси
 │
-├── direct.yaml                   # 🌐 Домены и IP прямо
+├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
 │   → mrs/direct.mrs
 │
-└── proxy.yaml                    # 🔀 Домены и IP через прокси
+└── proxy.yaml                      # 🔀 Домены и IP через прокси
     ↓ (конвертация в mrs)
     → mrs/proxy.mrs
 
