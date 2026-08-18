@@ -3,8 +3,9 @@ name: Build MRS Rules
 on:
   push:
     paths:
-      - '*.yaml'
-      - '*.yml'
+      - 'rules/**/*.yaml'
+      - 'rules/*.yaml'
+      - 'scripts/*.py'
   workflow_dispatch:
 
 permissions:
@@ -19,7 +20,6 @@ jobs:
 
       - name: Download mihomo binary
         run: |
-          # Скачиваем готовый бинарник mihomo
           MIHOMO_VERSION="v1.19.0"
           curl -L -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
           gunzip mihomo.gz
@@ -29,16 +29,16 @@ jobs:
       - name: Compile MRS files
         run: |
           mkdir -p mrs
-          # PC
-          ./mihomo convert-ruleset domain yaml ads_pc.yaml mrs/ads_pc.mrs
-          # Android
-          ./mihomo convert-ruleset domain yaml ads_phone.yaml mrs/ads_phone.mrs
+          # PC = rules/ads/pc.yaml
+          ./mihomo convert-ruleset domain yaml rules/ads/pc.yaml mrs/ads_pc.mrs
+          # Phone = rules/ads/android.yaml
+          ./mihomo convert-ruleset domain yaml rules/ads/android.yaml mrs/ads_phone.mrs
           # Crossplatform
-          ./mihomo convert-ruleset domain yaml ads_crossplatform.yaml mrs/ads_crossplatform.mrs
+          ./mihomo convert-ruleset domain yaml rules/ads/crossplatform.yaml mrs/ads_crossplatform.mrs
           # Direct
-          ./mihomo convert-ruleset domain yaml direct.yaml mrs/direct.mrs
+          ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           # Proxy
-          ./mihomo convert-ruleset domain yaml proxy.yaml mrs/proxy.mrs
+          ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
       - name: Upload MRS to Release
         uses: softprops/action-gh-release@v2
