@@ -37,11 +37,6 @@ raw-ссылки ниже так же создаются автоматичес�
 <!-- LINKS_START -->
 <!-- LINKS_END -->
 
-
-
-
-## Формат YAML
-
 ### Домены, IP и подсети (classical)
 
 В `direct.yaml`, `proxy.yaml`, `ads/*.yaml` сейчас только домены.  
