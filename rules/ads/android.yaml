@@ -68,4 +68,4 @@ payload:
   - DOMAIN,telemetry.vivosmartphone.com            # Телеметрия Vivo
   # Pixel / Google базовая телеметрия Android
   - DOMAIN,android-api.crashlytics.com             # Crashlytics Android
-  - DOMAIN,play.googleapis.com/log                 # Google Play логи
+  - DOMAIN,play.googleapis.com                     # Google Play логи
