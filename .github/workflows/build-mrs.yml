@@ -50,13 +50,13 @@ jobs:
           # Proxy
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
-      - name: Commit MRS to release branch
+      - name: Commit MRS to mrs branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Создаём временную ветку release
-          git checkout --orphan release-temp
+          # Создаём временную ветку
+          git checkout --orphan mrs-temp
 
           # Удаляем все файлы
           git rm -rf . 2>/dev/null || true
@@ -68,5 +68,5 @@ jobs:
           git add *.mrs
           git commit -m "update: mrs $(date +'%Y-%m-%d %H:%M')"
 
-          # Пушим в release с force
-          git push origin release-temp:release --force
+          # Пушим в mrs с force
+          git push origin mrs-temp:mrs --force
