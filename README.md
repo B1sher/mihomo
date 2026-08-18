@@ -35,18 +35,6 @@ raw-ссылки ниже так же создаются автоматичес�
 ## Raw-ссылки
 
 <!-- LINKS_START -->
-
-| Файл | Тип | Копировать | Обновлён |
-|------|-----|------------|----------|
-| [ads_pc.mrs](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs) | `mrs` | `https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs` | 19:02 18.08.26 |
-| [ads_phone.mrs](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs) | `mrs` | `https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs` | 19:02 18.08.26 |
-| [direct.mrs](https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs) | `mrs` | `https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs` | 19:02 18.08.26 |
-| [proxy.mrs](https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs) | `mrs` | `https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs` | 19:02 18.08.26 |
-| [programs_pc_direct.yaml](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_direct.yaml) | `yaml` | `https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_direct.yaml` | 19:02 18.08.26 |
-| [programs_pc_proxy.yaml](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_proxy.yaml) | `yaml` | `https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_proxy.yaml` | 19:02 18.08.26 |
-| [programs_phone_direct.yaml](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_direct.yaml) | `yaml` | `https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_direct.yaml` | 19:02 18.08.26 |
-| [programs_phone_proxy.yaml](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_proxy.yaml) | `yaml` | `https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_proxy.yaml` | 19:02 18.08.26 |
-
 <!-- LINKS_END -->
 
 
