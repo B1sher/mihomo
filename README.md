@@ -30,16 +30,17 @@ rules/
 
 ```
 `.mrs` файлы генерятся автоматически в отдельную ветку `mrs` при каждом пуше
+raw-ссылки ниже так же создаются автоматически:
 
-## Raw-ссылки на .mrs
+## Raw-ссылки
 
 <!-- MRS_LINKS_START -->
 <!-- MRS_LINKS_END -->
-
-## Raw-ссылки на programs YAML
-
+<hr style="opacity: 0.3;">
 <!-- YAML_LINKS_START -->
 <!-- YAML_LINKS_END -->
+
+
 
 
 ## Формат YAML
