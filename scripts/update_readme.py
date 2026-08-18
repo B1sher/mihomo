@@ -3,7 +3,8 @@
 Обновляет README.md — вставляет автоматически сгенерированные
 raw-ссылки на .mrs файлы (из ветки mrs) и .yaml файлы (из programs/).
 
-Формат: таблица с файлом, ссылкой и датой обновления.
+Формат: таблица с файлом, полной raw-ссылкой и временем обновления.
+Время: ЧЧ:ММ ДД.ММ.ГГ (одна строка, год двумя цифрами).
 """
 
 import re
@@ -29,29 +30,35 @@ MRS_FILES = [
     "proxy.mrs",
 ]
 
-def get_current_date():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+def get_current_time():
+    """Возвращает время в формате ЧЧ:ММ ДД.ММ.ГГ (UTC)."""
+    now = datetime.now(timezone.utc)
+    return now.strftime("%H:%M %d.%m.%y")
 
 def generate_mrs_table():
-    date = get_current_date()
-    rows = ["| Файл | Ссылка | Обновлён |", "|------|--------|----------|"]
+    time_str = get_current_time()
+    rows = []
+    rows.append("| Файл | Raw-ссылка | Обновлён |")
+    rows.append("|------|------------|----------|")
 
     for name in MRS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
-        rows.append(f"| `{name}` | [Ссылка]({url}) | {date} |")
+        rows.append(f"| `{name}` | {url} | {time_str} |")
 
     return "\n".join(rows)
 
 def generate_yaml_table():
-    date = get_current_date()
-    rows = ["| Файл | Ссылка | Обновлён |", "|------|--------|----------|"]
+    time_str = get_current_time()
+    rows = []
+    rows.append("| Файл | Raw-ссылка | Обновлён |")
+    rows.append("|------|------------|----------|")
 
     if PROGRAMS_DIR.exists():
         for yaml_file in sorted(PROGRAMS_DIR.glob("*.yaml")):
             name = yaml_file.name
             rel_path = yaml_file.as_posix()
             url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
-            rows.append(f"| `{name}` | [Ссылка]({url}) | {date} |")
+            rows.append(f"| `{name}` | {url} | {time_str} |")
 
     return "\n".join(rows)
 
@@ -62,8 +69,9 @@ def update_readme():
 
     content = README_PATH.read_text(encoding="utf-8")
 
+    # Обновляем .mrs таблицу
     mrs_table = generate_mrs_table()
-    mrs_block = f"{MRS_LINKS_START}\n{mrs_table}\n{MRS_LINKS_END}"
+    mrs_block = f"{MRS_LINKS_START}\n\n{mrs_table}\n\n{MRS_LINKS_END}"
 
     if MRS_LINKS_START in content and MRS_LINKS_END in content:
         pattern = re.compile(
@@ -74,8 +82,9 @@ def update_readme():
     else:
         content += f"\n{mrs_block}\n"
 
+    # Обновляем .yaml таблицу
     yaml_table = generate_yaml_table()
-    yaml_block = f"{YAML_LINKS_START}\n{yaml_table}\n{YAML_LINKS_END}"
+    yaml_block = f"{YAML_LINKS_START}\n\n{yaml_table}\n\n{YAML_LINKS_END}"
 
     if YAML_LINKS_START in content and YAML_LINKS_END in content:
         pattern = re.compile(

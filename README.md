@@ -35,21 +35,9 @@ raw-ссылки ниже так же создаются автоматичес�
 ## Raw-ссылки
 
 <!-- MRS_LINKS_START -->
-| Файл | Ссылка | Обновлён |
-|------|--------|----------|
-| `ads_pc.mrs` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs) | 2026-08-18 |
-| `ads_phone.mrs` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs) | 2026-08-18 |
-| `direct.mrs` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs) | 2026-08-18 |
-| `proxy.mrs` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs) | 2026-08-18 |
 <!-- MRS_LINKS_END -->
 <hr style="height: 1px; background: #e5e5e5; border: none;">
 <!-- YAML_LINKS_START -->
-| Файл | Ссылка | Обновлён |
-|------|--------|----------|
-| `programs_pc_direct.yaml` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_direct.yaml) | 2026-08-18 |
-| `programs_pc_proxy.yaml` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_proxy.yaml) | 2026-08-18 |
-| `programs_phone_direct.yaml` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_direct.yaml) | 2026-08-18 |
-| `programs_phone_proxy.yaml` | [Ссылка](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_proxy.yaml) | 2026-08-18 |
 <!-- YAML_LINKS_END -->
 
 
