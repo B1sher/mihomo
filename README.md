@@ -77,11 +77,11 @@ payload:
 
 | Источник | Type | Behavior | Format | Выход |
 |----------|------|----------|--------|-------|
-| `rules/ads/*.yaml` | http | domain | mrs | `mrs/ads_pc.mrs` и `mrs/ads_mobile.mrs` |
-| `rules/direct.yaml` | http | domain | mrs | `mrs/direct.mrs` |
-| `rules/proxy.yaml` | http | domain | mrs | `mrs/proxy.mrs` |
+| `rules/ads/*.yaml` | http | domain | mrs | `ads_pc.mrs` и `ads_mobile.mrs` |
+| `rules/direct.yaml` | http | domain | mrs | `direct.mrs` |
+| `rules/proxy.yaml` | http | domain | mrs | `proxy.mrs` |
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
-| Любой новый YAML | http | любой | mrs | `mrs/<имя>.mrs` |
+| Любой новый YAML | http | любой | mrs | `<имя>.mrs` |
 
 Важно:
 Если в списке ads/direct/proxy 
