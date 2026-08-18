@@ -10,11 +10,11 @@ rules/
 │       → ads_pc.mrs
 │       → ads_phone.mrs
 │
-├── apps/                       # Приложения и игры (PROCESS-NAME)
-│   ├── apps_pc_direct.yaml     # 🎮 ПК — процессы напрямую
-│   ├── apps_pc_proxy.yaml      # 🔀 ПК — процессы через прокси
-│   ├── apps_phone_direct.yaml  # 📱 Телефон — приложения напрямую
-│   └── apps_phone_proxy.yaml   # 📱 Телефон — приложения через прокси
+├── apps/                           # Приложения и игры (PROCESS-NAME)
+│   ├── apps_pc_direct.yaml         # 🎮 ПК — процессы напрямую
+│   ├── apps_pc_proxy.yaml          # 🔀 ПК — процессы через прокси
+│   ├── apps_phone_direct.yaml      # 📱 Телефон — приложения напрямую
+│   └── apps_phone_proxy.yaml       # 📱 Телефон — приложения через прокси
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
