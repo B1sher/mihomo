@@ -17,28 +17,28 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Go
-        uses: actions/setup-go@v5
-        with:
-          go-version: '1.22'
-
-      - name: Install mihomo
+      - name: Download mihomo binary
         run: |
-          go install github.com/MetaCubeX/mihomo@latest
+          # Скачиваем готовый бинарник mihomo
+          MIHOMO_VERSION="v1.19.0"
+          curl -L -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
+          gunzip mihomo.gz
+          chmod +x mihomo
+          ./mihomo -v
 
-      - name: Compile MRS
+      - name: Compile MRS files
         run: |
           mkdir -p mrs
           # PC
-          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml ads_pc.yaml mrs/ads_pc.mrs
+          ./mihomo convert-ruleset domain yaml ads_pc.yaml mrs/ads_pc.mrs
           # Android
-          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml ads_phone.yaml mrs/ads_phone.mrs
-          # Crossplatform (объединяем с PC и Phone)
-          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml ads_crossplatform.yaml mrs/ads_crossplatform.mrs
+          ./mihomo convert-ruleset domain yaml ads_phone.yaml mrs/ads_phone.mrs
+          # Crossplatform
+          ./mihomo convert-ruleset domain yaml ads_crossplatform.yaml mrs/ads_crossplatform.mrs
           # Direct
-          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml direct.yaml mrs/direct.mrs
+          ./mihomo convert-ruleset domain yaml direct.yaml mrs/direct.mrs
           # Proxy
-          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml proxy.yaml mrs/proxy.mrs
+          ./mihomo convert-ruleset domain yaml proxy.yaml mrs/proxy.mrs
 
       - name: Upload MRS to Release
         uses: softprops/action-gh-release@v2
