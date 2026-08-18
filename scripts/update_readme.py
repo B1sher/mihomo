@@ -3,8 +3,8 @@
 Обновляет README.md — вставляет автоматически сгенерированные
 raw-ссылки на .mrs файлы (из ветки mrs) и .yaml файлы (из programs/).
 
-Формат: таблица с файлом, полной raw-ссылкой и временем обновления.
-Время: ЧЧ:ММ ДД.ММ.ГГ (одна строка, год двумя цифрами).
+Дизайн единый: таблица с кликабельным именем файла и временем обновления.
+Время: ЧЧ:ММ ДД.ММ.ГГ (одна строка).
 """
 
 import re
@@ -38,27 +38,27 @@ def get_current_time():
 def generate_mrs_table():
     time_str = get_current_time()
     rows = []
-    rows.append("| Файл | Raw-ссылка | Обновлён |")
-    rows.append("|------|------------|----------|")
+    rows.append("| Файл | Обновлён |")
+    rows.append("|------|----------|")
 
     for name in MRS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
-        rows.append(f"| `{name}` | {url} | {time_str} |")
+        rows.append(f"| [{name}]({url}) | {time_str} |")
 
     return "\n".join(rows)
 
 def generate_yaml_table():
     time_str = get_current_time()
     rows = []
-    rows.append("| Файл | Raw-ссылка | Обновлён |")
-    rows.append("|------|------------|----------|")
+    rows.append("| Файл | Обновлён |")
+    rows.append("|------|----------|")
 
     if PROGRAMS_DIR.exists():
         for yaml_file in sorted(PROGRAMS_DIR.glob("*.yaml")):
             name = yaml_file.name
             rel_path = yaml_file.as_posix()
             url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
-            rows.append(f"| `{name}` | {url} | {time_str} |")
+            rows.append(f"| [{name}]({url}) | {time_str} |")
 
     return "\n".join(rows)
 
