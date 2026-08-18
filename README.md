@@ -88,8 +88,6 @@ payload:
 
 >только домены, то в rule-providers нужно указывать `behavior: domain`  
 >если только подсети, то `behavior: ipcidr`  
->если и то, и другое, то `behavior: classical`
+>если и то, и другое, то `behavior: classical` (работает медленнее)
 
-
-Иначе не читает >:(  
 В `programs` с процессами `только yaml`
