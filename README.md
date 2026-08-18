@@ -10,11 +10,11 @@ rules/
 │       → ads_pc.mrs
 │       → ads_phone.mrs
 │
-├── programs/                       # Программы и игры (PROCESS-NAME)
-│   ├── programs_pc_direct.yaml     # 🎮 ПК — процессы напрямую
-│   ├── programs_pc_proxy.yaml      # 🔀 ПК — процессы через прокси
-│   ├── programs_phone_direct.yaml  # 📱 Телефон — приложения напрямую
-│   └── programs_phone_proxy.yaml   # 📱 Телефон — приложения через прокси
+├── apps/                       # Приложения и игры (PROCESS-NAME)
+│   ├── apps_pc_direct.yaml     # 🎮 ПК — процессы напрямую
+│   ├── apps_pc_proxy.yaml      # 🔀 ПК — процессы через прокси
+│   ├── apps_phone_direct.yaml  # 📱 Телефон — приложения напрямую
+│   └── apps_phone_proxy.yaml   # 📱 Телефон — приложения через прокси
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
@@ -63,7 +63,7 @@ rules/
 
 ### Процессы
 
-В `programs/*.yaml`:
+В `apps/*.yaml`:
 
 ```
 payload:
@@ -73,14 +73,14 @@ payload:
 
 ## Сборка
 
-Один workflow автоматически конвертирует все YAML в `rules/` при пуше, кроме `rules/programs/`:
+Один workflow автоматически конвертирует все YAML в `rules/` при пуше, кроме `rules/apps/`:
 
 | Источник | Type | Behavior | Format | Выход |
 |----------|------|----------|--------|-------|
 | `rules/ads/*.yaml` | http | domain | mrs | `mrs/ads_pc.mrs` и `mrs/ads_mobile.mrs` |
 | `rules/direct.yaml` | http | domain | mrs | `mrs/direct.mrs` |
 | `rules/proxy.yaml` | http | domain | mrs | `mrs/proxy.mrs` |
-| `rules/programs/*.yaml` | http | classical | yaml | не изменяется |
+| `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
 | Любой новый YAML | http | любой | mrs | `mrs/<имя>.mrs` |
 
 Важно:
@@ -90,4 +90,4 @@ payload:
 >если только подсети, то `behavior: ipcidr`  
 >если и то, и другое, то `behavior: classical` (работает медленнее)
 
-В `programs` с процессами `только yaml`
+В `apps` с процессами `только yaml`
