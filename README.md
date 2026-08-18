@@ -31,7 +31,8 @@ rules/
 ```
 `.mrs` файлы генерятся автоматически в отдельную ветку `mrs` при каждом пуше
 ```
-https://raw.githubusercontent.com/B1sher/mihomo/mrs/имя_файла.mrs
+`<!-- MRS_LINKS_START -->`
+`<!-- MRS_LINKS_END -->`
 ```
 
 ## Формат YAML
