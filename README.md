@@ -35,9 +35,21 @@ raw-ссылки ниже так же создаются автоматичес�
 ## Raw-ссылки
 
 <!-- MRS_LINKS_START -->
+| Файл | Ссылка |
+|------|--------|
+| `ads_pc.mrs` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs</code></details> |
+| `ads_phone.mrs` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs</code></details> |
+| `direct.mrs` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs</code></details> |
+| `proxy.mrs` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs</code></details> |
 <!-- MRS_LINKS_END -->
 <hr style="opacity: 0.3;">
 <!-- YAML_LINKS_START -->
+| Файл | Ссылка |
+|------|--------|
+| `programs_pc_direct.yaml` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_direct.yaml</code></details> |
+| `programs_pc_proxy.yaml` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_proxy.yaml</code></details> |
+| `programs_phone_direct.yaml` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_direct.yaml</code></details> |
+| `programs_phone_proxy.yaml` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_proxy.yaml</code></details> |
 <!-- YAML_LINKS_END -->
 
 
