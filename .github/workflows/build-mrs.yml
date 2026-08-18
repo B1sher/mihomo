@@ -6,6 +6,7 @@ on:
       - 'rules/**/*.yaml'
       - 'rules/*.yaml'
       - 'scripts/*.py'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -31,42 +32,34 @@ jobs:
       - name: Merge YAML for PC
         run: |
           mkdir -p mrs
-          # PC = pc.yaml + crossplatform.yaml
           cat rules/ads/pc.yaml rules/ads/crossplatform.yaml > /tmp/ads_pc_merged.yaml
 
       - name: Merge YAML for Phone
         run: |
-          # Phone = android.yaml + crossplatform.yaml
           cat rules/ads/android.yaml rules/ads/crossplatform.yaml > /tmp/ads_phone_merged.yaml
 
       - name: Compile MRS files
         run: |
-          # PC
           ./mihomo convert-ruleset domain yaml /tmp/ads_pc_merged.yaml mrs/ads_pc.mrs
-          # Phone
           ./mihomo convert-ruleset domain yaml /tmp/ads_phone_merged.yaml mrs/ads_phone.mrs
-          # Direct
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
-          # Proxy
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
+
+      - name: Update README with auto-generated links
+        run: |
+          python3 scripts/update_readme.py
 
       - name: Commit MRS to mrs branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Создаём временную ветку
+          
           git checkout --orphan mrs-temp
-
-          # Удаляем все файлы
           git rm -rf . 2>/dev/null || true
-
-          # Копируем .mrs в корень
+          
           cp mrs/*.mrs .
-
-          # Коммитим
+          
           git add *.mrs
           git commit -m "update: mrs $(date +'%Y-%m-%d %H:%M')"
-
-          # Пушим в mrs с force
+          
           git push origin mrs-temp:mrs --force
