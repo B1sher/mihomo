@@ -31,6 +31,18 @@ raw-ссылки ниже так же создаются автоматичес�
 ## Raw-ссылки
 
 <!-- LINKS_START -->
+
+| Файл | Тип | Обновлён |
+|------|-----|----------|
+| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs) | `mrs` | 19:17 18.08.26 |
+| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs) | `mrs` | 19:17 18.08.26 |
+| [direct](https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs) | `mrs` | 19:17 18.08.26 |
+| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs) | `mrs` | 19:17 18.08.26 |
+| [programs_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_direct.yaml) | `yaml` | 19:17 18.08.26 |
+| [programs_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_pc_proxy.yaml) | `yaml` | 19:17 18.08.26 |
+| [programs_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_direct.yaml) | `yaml` | 19:17 18.08.26 |
+| [programs_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/programs/programs_phone_proxy.yaml) | `yaml` | 19:17 18.08.26 |
+
 <!-- LINKS_END -->
 
 ### Домены, IP и подсети (classical)
