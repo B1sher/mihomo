@@ -7,3 +7,7 @@ rules/!ЗАКОМИТИТЬ ПРАВИЛА.bat.lnk
 # Локальные артефакты
 *.log
 .DS_Store
+
+# Скомпилированные .mrs файлы — генерируются GitHub Actions
+*.mrs
+mrs/

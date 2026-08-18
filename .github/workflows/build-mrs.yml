@@ -1,0 +1,53 @@
+name: Build MRS Rules
+
+on:
+  push:
+    paths:
+      - '*.yaml'
+      - '*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Install mihomo
+        run: |
+          go install github.com/MetaCubeX/mihomo@latest
+
+      - name: Compile MRS
+        run: |
+          mkdir -p mrs
+          # PC
+          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml ads_pc.yaml mrs/ads_pc.mrs
+          # Android
+          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml ads_phone.yaml mrs/ads_phone.mrs
+          # Crossplatform (объединяем с PC и Phone)
+          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml ads_crossplatform.yaml mrs/ads_crossplatform.mrs
+          # Direct
+          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml direct.yaml mrs/direct.mrs
+          # Proxy
+          $(go env GOPATH)/bin/mihomo convert-ruleset domain yaml proxy.yaml mrs/proxy.mrs
+
+      - name: Upload MRS to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: latest
+          name: Latest MRS Rules
+          files: |
+            mrs/*.mrs
+          prerelease: false
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
