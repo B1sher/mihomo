@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Download mihomo binary
         run: |
@@ -29,33 +31,42 @@ jobs:
       - name: Merge YAML for PC
         run: |
           mkdir -p mrs
-          # Объединяем pc.yaml и crossplatform.yaml во временный файл
+          # PC = pc.yaml + crossplatform.yaml
           cat rules/ads/pc.yaml rules/ads/crossplatform.yaml > /tmp/ads_pc_merged.yaml
 
       - name: Merge YAML for Phone
         run: |
-          # Объединяем android.yaml и crossplatform.yaml
+          # Phone = android.yaml + crossplatform.yaml
           cat rules/ads/android.yaml rules/ads/crossplatform.yaml > /tmp/ads_phone_merged.yaml
 
       - name: Compile MRS files
         run: |
-          # PC = pc + crossplatform
+          # PC
           ./mihomo convert-ruleset domain yaml /tmp/ads_pc_merged.yaml mrs/ads_pc.mrs
-          # Phone = android + crossplatform
+          # Phone
           ./mihomo convert-ruleset domain yaml /tmp/ads_phone_merged.yaml mrs/ads_phone.mrs
           # Direct
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           # Proxy
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
-      - name: Upload MRS to Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: latest
-          name: Latest MRS Rules
-          files: |
-            mrs/*.mrs
-          prerelease: false
-          make_latest: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit MRS to release branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Создаём временную ветку release
+          git checkout --orphan release-temp
+
+          # Удаляем все файлы
+          git rm -rf . 2>/dev/null || true
+
+          # Копируем .mrs в корень
+          cp mrs/*.mrs .
+
+          # Коммитим
+          git add *.mrs
+          git commit -m "update: mrs $(date +'%Y-%m-%d %H:%M')"
+
+          # Пушим в release с force
+          git push origin release-temp:release --force
