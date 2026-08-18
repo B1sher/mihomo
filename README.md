@@ -42,7 +42,7 @@ raw-ссылки ниже так же создаются автоматичес�
 | `direct.mrs` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs</code></details> |
 | `proxy.mrs` | <details><summary>📋 Копировать</summary><code>https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs</code></details> |
 <!-- MRS_LINKS_END -->
-<hr style="opacity: 0.3;">
+<hr style="height: 1px; background: #e5e5e5; border: none;">
 <!-- YAML_LINKS_START -->
 | Файл | Ссылка |
 |------|--------|

@@ -2,9 +2,12 @@
 """
 Обновляет README.md — вставляет автоматически сгенерированные
 raw-ссылки на .mrs файлы (из ветки mrs) и .yaml файлы (из programs/).
+
+Формат: таблица с файлом, ссылкой и датой обновления.
 """
 
 import re
+from datetime import datetime, timezone
 from pathlib import Path
 
 REPO = "B1sher/mihomo"
@@ -27,28 +30,32 @@ MRS_FILES = [
     "proxy.mrs",
 ]
 
+def get_current_date() -> str:
+    """Возвращает текущую дату в формате YYYY-MM-DD."""
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
 def generate_mrs_table() -> str:
     """Генерирует таблицу с raw-ссылками на .mrs файлы."""
-    rows = ["| Файл | Ссылка |", "|------|--------|"]
+    date = get_current_date()
+    rows = ["| Файл | Ссылка | Обновлён |", "|------|--------|----------|"]
 
     for name in MRS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
-        copy_btn = f"<details><summary>📋 Копировать</summary><code>{url}</code></details>"
-        rows.append(f"| `{name}` | {copy_btn} |")
+        rows.append(f"| `{name}` | [Ссылка]({url}) | {date} |")
 
     return "\n".join(rows)
 
 def generate_yaml_table() -> str:
     """Генерирует таблицу с raw-ссылками на .yaml файлы из programs/."""
-    rows = ["| Файл | Ссылка |", "|------|--------|"]
+    date = get_current_date()
+    rows = ["| Файл | Ссылка | Обновлён |", "|------|--------|----------|"]
 
     if PROGRAMS_DIR.exists():
         for yaml_file in sorted(PROGRAMS_DIR.glob("*.yaml")):
             name = yaml_file.name
             rel_path = yaml_file.as_posix()
             url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
-            copy_btn = f"<details><summary>📋 Копировать</summary><code>{url}</code></details>"
-            rows.append(f"| `{name}` | {copy_btn} |")
+            rows.append(f"| `{name}` | [Ссылка]({url}) | {date} |")
 
     return "\n".join(rows)
 
@@ -89,5 +96,4 @@ def update_readme():
     README_PATH.write_text(content, encoding="utf-8")
     print("✅ README.md обновлён")
 
-if __name__ == "__main__":
-    update_readme()
+if __name__ == "__
