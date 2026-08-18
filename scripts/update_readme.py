@@ -22,7 +22,6 @@ MRS_LINKS_END = "<!-- MRS_LINKS_END -->"
 YAML_LINKS_START = "<!-- YAML_LINKS_START -->"
 YAML_LINKS_END = "<!-- YAML_LINKS_END -->"
 
-# Известные .mrs файлы, которые генерирует workflow
 MRS_FILES = [
     "ads_pc.mrs",
     "ads_phone.mrs",
@@ -30,12 +29,10 @@ MRS_FILES = [
     "proxy.mrs",
 ]
 
-def get_current_date() -> str:
-    """Возвращает текущую дату в формате YYYY-MM-DD."""
+def get_current_date():
     return datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
-def generate_mrs_table() -> str:
-    """Генерирует таблицу с raw-ссылками на .mrs файлы."""
+def generate_mrs_table():
     date = get_current_date()
     rows = ["| Файл | Ссылка | Обновлён |", "|------|--------|----------|"]
 
@@ -45,8 +42,7 @@ def generate_mrs_table() -> str:
 
     return "\n".join(rows)
 
-def generate_yaml_table() -> str:
-    """Генерирует таблицу с raw-ссылками на .yaml файлы из programs/."""
+def generate_yaml_table():
     date = get_current_date()
     rows = ["| Файл | Ссылка | Обновлён |", "|------|--------|----------|"]
 
@@ -60,14 +56,12 @@ def generate_yaml_table() -> str:
     return "\n".join(rows)
 
 def update_readme():
-    """Обновляет README.md — заменяет блоки между маркерами."""
     if not README_PATH.exists():
-        print(f"⚠️ {README_PATH} не найден")
+        print(f"Ошибка: {README_PATH} не найден")
         return
 
     content = README_PATH.read_text(encoding="utf-8")
 
-    # Обновляем .mrs таблицу
     mrs_table = generate_mrs_table()
     mrs_block = f"{MRS_LINKS_START}\n{mrs_table}\n{MRS_LINKS_END}"
 
@@ -80,7 +74,6 @@ def update_readme():
     else:
         content += f"\n{mrs_block}\n"
 
-    # Обновляем .yaml таблицу
     yaml_table = generate_yaml_table()
     yaml_block = f"{YAML_LINKS_START}\n{yaml_table}\n{YAML_LINKS_END}"
 
@@ -94,6 +87,7 @@ def update_readme():
         content += f"\n{yaml_block}\n"
 
     README_PATH.write_text(content, encoding="utf-8")
-    print("✅ README.md обновлён")
+    print("OK: README.md обновлён")
 
-if __name__ == "__
+if __name__ == "__main__":
+    update_readme()
