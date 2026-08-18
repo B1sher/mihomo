@@ -2,6 +2,7 @@
 # 🔀 Proxy — домены через прокси
 # ============================================
 
-  - "e-hentai.org"
-  - "cobalt.tools"
-  - "githubusercontent.com"
+payload:
+  - DOMAIN-SUFFIX,e-hentai.org            
+  - DOMAIN-SUFFIX,cobalt.tools            # Cobalt downloader
+  - DOMAIN-SUFFIX,githubusercontent.com   # GitHub raw-контент

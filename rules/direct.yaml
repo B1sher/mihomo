@@ -2,4 +2,5 @@
 # 🌐 Direct — домены для прямого подключения
 # ============================================
 
- - "bybit.com"                 # bybit
+payload:
+  - DOMAIN-SUFFIX,bybit.com    # bybit

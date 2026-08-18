@@ -2,52 +2,53 @@
 # Кроссплатформа ⛔ — универсальная реклама
 # ============================================
 
-# Другое
-- "hotjar.com"                         # Шпион активности Hotjar
-- "magicbot.link"                      # Рекламный бот-шпион
-- "trk.pinterest.com"                  # Телеметрия Pinterest
-- "w3-reporting.reddit.com"            # Телеметрия Reddit
-- "alb.reddit.com"                     # Reddit шпион
-- "dc-telemetry.net"                   # Телеметрия Discord
-- "discordstatus.com"                  # Фоновый сбор данных Discord
-- "sr-client-cfg.eu.amplitude.com"     # Amplitude конфиг
-- "api.eu.amplitude.com"               # Amplitude API
-- "api.statsigcdn.com"                 # Облачный трекер Statsig
-- "ups.analytics.yahoo.com"            # Yahoo аналитика
-- "csp-reporting.cloudflare.com"       # Cloudflare отчёты безопасности
-- "kiwi.mdldb.net"                     # Рекламный трекер
-- "events.statsigapi.net"              # Телеметрия Statsig
-- "volces.com"                         # Телеметрия ByteDance
-- "sg-fp.apitd.net"                    # ByteDance шпион
-- "intake-logging.wikimedia.org"       # Телеметрия Wikipedia
-- "analytics.ahrefs.com"               # Аналитика Ahrefs
-- "mon.tiktokv.com"                    # TikTok системная метрика
-- "mcs-va.tiktokv.com"                 # TikTok маркетинговый трекер
-- "agl010.pro"                         # Рекламная сеть
-- "w3-reporting-nel.reddit.com"        # Reddit Network Error Logging телеметрия
-- "indoleads.com"                      # Трекер глобальной CPA-сети Indoleads
+payload:
+  # Другое
+  - DOMAIN-SUFFIX,hotjar.com                       # Шпион активности Hotjar
+  - DOMAIN-SUFFIX,magicbot.link                    # Рекламный бот-шпион
+  - DOMAIN,trk.pinterest.com                       # Телеметрия Pinterest
+  - DOMAIN,w3-reporting.reddit.com                 # Телеметрия Reddit
+  - DOMAIN,alb.reddit.com                          # Reddit шпион
+  - DOMAIN-SUFFIX,dc-telemetry.net                 # Телеметрия Discord
+  - DOMAIN-SUFFIX,discordstatus.com                # Фоновый сбор данных Discord
+  - DOMAIN,sr-client-cfg.eu.amplitude.com          # Amplitude конфиг
+  - DOMAIN,api.eu.amplitude.com                    # Amplitude API
+  - DOMAIN,api.statsigcdn.com                      # Облачный трекер Statsig
+  - DOMAIN,ups.analytics.yahoo.com                 # Yahoo аналитика
+  - DOMAIN,csp-reporting.cloudflare.com            # Cloudflare отчёты безопасности
+  - DOMAIN,kiwi.mdldb.net                          # Рекламный трекер
+  - DOMAIN,events.statsigapi.net                   # Телеметрия Statsig
+  - DOMAIN-SUFFIX,volces.com                       # Телеметрия ByteDance
+  - DOMAIN,sg-fp.apitd.net                         # ByteDance шпион
+  - DOMAIN,intake-logging.wikimedia.org            # Телеметрия Wikipedia
+  - DOMAIN,analytics.ahrefs.com                    # Аналитика Ahrefs
+  - DOMAIN,mon.tiktokv.com                         # TikTok системная метрика
+  - DOMAIN,mcs-va.tiktokv.com                      # TikTok маркетинговый трекер
+  - DOMAIN-SUFFIX,agl010.pro                       # Рекламная сеть
+  - DOMAIN,w3-reporting-nel.reddit.com             # Reddit Network Error Logging телеметрия
+  - DOMAIN-SUFFIX,indoleads.com                    # Трекер глобальной CPA-сети Indoleads
 
 
 
-# Google реклама и телеметрия
-- "doubleclick.net"                    # Рекламная сеть DoubleClick
-- "pagead2.googlesyndication.com"      # Google AdSense
-- "adservice.google.com"               # Google AdService
-- "google-analytics.com"               # Google Analytics
-- "firebaselogging.googleapis.com"     # Firebase логи
-- "jnn-pa.googleapis.com"              # Google телеметрия
-- "www.google-analytics.com"           # Google Analytics (www)
-# Яндекс реклама и телеметрия
-- "an.yandex.ru"                       # Яндекс рекламная сеть
-- "awaps.yandex.net"                   # Яндекс AWAPS
-- "context.modules.yandex.ru"          # Яндекс контекстная реклама
-- "mc.yandex.ru"                       # Яндекс Метрика
-- "ext.metrika.yandex.net"             # Яндекс Метрика (расширенная)
-# Criteo & Taboola рекламные сети
-- "criteo.com"                         # Ретаргетинг Criteo
-- "criteo.net"                         # Ретаргетинг Criteo (зеркало)
-- "taboola.com"                        # Нативная реклама Taboola
-# Соцсети и мессенджеры
-- "top-fwz1.mail.ru"                   # Шпион активности Mail.ru
-- "t.vk.com"                           # Рекламный шпион ВК
-- "dit.whatsapp.net"                   # Телеметрия WhatsApp
+  # Google реклама и телеметрия
+  - DOMAIN-SUFFIX,doubleclick.net                  # Рекламная сеть DoubleClick
+  - DOMAIN-SUFFIX,pagead2.googlesyndication.com    # Google AdSense
+  - DOMAIN-SUFFIX,adservice.google.com             # Google AdService
+  - DOMAIN-SUFFIX,google-analytics.com             # Google Analytics
+  - DOMAIN-SUFFIX,firebaselogging.googleapis.com   # Firebase логи
+  - DOMAIN,jnn-pa.googleapis.com                   # Google телеметрия
+  - DOMAIN,www.google-analytics.com                # Google Analytics (www)
+  # Яндекс реклама и телеметрия
+  - DOMAIN,an.yandex.ru                            # Яндекс рекламная сеть
+  - DOMAIN-SUFFIX,awaps.yandex.net                 # Яндекс AWAPS
+  - DOMAIN-SUFFIX,context.modules.yandex.ru        # Яндекс контекстная реклама
+  - DOMAIN-SUFFIX,mc.yandex.ru                     # Яндекс Метрика
+  - DOMAIN-SUFFIX,ext.metrika.yandex.net           # Яндекс Метрика (расширенная)
+  # Criteo & Taboola рекламные сети
+  - DOMAIN-SUFFIX,criteo.com                       # Ретаргетинг Criteo
+  - DOMAIN-SUFFIX,criteo.net                       # Ретаргетинг Criteo (зеркало)
+  - DOMAIN-SUFFIX,taboola.com                      # Нативная реклама Taboola
+  # Соцсети и мессенджеры
+  - DOMAIN,top-fwz1.mail.ru                        # Шпион активности Mail.ru
+  - DOMAIN,t.vk.com                                # Рекламный шпион ВК
+  - DOMAIN,dit.whatsapp.net                        # Телеметрия WhatsApp

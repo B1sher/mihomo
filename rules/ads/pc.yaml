@@ -2,20 +2,21 @@
 # PC 💻 — телеметрия десктопных приложений
 # ============================================
 
-# Другое
+payload:
+  # Другое
 
 
 
-# Microsoft телеметрия
-- "telemetry.microsoft.com"          # Телеметрия Microsoft
-- "events.data.microsoft.com"        # Телеметрия событий Microsoft
-- "activity.windows.com"             # Активность Windows
-- "settings-win.data.microsoft.com"  # Настройки Windows телеметрия
-# NVIDIA телеметрия
-- "prod.otel.kaizen.nvidia.com"      # NVIDIA OpenTelemetry
-- "events.telemetry.data.nvidia.com" # Телеметрия событий NVIDIA
-- "gx.nvidia.com"                    # NVIDIA GeForce Experience
-# Телеметрия игровых лаунчеров
-- "telemetry.thesims3.com"           # Телеметрия The Sims 3
-- "telemetry.ea.com"                 # Телеметрия EA
-- "et.epicgames.com"                 # Телеметрия Epic Games
+  # Microsoft телеметрия
+  - DOMAIN-SUFFIX,telemetry.microsoft.com          # Телеметрия Microsoft
+  - DOMAIN-SUFFIX,events.data.microsoft.com        # Телеметрия событий Microsoft
+  - DOMAIN-SUFFIX,activity.windows.com             # Активность Windows
+  - DOMAIN,settings-win.data.microsoft.com         # Настройки Windows телеметрия
+  # NVIDIA телеметрия
+  - DOMAIN,prod.otel.kaizen.nvidia.com             # NVIDIA OpenTelemetry
+  - DOMAIN,events.telemetry.data.nvidia.com        # Телеметрия событий NVIDIA
+  - DOMAIN-SUFFIX,gx.nvidia.com                    # NVIDIA GeForce Experience
+  # Телеметрия игровых лаунчеров
+  - DOMAIN,telemetry.thesims3.com                  # Телеметрия The Sims 3
+  - DOMAIN,telemetry.ea.com                        # Телеметрия EA
+  - DOMAIN,et.epicgames.com                        # Телеметрия Epic Games
