@@ -26,15 +26,23 @@ jobs:
           chmod +x mihomo
           ./mihomo -v
 
-      - name: Compile MRS files
+      - name: Merge YAML for PC
         run: |
           mkdir -p mrs
-          # PC = rules/ads/pc.yaml
-          ./mihomo convert-ruleset domain yaml rules/ads/pc.yaml mrs/ads_pc.mrs
-          # Phone = rules/ads/android.yaml
-          ./mihomo convert-ruleset domain yaml rules/ads/android.yaml mrs/ads_phone.mrs
-          # Crossplatform
-          ./mihomo convert-ruleset domain yaml rules/ads/crossplatform.yaml mrs/ads_crossplatform.mrs
+          # Объединяем pc.yaml и crossplatform.yaml во временный файл
+          cat rules/ads/pc.yaml rules/ads/crossplatform.yaml > /tmp/ads_pc_merged.yaml
+
+      - name: Merge YAML for Phone
+        run: |
+          # Объединяем android.yaml и crossplatform.yaml
+          cat rules/ads/android.yaml rules/ads/crossplatform.yaml > /tmp/ads_phone_merged.yaml
+
+      - name: Compile MRS files
+        run: |
+          # PC = pc + crossplatform
+          ./mihomo convert-ruleset domain yaml /tmp/ads_pc_merged.yaml mrs/ads_pc.mrs
+          # Phone = android + crossplatform
+          ./mihomo convert-ruleset domain yaml /tmp/ads_phone_merged.yaml mrs/ads_phone.mrs
           # Direct
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           # Proxy
