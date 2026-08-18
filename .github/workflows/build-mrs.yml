@@ -58,17 +58,21 @@ jobs:
           git pull --rebase --autostash origin main
           git push origin main
 
+      - name: Wait to avoid race condition
+        run: sleep 5
+
       - name: Commit MRS to mrs branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git checkout --orphan mrs-temp
+          git fetch origin mrs
+          git checkout -b mrs-temp origin/mrs 2>/dev/null || git checkout --orphan mrs-temp
           git rm -rf . 2>/dev/null || true
           
           cp mrs/*.mrs .
           
           git add *.mrs
-          git commit -m "update: mrs $(date +'%Y-%m-%d %H:%M')"
+          git commit -m "update: mrs $(date +'%Y-%m-%d %H:%M')" || echo "No changes"
           
-          git push origin mrs-temp:mrs --force
+          git push origin mrs-temp:mrs --force-with-lease
