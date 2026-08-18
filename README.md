@@ -11,8 +11,8 @@ rules/
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние)                 
 │       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
-│       → mrs/ads_pc.mrs
-│       → mrs/ads_phone.mrs
+│       → ads_pc.mrs
+│       → ads_phone.mrs
 │
 ├── programs/                       # Программы и игры (PROCESS-NAME)
 │   ├── programs_pc_direct.yaml     # 🎮 ПК — процессы напрямую
@@ -22,11 +22,11 @@ rules/
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
-│   → mrs/direct.mrs
+│   → direct.mrs
 │
 └── proxy.yaml                      # 🔀 Домены и IP через прокси
     ↓ (конвертация в mrs)
-    → mrs/proxy.mrs
+    → proxy.mrs
 
 ```
 
