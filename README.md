@@ -7,8 +7,8 @@ rules/
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние)                 
 │       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
-│       ├─→ ads_pc.mrs
-│       └─→ ads_phone.mrs
+│       ├─> ads_pc.mrs
+│       └─> ads_phone.mrs
 │
 ├── apps/                           # Приложения и игры (PROCESS-NAME)
 │   ├── apps_pc_direct.yaml         # 🎮 ПК — процессы напрямую
@@ -18,11 +18,11 @@ rules/
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
-│   └─→ direct.mrs
+│   └─> direct.mrs
 │
 └── proxy.yaml                      # 🔀 Домены и IP через прокси
     ↓ (конвертация в mrs)
-    └─→ proxy.mrs
+    └─> proxy.mrs
 
 ```
 >`.mrs` файлы генерятся автоматически в отдельную ветку `mrs` при каждом пуше  
