@@ -24,6 +24,8 @@
 - "mon.tiktokv.com"                    # TikTok системная метрика
 - "mcs-va.tiktokv.com"                 # TikTok маркетинговый трекер
 - "agl010.pro"                         # Рекламная сеть
+- "w3-reporting-nel.reddit.com"        # Reddit Network Error Logging телеметрия
+- "indoleads.com"                      # Трекер глобальной CPA-сети Indoleads
 
 
 
