@@ -20,23 +20,24 @@ MRS_FILES = [
     "proxy.mrs",
 ]
 
-# Часовой пояс UTC+3 (Москва)
 LOCAL_TZ = timezone(timedelta(hours=3))
 
 def get_current_time():
     now = datetime.now(LOCAL_TZ)
-    return now.strftime("%H:%M %d.%m.%y")
+    return now.strftime("%H:%M"), now.strftime("%d.%m.%y")
 
 def generate_unified_table():
-    time_str = get_current_time()
+    time_part, date_part = get_current_time()
     rows = []
-    rows.append("| Файл | Формат | Обновлён (UTC+3) |")
-    rows.append("|------|--------|------------------|")
+    rows.append("| Файл | Формат | Обновлён (UTC+3) | |")
+    rows.append("|------|--------|:---:|:---:|")
+    rows.append("| | | Время | Дата |")
+    rows.append("|------|--------|:---:|:---:|")
 
     for name in MRS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
         display_name = Path(name).stem
-        rows.append(f"| [{display_name}]({url}) | `mrs` | {time_str} |")
+        rows.append(f"| [{display_name}]({url}) | `mrs` | {time_part} | {date_part} |")
 
     if APPS_DIR.exists():
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
@@ -44,7 +45,7 @@ def generate_unified_table():
             rel_path = yaml_file.as_posix()
             url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
             display_name = yaml_file.stem
-            rows.append(f"| [{display_name}]({url}) | `yaml` | {time_str} |")
+            rows.append(f"| [{display_name}]({url}) | `yaml` | {time_part} | {date_part} |")
 
     return "\n".join(rows)
 

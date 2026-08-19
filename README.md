@@ -5,8 +5,8 @@ rules/
 │   ├── pc.yaml                     # 💻 Windows
 │   ├── android.yaml                # 📱 Мобилки
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
-│       ↓ `(слияние)`                 
-│       ↓ `(конвертация в mrs)`       # оба содержат кроссплатформу
+│       ↓ (слияние)                 
+│       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
 │       ├─> ads_pc.mrs
 │       └─> ads_phone.mrs
 │
@@ -45,30 +45,50 @@ rules/
 
 <!-- LINKS_END -->
 
-### Домены, IP и подсети (classical)
+### Домены, IP и подсети (.mrs)
 
 В `direct.yaml`, `proxy.yaml`, `ads/*.yaml` сейчас только домены.  
-Что бы писать вперемешку, нужно в `rule-providers` указать `behavior: classical`
+Что бы писать вперемешку, нужно в `rule-providers` указать `behavior: classical`  
+> Формат заполнения:
 
 ```yaml
-# Домен
-- "example.com"           # → DOMAIN-SUFFIX,example.com
+# Домен (behavior: domain)
+- "example.com"
+- DOMAIN,example.com
+- DOMAIN-SUFFIX,example.com
 
-# Подсеть
-- "192.168.1.0/24"        # → IP-CIDR,192.168.1.0/24
+# Подсеть (behavior: ipcidr)
+- "192.168.1.0/24"
+- IP-CIDR,192.168.1.0/24
 
 # Одиночный IP
-- "1.1.1.1"               # → IP-CIDR,1.1.1.1/32
+- "1.1.1.1"
+- IP-CIDR,1.1.1.1/32
+
+# Вперемешку: behavior: classical
 ```
+>Можно заполнять любым форматом из указанных,   
+>но лучше соблюдать полный формат  
+>с указанием правила и payload: для универсальности  
 
-### Процессы
+### Процессы (.yaml)
 
-В `apps/*.yaml`:
+В `apps/*.yaml` процессы приложений.
+> Формат заполнения:
 
 ```
 payload:
-  - PROCESS-NAME,example.exe
-  - PROCESS-NAME-REGEX,(?i).*Example.*
+# Точное совпадение имени процесса
+  - PROCESS-NAME,Discord.exe                  # 🎮 PC
+  - PROCESS-NAME,com.google.android.youtube   # 📱 Android
+
+# Ищет любые процессы содержащие это имя
+# + любые подпроцессы если на конце *
+  - PROCESS-NAME-WILDCARD,com.google.android.youtube*
+
+# То же самое, но мощнее (игнорит регистр и любые символы)
+# в примере применяется для всего где упоминается youtube
+  - PROCESS-NAME-REGEX,(?i).*youtube.*
 ```
 
 ## Сборка
