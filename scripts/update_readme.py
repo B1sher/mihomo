@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 REPO = "B1sher/mihomo"
@@ -20,15 +20,18 @@ MRS_FILES = [
     "proxy.mrs",
 ]
 
+# Часовой пояс UTC+3 (Москва)
+LOCAL_TZ = timezone(timedelta(hours=3))
+
 def get_current_time():
-    now = datetime.now(timezone.utc)
+    now = datetime.now(LOCAL_TZ)
     return now.strftime("%H:%M %d.%m.%y")
 
 def generate_unified_table():
     time_str = get_current_time()
     rows = []
-    rows.append("| Файл | Формат | Обновлён |")
-    rows.append("|------|--------|----------|")
+    rows.append("| Файл | Формат | Обновлён (UTC+3) |")
+    rows.append("|------|--------|------------------|")
 
     for name in MRS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
