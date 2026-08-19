@@ -29,10 +29,8 @@ def get_current_time():
 def generate_unified_table():
     time_part, date_part = get_current_time()
     rows = []
-    rows.append("| Файл | Формат | Обновлён (UTC+3) | |")
-    rows.append("|------|--------|:---:|:---:|")
-    rows.append("| | | Время | Дата |")
-    rows.append("|------|--------|:---:|:---:|")
+    rows.append("| Файл | Формат | Время (UTC+3) | Дата |")
+    rows.append("|------|--------|---------------|------|")
 
     for name in MRS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
