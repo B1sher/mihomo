@@ -78,8 +78,7 @@ rules/
   - PROCESS-NAME,Discord.exe                  # 🎮 PC
   - PROCESS-NAME,com.google.android.youtube   # 📱 Android
 
-# Ищет любые процессы содержащие это имя
-# + любые подпроцессы если на конце *
+# Ищет любые процессы содержащие это имя + любые подпроцессы если на конце *
   - PROCESS-NAME-WILDCARD,com.google.android.youtube*
 
 # То же самое, но мощнее (игнорит регистр и любые символы)
