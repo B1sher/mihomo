@@ -32,16 +32,18 @@ rules/
 
 <!-- LINKS_START -->
 
-| Файл | Формат | Обновлён (UTC+3) |
-|------|--------|------------------|
-| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs) | `mrs` | 06:41 19.08.26 |
-| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs) | `mrs` | 06:41 19.08.26 |
-| [direct](https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs) | `mrs` | 06:41 19.08.26 |
-| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs) | `mrs` | 06:41 19.08.26 |
-| [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 06:41 19.08.26 |
-| [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 06:41 19.08.26 |
-| [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 06:41 19.08.26 |
-| [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 06:41 19.08.26 |
+| Файл | Формат | Обновлён (UTC+3) | |
+|------|--------|:---:|:---:|
+| | | Время | Дата |
+|------|--------|:---:|:---:|
+| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_pc.mrs) | `mrs` | 07:09 | 19.08.26 |
+| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/mrs/ads_phone.mrs) | `mrs` | 07:09 | 19.08.26 |
+| [direct](https://raw.githubusercontent.com/B1sher/mihomo/mrs/direct.mrs) | `mrs` | 07:09 | 19.08.26 |
+| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/mrs/proxy.mrs) | `mrs` | 07:09 | 19.08.26 |
+| [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 07:09 | 19.08.26 |
+| [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 07:09 | 19.08.26 |
+| [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 07:09 | 19.08.26 |
+| [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 07:09 | 19.08.26 |
 
 <!-- LINKS_END -->
 
