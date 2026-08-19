@@ -8,3 +8,4 @@ payload:
   - DOMAIN-SUFFIX,e-hentai.org            # hehe
   - DOMAIN-SUFFIX,cobalt.tools            # Cobalt downloader
   - DOMAIN-SUFFIX,githubusercontent.com   # GitHub raw-контент
+  - DOMAIN-SUFFIX,notion.com              # Notion
