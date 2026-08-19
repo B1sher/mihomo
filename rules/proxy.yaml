@@ -3,6 +3,8 @@
 # ============================================
 
 payload:
-  - DOMAIN-SUFFIX,e-hentai.org            # heheh
+  - DOMAIN-SUFFIX,rule34.xxx              # hehe
+  - DOMAIN-SUFFIX,rule34video.com         # hehe
+  - DOMAIN-SUFFIX,e-hentai.org            # hehe
   - DOMAIN-SUFFIX,cobalt.tools            # Cobalt downloader
   - DOMAIN-SUFFIX,githubusercontent.com   # GitHub raw-контент
