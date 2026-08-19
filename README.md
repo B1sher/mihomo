@@ -64,7 +64,7 @@ rules/
 - "1.1.1.1"
 - IP-CIDR,1.1.1.1/32
 
-# Вперемешку: behavior: classical
+# Вперемешку (behavior: classical)
 ```
 >Можно заполнять любым форматом из указанных,   
 >но лучше соблюдать полный формат с указанием правила и payload: для универсальности  
@@ -73,8 +73,7 @@ rules/
 
 В `apps/*.yaml` процессы приложений.
 
-```
-payload:
+```yaml
 # Точное совпадение имени процесса
   - PROCESS-NAME,Discord.exe                  # 🎮 PC
   - PROCESS-NAME,com.google.android.youtube   # 📱 Android
