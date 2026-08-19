@@ -75,7 +75,7 @@ rules/
 
 ```yaml
 # Точное совпадение имени процесса
-  - PROCESS-NAME,Discord.exe                  # 🎮 PC
+  - PROCESS-NAME,Discord.exe                  # 💻 PC
   - PROCESS-NAME,com.google.android.youtube   # 📱 Android
 
 # Ищет любые процессы содержащие это имя + любые подпроцессы если на конце *
