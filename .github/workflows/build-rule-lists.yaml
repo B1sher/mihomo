@@ -33,10 +33,12 @@ jobs:
         run: |
           mkdir -p merged
           
+          # PC + Crossplatform
           cat rules/ads/pc.yaml > merged/ads_pc.yaml
           echo "" >> merged/ads_pc.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
           
+          # Android + Crossplatform
           cat rules/ads/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
@@ -50,39 +52,10 @@ jobs:
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
-      - name: Generate README
-        run: |
-          cat > README.md << 'EOF'
-          # 📋 Rule Lists
-          
-          | Файл | Тип | Обновлено |
-          |------|-----|-----------|
-          | [ads_pc.mrs](ads_pc.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
-          | [ads_phone.mrs](ads_phone.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
-          | [ads_pc.yaml](ads_pc.yaml) | YAML (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
-          | [ads_phone.yaml](ads_phone.yaml) | YAML (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
-          | [direct.mrs](direct.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
-          | [proxy.mrs](proxy.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
-          
-          ## Raw-ссылки
-          
-          \`\`\`
-          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs
-          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs
-          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.yaml
-          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.yaml
-          https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs
-          https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs
-          \`\`\`
-          EOF
-
       - name: Deploy to lists branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Сохраняем README до очистки ветки
-          cp README.md /tmp/README_lists.md
           
           git checkout --orphan lists 2>/dev/null || git checkout lists
           git rm -rf . 2>/dev/null || true
@@ -94,15 +67,23 @@ jobs:
           cp -f merged/ads_pc.yaml ./ads_pc.yaml
           cp -f merged/ads_phone.yaml ./ads_phone.yaml
           
-          # Восстанавливаем README
-          cp /tmp/README_lists.md ./README.md
-          
           rm -rf mrs merged
           
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs ads_pc.yaml ads_phone.yaml README.md
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs ads_pc.yaml ads_phone.yaml
           git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push origin lists --force-with-lease || git push origin lists --force
 
-      - name: Return to main branch
+      - name: Update README in main branch
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
           git checkout main
+          
+          # Запускаем скрипт обновления README
+          python3 scripts/update_readme.py
+          
+          # Коммитим изменения README
+          git add README.md
+          git commit -m "update: readme links $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
+          git push origin main

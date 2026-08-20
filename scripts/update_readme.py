@@ -4,7 +4,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 REPO = "B1sher/mihomo"
-MRS_BRANCH = "mrs"
+LISTS_BRANCH = "lists"
 MAIN_BRANCH = "main"
 
 APPS_DIR = Path("rules/apps")
@@ -13,11 +13,14 @@ README_PATH = Path("README.md")
 LINKS_START = "<!-- LINKS_START -->"
 LINKS_END = "<!-- LINKS_END -->"
 
-MRS_FILES = [
-    "ads_pc.mrs",
-    "ads_phone.mrs",
-    "direct.mrs",
-    "proxy.mrs",
+# Списки в ветке lists (и .mrs, и .yaml)
+LISTS_FILES = [
+    ("ads_pc.mrs", "mrs"),
+    ("ads_phone.mrs", "mrs"),
+    ("ads_pc.yaml", "yaml"),
+    ("ads_phone.yaml", "yaml"),
+    ("direct.mrs", "mrs"),
+    ("proxy.mrs", "mrs"),
 ]
 
 LOCAL_TZ = timezone(timedelta(hours=3))
@@ -32,10 +35,10 @@ def generate_unified_table():
     rows.append("| Файл | Формат | Время (UTC+3) | Дата |")
     rows.append("|------|--------|---------------|------|")
 
-    for name in MRS_FILES:
-        url = f"https://raw.githubusercontent.com/{REPO}/{MRS_BRANCH}/{name}"
+    for name, fmt in LISTS_FILES:
+        url = f"https://raw.githubusercontent.com/{REPO}/{LISTS_BRANCH}/{name}"
         display_name = Path(name).stem
-        rows.append(f"| [{display_name}]({url}) | `mrs` | {time_part} | {date_part} |")
+        rows.append(f"| [{display_name}]({url}) | `{fmt}` | {time_part} | {date_part} |")
 
     if APPS_DIR.exists():
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
