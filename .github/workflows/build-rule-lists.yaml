@@ -32,13 +32,9 @@ jobs:
       - name: Merge YAML files
         run: |
           mkdir -p merged
-          
-          # PC + Crossplatform
           cat rules/ads/pc.yaml > merged/ads_pc.yaml
           echo "" >> merged/ads_pc.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
-          
-          # Android + Crossplatform
           cat rules/ads/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
@@ -46,11 +42,36 @@ jobs:
       - name: Compile MRS files
         run: |
           mkdir -p mrs
-          
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
+
+      - name: Generate README
+        run: |
+          cat > README.md << 'EOF'
+          # 📋 Rule Lists
+          
+          | Файл | Тип | Обновлено |
+          |------|-----|-----------|
+          | [ads_pc.mrs](ads_pc.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
+          | [ads_phone.mrs](ads_phone.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
+          | [ads_pc.yaml](ads_pc.yaml) | YAML (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
+          | [ads_phone.yaml](ads_phone.yaml) | YAML (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
+          | [direct.mrs](direct.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
+          | [proxy.mrs](proxy.mrs) | MRS (domain) | $(date -u +'%Y-%m-%d %H:%M UTC') |
+          
+          ## Raw-ссылки
+          
+          \`\`\`
+          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs
+          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs
+          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.yaml
+          https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.yaml
+          https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs
+          https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs
+          \`\`\`
+          EOF
 
       - name: Deploy to lists branch
         run: |
@@ -60,19 +81,17 @@ jobs:
           git checkout --orphan lists 2>/dev/null || git checkout lists
           git rm -rf . 2>/dev/null || true
           
-          # Копируем файлы в корень
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           cp -f merged/ads_pc.yaml ./ads_pc.yaml
           cp -f merged/ads_phone.yaml ./ads_phone.yaml
+          cp -f README.md ./README.md
           
-          # Удаляем временные папки
           rm -rf mrs merged
           
-          # Коммитим только нужные файлы
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs ads_pc.yaml ads_phone.yaml
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs ads_pc.yaml ads_phone.yaml README.md
           git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push origin lists --force-with-lease || git push origin lists --force
 
