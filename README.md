@@ -7,8 +7,8 @@ rules/
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние)                 
 │       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
-│       ├─> ads_pc.mrs
-│       └─> ads_phone.mrs
+│       ├─> ads_pc.mrs/yaml
+│       └─> ads_phone.mrs/yaml
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
@@ -25,7 +25,7 @@ rules/
     └── apps_phone_proxy.yaml       # 📱 Телефон — приложения через прокси
 
 ```
->`.mrs` файлы генерятся автоматически в отдельную ветку `mrs` при каждом пуше  
+>`.mrs` и `.yaml` файлы генерятся автоматически в отдельную ветку `lists` при каждом пуше  
 >raw-ссылки ниже так же создаются автоматически:
 
 ## Raw-ссылки
@@ -93,7 +93,7 @@ rules/
 
 | Источник | Type | Behavior | Format | Выход |
 |----------|------|----------|--------|-------|
-| `rules/ads/*.yaml` | http | domain | mrs | `ads_pc.mrs` и `ads_mobile.mrs` |
+| `rules/ads/*.yaml` | http | domain | mrs/yaml | `ads_pc.mrs/yaml` и `ads_mobile.mrs/yaml` |
 | `rules/direct.yaml` | http | domain | mrs | `direct.mrs` |
 | `rules/proxy.yaml` | http | domain | mrs | `proxy.mrs` |
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
