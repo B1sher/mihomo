@@ -32,9 +32,11 @@ jobs:
       - name: Merge YAML files
         run: |
           mkdir -p merged
+          
           cat rules/ads/pc.yaml > merged/ads_pc.yaml
           echo "" >> merged/ads_pc.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
+          
           cat rules/ads/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
@@ -42,6 +44,7 @@ jobs:
       - name: Compile MRS files
         run: |
           mkdir -p mrs
+          
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
@@ -78,6 +81,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
+          # Сохраняем README до очистки ветки
+          cp README.md /tmp/README_lists.md
+          
           git checkout --orphan lists 2>/dev/null || git checkout lists
           git rm -rf . 2>/dev/null || true
           
@@ -87,7 +93,9 @@ jobs:
           cp -f mrs/proxy.mrs ./proxy.mrs
           cp -f merged/ads_pc.yaml ./ads_pc.yaml
           cp -f merged/ads_phone.yaml ./ads_phone.yaml
-          cp -f README.md ./README.md
+          
+          # Восстанавливаем README
+          cp /tmp/README_lists.md ./README.md
           
           rm -rf mrs merged
           
