@@ -1,0 +1,73 @@
+name: Build Rule Lists
+
+on:
+  push:
+    paths:
+      - 'rules/ads/**.yaml'
+      - 'rules/direct.yaml'
+      - 'rules/proxy.yaml'
+      - '.github/workflows/build-rule-lists.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download mihomo binary
+        run: |
+          MIHOMO_VERSION="v1.19.0"
+          curl -L -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
+          gunzip mihomo.gz
+          chmod +x mihomo
+          ./mihomo -v
+
+      - name: Merge YAML files
+        run: |
+          mkdir -p merged
+          
+          # PC + Crossplatform
+          cat rules/ads/pc.yaml > merged/ads_pc.yaml
+          echo "" >> merged/ads_pc.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
+          
+          # Android + Crossplatform
+          cat rules/ads/android.yaml > merged/ads_phone.yaml
+          echo "" >> merged/ads_phone.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
+
+      - name: Compile MRS files
+        run: |
+          mkdir -p mrs
+          
+          ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
+          ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
+          ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
+          ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
+
+      - name: Deploy to lists branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git checkout --orphan lists 2>/dev/null || git checkout lists
+          git rm -rf . 2>/dev/null || true
+          
+          cp -f mrs/*.mrs .
+          cp -f merged/ads_pc.yaml ./ads_pc.yaml
+          cp -f merged/ads_phone.yaml ./ads_phone.yaml
+          
+          git add .
+          git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
+          git push origin lists --force-with-lease || git push origin lists --force
+
+      - name: Return to main branch
+        run: |
+          git checkout main
