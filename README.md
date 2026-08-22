@@ -7,8 +7,8 @@ rules/
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние)                 
 │       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
-│       ├─> ads_pc.mrs/yaml
-│       └─> ads_phone.mrs/yaml
+│       ├─> ads_pc.mrs
+│       └─> ads_phone.mrs
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
