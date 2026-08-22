@@ -17,8 +17,6 @@ LINKS_END = "<!-- LINKS_END -->"
 LISTS_FILES = [
     ("ads_pc.mrs", "mrs"),
     ("ads_phone.mrs", "mrs"),
-    ("ads_pc.yaml", "yaml"),
-    ("ads_phone.yaml", "yaml"),
     ("direct.mrs", "mrs"),
     ("proxy.mrs", "mrs"),
 ]

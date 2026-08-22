@@ -16,6 +16,7 @@ payload:
   - DOMAIN,prod.otel.kaizen.nvidia.com             # NVIDIA OpenTelemetry
   - DOMAIN,events.telemetry.data.nvidia.com        # Телеметрия событий NVIDIA
   - DOMAIN-SUFFIX,gx.nvidia.com                    # NVIDIA GeForce Experience
+  - DOMAIN,feedbacks.telemetry.data.nvidia.com    # Телеметрия отзывов NVIDIA
   # Телеметрия игровых лаунчеров
   - DOMAIN,telemetry.thesims3.com                  # Телеметрия The Sims 3
   - DOMAIN,telemetry.ea.com                        # Телеметрия EA

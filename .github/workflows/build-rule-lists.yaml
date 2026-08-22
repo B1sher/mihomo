@@ -60,16 +60,15 @@ jobs:
           git checkout --orphan lists 2>/dev/null || git checkout lists
           git rm -rf . 2>/dev/null || true
           
+          # Копируем только .mrs
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
-          cp -f merged/ads_pc.yaml ./ads_pc.yaml
-          cp -f merged/ads_phone.yaml ./ads_phone.yaml
           
           rm -rf mrs merged
           
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs ads_pc.yaml ads_phone.yaml
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs
           git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push origin lists --force-with-lease || git push origin lists --force
 
@@ -80,10 +79,8 @@ jobs:
           
           git checkout main
           
-          # Запускаем скрипт обновления README
           python3 scripts/update_readme.py
           
-          # Коммитим изменения README
           git add README.md
           git commit -m "update: readme links $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
           git push origin main
