@@ -4,6 +4,7 @@
 
 payload:
   # Другое
+  - DOMAIN,ecsv2.roblox.com                        # Roblox Error Reporting Service
 
 
 
