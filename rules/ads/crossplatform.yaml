@@ -28,6 +28,7 @@ payload:
   - DOMAIN,w3-reporting-nel.reddit.com             # Reddit Network Error Logging телеметрия
   - DOMAIN-SUFFIX,indoleads.com                    # Трекер глобальной CPA-сети Indoleads
   - DOMAIN,static.cloudflareinsights.com           # Cloudflare Web Analytics трекер
+  - DOMAIN,cs.alfasense.com                        # Телеметрия AlphaSense
 
 
 
