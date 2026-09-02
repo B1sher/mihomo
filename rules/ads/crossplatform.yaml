@@ -29,6 +29,7 @@ payload:
   - DOMAIN-SUFFIX,indoleads.com                    # Трекер глобальной CPA-сети Indoleads
   - DOMAIN,static.cloudflareinsights.com           # Cloudflare Web Analytics трекер
   - DOMAIN,cs.alfasense.com                        # Телеметрия AlphaSense
+  - DOMAIN,track.customer.io                       # Трекер маркетинговой платформы Customer.io
 
 
 
