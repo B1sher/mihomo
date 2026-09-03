@@ -49,8 +49,8 @@ hosts/                              # Блокировка телеметрии 
 | [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 14:23 | 03.09.26 |
 | **2. Hosts** | | | |
 | [hosts_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_pc.list) | `list` | 14:23 | 03.09.26 |
-| [hosts_android](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_android.list) | `list` | 14:23 | 03.09.26 |
-| [hosts_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_universal.list) | `list` | 14:23 | 03.09.26 |
+| [hosts_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_phone.list) | `list` | 14:37 | 03.09.26 |
+| [hosts_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_universal.list) | `list` | 14:37 | 03.09.26 |
 | **3. Кастомные маршруты** | | | |
 | [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 14:23 | 03.09.26 |
 | [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 14:23 | 03.09.26 |
