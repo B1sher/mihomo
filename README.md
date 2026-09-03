@@ -44,13 +44,17 @@ hosts/                              # Блокировка телеметрии 
 
 | Файл | Формат | Время (UTC+3) | Дата |
 |------|--------|---------------|------|
+| **1. Реклама и телеметрия** | | | |
 | [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 14:23 | 03.09.26 |
 | [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 14:23 | 03.09.26 |
-| [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 14:23 | 03.09.26 |
-| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 14:23 | 03.09.26 |
+| **2. Hosts** | | | |
 | [hosts_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_pc.list) | `list` | 14:23 | 03.09.26 |
 | [hosts_android](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_android.list) | `list` | 14:23 | 03.09.26 |
 | [hosts_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_universal.list) | `list` | 14:23 | 03.09.26 |
+| **3. Кастомные маршруты** | | | |
+| [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 14:23 | 03.09.26 |
+| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 14:23 | 03.09.26 |
+| **4. Приложения** | | | |
 | [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 07:59 | 19.08.26 |
 | [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 07:59 | 19.08.26 |
 | [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 07:59 | 19.08.26 |
