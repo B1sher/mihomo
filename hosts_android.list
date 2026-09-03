@@ -1,0 +1,17 @@
+# ============================================
+# 📱 Hosts для Android
+# ============================================
+  # Разное
+  # Google телеметрия
+  # Reddit телеметрия
+
+  sr-client-cfg.eu.amplitude.com: 0.0.0.0          # Аналитика Amplitude
+  trk.indoleads.com: 0.0.0.0                       # Трекер CPA-сети Indoleads
+  pangle.io: 0.0.0.0                               # Рекламная сеть Pangle (ByteDance)
+  volces.com: 0.0.0.0                              # Телеметрия ByteDance
+  doubleclick.net: 0.0.0.0                         # Рекламная сеть DoubleClick
+  google-analytics.com: 0.0.0.0                    # Google Analytics
+  firebaselogging.googleapis.com: 0.0.0.0          # Firebase логи Google
+  mediation.goog: 0.0.0.0                          # Google AdMob медиация
+  w3-reporting-nel.reddit.com: 0.0.0.0             # Reddit Network Error Logging
+  w3-reporting.reddit.com: 0.0.0.0                 # Телеметрия Reddit
