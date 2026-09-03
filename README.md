@@ -51,10 +51,10 @@ hosts/                              # Блокировка телеметрии 
 | [hosts_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_pc.list) | `list` | 14:23 | 03.09.26 |
 | [hosts_android](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_android.list) | `list` | 14:23 | 03.09.26 |
 | [hosts_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_universal.list) | `list` | 14:23 | 03.09.26 |
-| [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 14:23 | 03.09.26 |
-| [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 14:23 | 03.09.26 |
-| [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 14:23 | 03.09.26 |
-| [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 14:23 | 03.09.26 |
+| [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 07:59 | 19.08.26 |
+| [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 07:59 | 19.08.26 |
+| [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 07:59 | 19.08.26 |
+| [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 07:59 | 19.08.26 |
 
 <!-- LINKS_END -->
 
