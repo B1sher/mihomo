@@ -83,14 +83,18 @@ jobs:
             | grep -v '^\s*$' \
             | awk '!seen[$1]++' >> hosts_out/hosts_universal.list
 
-      - name: Deploy to lists branch
+      - name: Deploy to lists branch (incremental)
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          git checkout --orphan lists 2>/dev/null || git checkout lists
-          git rm -rf . 2>/dev/null || true
+          # Получаем ветку lists, если она есть
+          git fetch origin lists 2>/dev/null || true
           
+          # Переключаемся на существующую ветку или создаём новую
+          git checkout lists 2>/dev/null || git checkout --orphan lists
+          
+          # НЕ очищаем ветку — обновляем файлы на месте
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
           cp -f mrs/direct.mrs ./direct.mrs
@@ -102,9 +106,15 @@ jobs:
           
           rm -rf mrs merged hosts_out
           
+          # Коммитим только если есть изменения
           git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_android.list hosts_universal.list
-          git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push origin lists --force-with-lease || git push origin lists --force
+          
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push origin lists --force-with-lease || git push origin lists --force
+          fi
 
       - name: Update README in main branch
         run: |

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import re
+import subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -26,12 +27,45 @@ LISTS_FILES = [
 
 LOCAL_TZ = timezone(timedelta(hours=3))
 
-def get_current_time():
-    now = datetime.now(LOCAL_TZ)
-    return now.strftime("%H:%M"), now.strftime("%d.%m.%y")
+
+def get_file_commit_time(name):
+    """Возвращает (время, дату) последнего коммита файла в ветке lists."""
+    try:
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%ai", f"origin/{LISTS_BRANCH}", "--", name],
+            capture_output=True, text=True, check=True,
+        )
+        commit_time_str = result.stdout.strip()
+        if not commit_time_str:
+            return None, None
+
+        commit_time = datetime.fromisoformat(commit_time_str)
+        commit_time = commit_time.astimezone(LOCAL_TZ)
+        return commit_time.strftime("%H:%M"), commit_time.strftime("%d.%m.%y")
+    except Exception:
+        return None, None
+
+
+def get_apps_file_time(yaml_file):
+    """Возвращает (время, дату) последнего коммита файла в main."""
+    try:
+        rel_path = yaml_file.as_posix()
+        result = subprocess.run(
+            ["git", "log", "-1", "--format=%ai", "origin/main", "--", rel_path],
+            capture_output=True, text=True, check=True,
+        )
+        commit_time_str = result.stdout.strip()
+        if not commit_time_str:
+            return None, None
+
+        commit_time = datetime.fromisoformat(commit_time_str)
+        commit_time = commit_time.astimezone(LOCAL_TZ)
+        return commit_time.strftime("%H:%M"), commit_time.strftime("%d.%m.%y")
+    except Exception:
+        return None, None
+
 
 def generate_unified_table():
-    time_part, date_part = get_current_time()
     rows = []
     rows.append("| Файл | Формат | Время (UTC+3) | Дата |")
     rows.append("|------|--------|---------------|------|")
@@ -39,17 +73,23 @@ def generate_unified_table():
     for name, fmt in LISTS_FILES:
         url = f"https://raw.githubusercontent.com/{REPO}/{LISTS_BRANCH}/{name}"
         display_name = Path(name).stem
+        time_part, date_part = get_file_commit_time(name)
+        if time_part is None:
+            time_part, date_part = "—", "—"
         rows.append(f"| [{display_name}]({url}) | `{fmt}` | {time_part} | {date_part} |")
 
     if APPS_DIR.exists():
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
-            name = yaml_file.name
             rel_path = yaml_file.as_posix()
             url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
             display_name = yaml_file.stem
+            time_part, date_part = get_apps_file_time(yaml_file)
+            if time_part is None:
+                time_part, date_part = "—", "—"
             rows.append(f"| [{display_name}]({url}) | `yaml` | {time_part} | {date_part} |")
 
     return "\n".join(rows)
+
 
 def update_readme():
     if not README_PATH.exists():
@@ -72,6 +112,7 @@ def update_readme():
 
     README_PATH.write_text(content, encoding="utf-8")
     print("OK: README updated")
+
 
 if __name__ == "__main__":
     update_readme()
