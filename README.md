@@ -34,14 +34,14 @@ rules/
 
 | Файл | Формат | Время (UTC+3) | Дата |
 |------|--------|---------------|------|
-| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 12:51 | 03.09.26 |
-| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 12:51 | 03.09.26 |
-| [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 12:51 | 03.09.26 |
-| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 12:51 | 03.09.26 |
-| [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 12:51 | 03.09.26 |
-| [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 12:51 | 03.09.26 |
-| [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 12:51 | 03.09.26 |
-| [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 12:51 | 03.09.26 |
+| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 13:41 | 03.09.26 |
+| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 13:41 | 03.09.26 |
+| [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 13:41 | 03.09.26 |
+| [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 13:41 | 03.09.26 |
+| [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 13:41 | 03.09.26 |
+| [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 13:41 | 03.09.26 |
+| [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 13:41 | 03.09.26 |
+| [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 13:41 | 03.09.26 |
 
 <!-- LINKS_END -->
 
