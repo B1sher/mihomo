@@ -1,4 +1,9 @@
-# Universal hosts — объединение PC + Phone
+# ============================================
+# 📱 Hosts для мобилок
+# ============================================
+  # Разное
+  # Google телеметрия
+  # Reddit телеметрия
 
   sr-client-cfg.eu.amplitude.com: 0.0.0.0          # Аналитика Amplitude
   trk.indoleads.com: 0.0.0.0                       # Трекер CPA-сети Indoleads
@@ -7,10 +12,6 @@
   doubleclick.net: 0.0.0.0                         # Рекламная сеть DoubleClick
   google-analytics.com: 0.0.0.0                    # Google Analytics
   firebaselogging.googleapis.com: 0.0.0.0          # Firebase логи Google
-  events.telemetry.data.nvidia.com: 0.0.0.0        # Телеметрия событий NVIDIA
-  prod.otel.kaizen.nvidia.com: 0.0.0.0             # NVIDIA OpenTelemetry
-  feedbacks.telemetry.data.nvidia.com: 0.0.0.0     # Телеметрия отзывов NVIDIA
-  gx-target-experiments-frontend-api.gx.nvidia.com: 0.0.0.0  # NVIDIA GX эксперименты
-  w3-reporting-nel.reddit.com: 0.0.0.0             # Reddit Network Error Logging
-  w3-reporting.reddit.com: 0.0.0.0                 # Телеметрия Reddit# ============================================
   mediation.goog: 0.0.0.0                          # Google AdMob медиация
+  w3-reporting-nel.reddit.com: 0.0.0.0             # Reddit Network Error Logging
+  w3-reporting.reddit.com: 0.0.0.0                 # Телеметрия Reddit
