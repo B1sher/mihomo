@@ -2,8 +2,8 @@
 
 rules/
 ├── ads/                            # Рекламные и трекерные домены (REJECT)
-│   ├── pc.yaml                     # 💻 Windows
-│   ├── android.yaml                # 📱 Мобилки
+│   ├── pc.yaml                     # 💻 ПК
+│   ├── android.yaml                # 📱 Андроид
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние)                 
 │       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
@@ -26,7 +26,7 @@ rules/
 
 hosts/                              # Блокировка телеметрии через hosts
 ├── hosts-PC.txt                    # 💻 ПК
-└── hosts-Android.txt               # 📱 Мобилки
+└── hosts-Android.txt               # 📱 Андроид
     ↓ (конвертация в list)          # Universal = PC + Android
     ├─> hosts-PC.list
     ├─> hosts-Android.list
