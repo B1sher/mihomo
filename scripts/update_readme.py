@@ -14,25 +14,31 @@ README_PATH = Path("README.md")
 LINKS_START = "<!-- LINKS_START -->"
 LINKS_END = "<!-- LINKS_END -->"
 
-# Списки в ветке lists
-LISTS_FILES = [
+# Категории файлов в ветке lists
+ADS_FILES = [
     ("ads_pc.mrs", "mrs"),
     ("ads_phone.mrs", "mrs"),
-    ("direct.mrs", "mrs"),
-    ("proxy.mrs", "mrs"),
+]
+
+HOSTS_FILES = [
     ("hosts_pc.list", "list"),
     ("hosts_android.list", "list"),
     ("hosts_universal.list", "list"),
 ]
 
+CUSTOM_ROUTES_FILES = [
+    ("direct.mrs", "mrs"),
+    ("proxy.mrs", "mrs"),
+]
+
 LOCAL_TZ = timezone(timedelta(hours=3))
 
 
-def get_file_commit_time(name):
-    """Возвращает (время, дату) последнего коммита файла в ветке lists."""
+def get_file_commit_time(name, branch):
+    """Возвращает (время, дату) последнего коммита файла в ветке."""
     try:
         result = subprocess.run(
-            ["git", "log", "-1", "--format=%ai", f"origin/{LISTS_BRANCH}", "--", name],
+            ["git", "log", "-1", "--format=%ai", f"origin/{branch}", "--", name],
             capture_output=True, text=True, check=True,
         )
         commit_time_str = result.stdout.strip()
@@ -65,24 +71,44 @@ def get_apps_file_time(yaml_file):
         return None, None
 
 
+def add_table_row(rows, name, fmt, branch):
+    url = f"https://raw.githubusercontent.com/{REPO}/{branch}/{name}"
+    display_name = Path(name).stem
+    time_part, date_part = get_file_commit_time(name, branch)
+    if time_part is None:
+        time_part, date_part = "—", "—"
+    rows.append(f"| [{display_name}]({url}) | `{fmt}` | {time_part} | {date_part} |")
+
+
 def generate_unified_table():
     rows = []
+
+    # Заголовок таблицы
     rows.append("| Файл | Формат | Время (UTC+3) | Дата |")
     rows.append("|------|--------|---------------|------|")
 
-    for name, fmt in LISTS_FILES:
-        url = f"https://raw.githubusercontent.com/{REPO}/{LISTS_BRANCH}/{name}"
-        display_name = Path(name).stem
-        time_part, date_part = get_file_commit_time(name)
-        if time_part is None:
-            time_part, date_part = "—", "—"
-        rows.append(f"| [{display_name}]({url}) | `{fmt}` | {time_part} | {date_part} |")
+    # 1. Реклама и телеметрия
+    rows.append("| **1. Реклама и телеметрия** | | | |")
+    for name, fmt in ADS_FILES:
+        add_table_row(rows, name, fmt, LISTS_BRANCH)
 
+    # 2. Hosts
+    rows.append("| **2. Hosts** | | | |")
+    for name, fmt in HOSTS_FILES:
+        add_table_row(rows, name, fmt, LISTS_BRANCH)
+
+    # 3. Кастомные маршруты
+    rows.append("| **3. Кастомные маршруты** | | | |")
+    for name, fmt in CUSTOM_ROUTES_FILES:
+        add_table_row(rows, name, fmt, LISTS_BRANCH)
+
+    # 4. Приложения
     if APPS_DIR.exists():
+        rows.append("| **4. Приложения** | | | |")
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
             rel_path = yaml_file.as_posix()
-            url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
             display_name = yaml_file.stem
+            url = f"https://raw.githubusercontent.com/{REPO}/{MAIN_BRANCH}/{rel_path}"
             time_part, date_part = get_apps_file_time(yaml_file)
             if time_part is None:
                 time_part, date_part = "—", "—"
