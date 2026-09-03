@@ -59,3 +59,5 @@ payload:
   - DOMAIN,top-fwz1.mail.ru                        # Шпион активности Mail.ru
   - DOMAIN,t.vk.com                                # Рекламный шпион ВК
   - DOMAIN,dit.whatsapp.net                        # Телеметрия WhatsApp
+  # Новостные медиа
+  - DOMAIN,ast.welt.de                             # Аналитика издания Welt
