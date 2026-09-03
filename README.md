@@ -27,7 +27,7 @@ rules/
 hosts/                              # Блокировка телеметрии через hosts
 ├── hosts-PC.txt                    # 💻 ПК
 └── hosts-Android.txt               # 📱 Андроид
-    ↓ (конвертация в list)          # Universal = PC + Android
+    ↓ (конвертация в list)          # ⛔ Universal = ПК + Андроид
     ├─> hosts-PC.list
     ├─> hosts-Android.list
     └─> hosts-Universal.list
