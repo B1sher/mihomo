@@ -9,3 +9,4 @@ payload:
   - DOMAIN-SUFFIX,cobalt.tools            # Cobalt downloader
   - DOMAIN-SUFFIX,githubusercontent.com   # GitHub raw-контент
   - DOMAIN-SUFFIX,notion.com              # Notion
+  - DOMAIN-SUFFIX,notion.so               # Notion (зеркало)

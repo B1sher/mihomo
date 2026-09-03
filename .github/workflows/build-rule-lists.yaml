@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'rules/ads/**.yaml'
+      - 'hosts/**.txt'
       - 'rules/direct.yaml'
       - 'rules/proxy.yaml'
       - '.github/workflows/build-rule-lists.yml'
@@ -33,7 +34,7 @@ jobs:
         run: |
           mkdir -p merged
           
-          # PC + Crossplatform
+          # PC + Crossplatform (убираем payload из crossplatform и дубликаты)
           cat rules/ads/pc.yaml > merged/ads_pc.yaml
           echo "" >> merged/ads_pc.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
@@ -42,6 +43,54 @@ jobs:
           cat rules/ads/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
+          
+          # Удаляем дубликаты правил (по содержимому строки с DOMAIN)
+          # Сохраняем первый payload:, заголовки и уникальные правила
+          for f in merged/ads_pc.yaml merged/ads_phone.yaml; do
+            python3 - << 'EOF'
+import sys
+from pathlib import Path
+
+for file in ["merged/ads_pc.yaml", "merged/ads_phone.yaml"]:
+    lines = Path(file).read_text(encoding="utf-8").splitlines()
+    seen_payload = False
+    seen_rules = set()
+    result = []
+    
+    for line in lines:
+        stripped = line.strip()
+        
+        # Пропускаем пустые строки-дубликаты (но не все)
+        if stripped == "":
+            # Не добавляем подряд идущие пустые строки
+            if result and result[-1].strip() != "":
+                result.append(line)
+            elif not result:
+                result.append(line)
+            continue
+        
+        # Первый payload: оставляем
+        if stripped == "payload:":
+            if not seen_payload:
+                seen_payload = True
+                result.append(line)
+            # Второй payload: пропускаем
+            continue
+        
+        # Заголовки-комментарии секций оставляем
+        if stripped.startswith("#"):
+            result.append(line)
+            continue
+        
+        # Правила — дедупликация по содержимому
+        if line not in seen_rules:
+            seen_rules.add(line)
+            result.append(line)
+    
+    Path(file).write_text("\n".join(result), encoding="utf-8")
+    print(f"OK: {file} deduplicated")
+EOF
+          done
 
       - name: Compile MRS files
         run: |
@@ -52,6 +101,34 @@ jobs:
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
+      - name: Convert hosts TXT to LIST
+        run: |
+          mkdir -p hosts_out
+          
+          # Копируем TXT в .list
+          cp hosts/hosts-PC.txt hosts_out/hosts-PC.list
+          cp hosts/hosts-Android.txt hosts_out/hosts-Android.list
+          
+          # Убираем дубликаты и в отдельных файлах тоже
+          for f in hosts_out/hosts-PC.list hosts_out/hosts-Android.list; do
+            grep -v '^\s*#' "$f" | grep -v '^\s*$' | awk '!seen[$1]++' > /tmp/tmp_list
+            {
+              grep '^\s*#' "$f"
+              echo ""
+              cat /tmp/tmp_list
+            } > "$f"
+          done
+          
+          # Universal = PC + Android с удалением дубликатов
+          {
+            echo "# Universal hosts — объединение PC + Android"
+            echo ""
+            cat hosts/hosts-PC.txt hosts/hosts-Android.txt \
+              | grep -v '^\s*#' \
+              | grep -v '^\s*$' \
+              | awk '!seen[$1]++'
+          } > hosts_out/hosts-Universal.list
+
       - name: Deploy to lists branch
         run: |
           git config user.name "github-actions[bot]"
@@ -60,15 +137,18 @@ jobs:
           git checkout --orphan lists 2>/dev/null || git checkout lists
           git rm -rf . 2>/dev/null || true
           
-          # Копируем только .mrs
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           
-          rm -rf mrs merged
+          cp -f hosts_out/hosts-PC.list ./hosts-PC.list
+          cp -f hosts_out/hosts-Android.list ./hosts-Android.list
+          cp -f hosts_out/hosts-Universal.list ./hosts-Universal.list
           
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs
+          rm -rf mrs merged hosts_out
+          
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts-PC.list hosts-Android.list hosts-Universal.list
           git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push origin lists --force-with-lease || git push origin lists --force
 
@@ -78,7 +158,6 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           git checkout main
-          
           python3 scripts/update_readme.py
           
           git add README.md

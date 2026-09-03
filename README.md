@@ -24,8 +24,18 @@ rules/
     ├── apps_phone_direct.yaml      # 📱 Телефон — приложения напрямую
     └── apps_phone_proxy.yaml       # 📱 Телефон — приложения через прокси
 
+hosts/                              # Блокировка телеметрии через hosts
+├── hosts-PC.txt                    # 💻 ПК
+└── hosts-Android.txt               # 📱 Мобилки
+    ↓ (конвертация в list)          # Universal = PC + Android
+    ├─> hosts-PC.list
+    ├─> hosts-Android.list
+    └─> hosts-Universal.list
+
+*(QUIC часто не цепляется обычными правилами, дублирую в hosts)
+
 ```
->`.mrs` и `.yaml` файлы генерятся автоматически в отдельную ветку `lists` при каждом пуше  
+>`.mrs` и `.yaml` и `.list` файлы генерятся автоматически в отдельную ветку `lists` при каждом пуше  
 >raw-ссылки ниже так же создаются автоматически:
 
 ## Raw-ссылки
@@ -87,6 +97,18 @@ rules/
   - PROCESS-NAME-REGEX,(?i).*youtube.*
 ```
 
+### Hosts (.list)
+
+В `hosts/*.txt` домены для блокировки телеметрии идущей через QUICK.  
+Формат — как в обычном hosts-файле:
+
+```txt
+# Комментарий
+google-analytics.com 0.0.0.0    # Google Analytics
+```
+>Домены из этого списка резолвятся в `0.0.0.0` — соединение не устанавливается.  
+>Нужно для телеметрии, которая ходит по QUIC/HTTP3 и не матчится правилами.
+
 ## Сборка
 
 Один workflow автоматически конвертирует все YAML в `rules/` при пуше, кроме `rules/apps/`:
@@ -98,6 +120,7 @@ rules/
 | `rules/proxy.yaml` | http | domain | mrs | `proxy.mrs` |
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
 | Любой новый YAML | http | любой | mrs | `<имя>.mrs` |
+| `hosts/*.txt` | http | — | list | `*.list` |
 
 Важно:
 Если в списке ads/direct/proxy 

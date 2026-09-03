@@ -13,12 +13,15 @@ README_PATH = Path("README.md")
 LINKS_START = "<!-- LINKS_START -->"
 LINKS_END = "<!-- LINKS_END -->"
 
-# Списки в ветке lists (и .mrs, и .yaml)
+# Списки в ветке lists
 LISTS_FILES = [
     ("ads_pc.mrs", "mrs"),
     ("ads_phone.mrs", "mrs"),
     ("direct.mrs", "mrs"),
     ("proxy.mrs", "mrs"),
+    ("hosts-PC.list", "list"),
+    ("hosts-Android.list", "list"),
+    ("hosts-Universal.list", "list"),
 ]
 
 LOCAL_TZ = timezone(timedelta(hours=3))
