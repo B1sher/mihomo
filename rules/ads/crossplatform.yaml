@@ -30,6 +30,10 @@ payload:
   - DOMAIN,static.cloudflareinsights.com           # Cloudflare Web Analytics трекер
   - DOMAIN,cs.alfasense.com                        # Телеметрия AlphaSense
   - DOMAIN,track.customer.io                       # Трекер маркетинговой платформы Customer.io
+  - DOMAIN,dd.reuters.com                          # Телеметрия Reuters
+  - DOMAIN,sb.scorecardresearch.com                # Трекер ScorecardResearch (ComScore)
+  - DOMAIN-SUFFIX,permutive.com                    # Рекламная DMP-платформа Permutive
+  - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
 
 
 

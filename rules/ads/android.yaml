@@ -19,6 +19,7 @@ payload:
   - DOMAIN-SUFFIX,pangle.io                        # Рекламная сеть Pangle (ByteDance)
   - DOMAIN-SUFFIX,i18n-pglstatp.com                # Трекер Pangle
   - DOMAIN-SUFFIX,sgsnssdk.com                     # SDK ByteDance
+  - DOMAIN-SUFFIX,isnssdk.com                      # Рекламный SDK ByteDance (Pangolin)
   # Яндекс мобильная реклама и телеметрия
   - DOMAIN,startup.mobile.yandex.net               # Сборщик логов Яндекс (мобильный)
   - DOMAIN,startup.mobile.yandex.nes               # Сборщик логов Яндекс (мобильный, резерв)
