@@ -64,10 +64,10 @@ jobs:
           
           # Копируем TXT в .list
           cp hosts/hosts_pc.txt hosts_out/hosts_pc.list
-          cp hosts/hosts_android.txt hosts_out/hosts_android.list
+          cp hosts/hosts_phone.txt hosts_out/hosts_phone.list
           
           # Дедупликация отдельных файлов
-          for f in hosts_out/hosts_pc.list hosts_out/hosts_android.list; do
+          for f in hosts_out/hosts_pc.list hosts_out/hosts_phone.list; do
             grep '^\s*#' "$f" > /tmp/comments.txt
             grep -v '^\s*#' "$f" | grep -v '^\s*$' | awk '!seen[$1]++' > /tmp/domains.txt
             cat /tmp/comments.txt > "$f"
@@ -75,10 +75,10 @@ jobs:
             cat /tmp/domains.txt >> "$f"
           done
           
-          # Universal = PC + Android с удалением дубликатов
-          echo "# Universal hosts — объединение PC + Android" > hosts_out/hosts_universal.list
+          # Universal = PC + Phone с удалением дубликатов
+          echo "# Universal hosts — объединение PC + Phone" > hosts_out/hosts_universal.list
           echo "" >> hosts_out/hosts_universal.list
-          cat hosts/hosts_pc.txt hosts/hosts_android.txt \
+          cat hosts/hosts_pc.txt hosts/hosts_phone.txt \
             | grep -v '^\s*#' \
             | grep -v '^\s*$' \
             | awk '!seen[$1]++' >> hosts_out/hosts_universal.list
@@ -101,13 +101,13 @@ jobs:
           cp -f mrs/proxy.mrs ./proxy.mrs
           
           cp -f hosts_out/hosts_pc.list ./hosts_pc.list
-          cp -f hosts_out/hosts_android.list ./hosts_android.list
+          cp -f hosts_out/hosts_phone.list ./hosts_phone.list
           cp -f hosts_out/hosts_universal.list ./hosts_universal.list
           
           rm -rf mrs merged hosts_out
           
           # Коммитим только если есть изменения
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_android.list hosts_universal.list
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
           
           if git diff --cached --quiet; then
             echo "No changes to commit"

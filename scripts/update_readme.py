@@ -22,7 +22,7 @@ ADS_FILES = [
 
 HOSTS_FILES = [
     ("hosts_pc.list", "list"),
-    ("hosts_android.list", "list"),
+    ("hosts_phone.list", "list"),
     ("hosts_universal.list", "list"),
 ]
 
