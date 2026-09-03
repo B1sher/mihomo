@@ -109,7 +109,7 @@ hosts/                              # Блокировка телеметрии 
 В `hosts/*.txt` домены для блокировки телеметрии идущей через QUICK.  
 Формат — как в обычном hosts-файле:
 
-```txt
+```list
 # Комментарий
 google-analytics.com 0.0.0.0    # Google Analytics
 ```
