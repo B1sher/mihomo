@@ -19,9 +19,9 @@ LISTS_FILES = [
     ("ads_phone.mrs", "mrs"),
     ("direct.mrs", "mrs"),
     ("proxy.mrs", "mrs"),
-    ("hosts-PC.list", "list"),
-    ("hosts-Android.list", "list"),
-    ("hosts-Universal.list", "list"),
+    ("hosts_pc.list", "list"),
+    ("hosts_android.list", "list"),
+    ("hosts_universal.list", "list"),
 ]
 
 LOCAL_TZ = timezone(timedelta(hours=3))

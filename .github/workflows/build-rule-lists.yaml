@@ -8,6 +8,7 @@ on:
       - 'rules/direct.yaml'
       - 'rules/proxy.yaml'
       - 'scripts/deduplicate.py'
+      - 'scripts/update_readme.py'
       - '.github/workflows/build-rule-lists.yml'
   workflow_dispatch:
 
@@ -62,11 +63,11 @@ jobs:
           mkdir -p hosts_out
           
           # Копируем TXT в .list
-          cp hosts/hosts-PC.txt hosts_out/hosts-PC.list
-          cp hosts/hosts-Android.txt hosts_out/hosts-Android.list
+          cp hosts/hosts_pc.txt hosts_out/hosts_pc.list
+          cp hosts/hosts_android.txt hosts_out/hosts_android.list
           
           # Дедупликация отдельных файлов
-          for f in hosts_out/hosts-PC.list hosts_out/hosts-Android.list; do
+          for f in hosts_out/hosts_pc.list hosts_out/hosts_android.list; do
             grep '^\s*#' "$f" > /tmp/comments.txt
             grep -v '^\s*#' "$f" | grep -v '^\s*$' | awk '!seen[$1]++' > /tmp/domains.txt
             cat /tmp/comments.txt > "$f"
@@ -75,12 +76,12 @@ jobs:
           done
           
           # Universal = PC + Android с удалением дубликатов
-          echo "# Universal hosts — объединение PC + Android" > hosts_out/hosts-Universal.list
-          echo "" >> hosts_out/hosts-Universal.list
-          cat hosts/hosts-PC.txt hosts/hosts-Android.txt \
+          echo "# Universal hosts — объединение PC + Android" > hosts_out/hosts_universal.list
+          echo "" >> hosts_out/hosts_universal.list
+          cat hosts/hosts_pc.txt hosts/hosts_android.txt \
             | grep -v '^\s*#' \
             | grep -v '^\s*$' \
-            | awk '!seen[$1]++' >> hosts_out/hosts-Universal.list
+            | awk '!seen[$1]++' >> hosts_out/hosts_universal.list
 
       - name: Deploy to lists branch
         run: |
@@ -95,13 +96,13 @@ jobs:
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           
-          cp -f hosts_out/hosts-PC.list ./hosts-PC.list
-          cp -f hosts_out/hosts-Android.list ./hosts-Android.list
-          cp -f hosts_out/hosts-Universal.list ./hosts-Universal.list
+          cp -f hosts_out/hosts_pc.list ./hosts_pc.list
+          cp -f hosts_out/hosts_android.list ./hosts_android.list
+          cp -f hosts_out/hosts_universal.list ./hosts_universal.list
           
           rm -rf mrs merged hosts_out
           
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts-PC.list hosts-Android.list hosts-Universal.list
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_android.list hosts_universal.list
           git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
           git push origin lists --force-with-lease || git push origin lists --force
 
