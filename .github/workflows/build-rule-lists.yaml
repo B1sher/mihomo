@@ -47,13 +47,6 @@ jobs:
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
           
-          # Universal = PC + Crossplatform + Android (без дубликатов)
-          cat rules/ads/pc.yaml > merged/ads_universal.yaml
-          echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_universal.yaml
-          echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' rules/ads/android.yaml >> merged/ads_universal.yaml
-          
           # Apps Universal = все apps файлы
           cat rules/apps/apps_pc_direct.yaml > merged/apps_universal.yaml
           echo "" >> merged/apps_universal.yaml
@@ -72,7 +65,6 @@ jobs:
           
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
-          ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
@@ -80,11 +72,9 @@ jobs:
         run: |
           mkdir -p hosts_out
           
-          # Копируем TXT в .list
           cp hosts/hosts_pc.txt hosts_out/hosts_pc.list
           cp hosts/hosts_phone.txt hosts_out/hosts_phone.list
           
-          # Дедупликация отдельных файлов
           for f in hosts_out/hosts_pc.list hosts_out/hosts_phone.list; do
             grep '^\s*#' "$f" > /tmp/comments.txt
             grep -v '^\s*#' "$f" | grep -v '^\s*$' | awk '!seen[$1]++' > /tmp/domains.txt
@@ -93,7 +83,6 @@ jobs:
             cat /tmp/domains.txt >> "$f"
           done
           
-          # Universal = PC + Phone с удалением дубликатов
           echo "# Universal hosts — объединение PC + Phone" > hosts_out/hosts_universal.list
           echo "" >> hosts_out/hosts_universal.list
           cat hosts/hosts_pc.txt hosts/hosts_phone.txt \
@@ -106,20 +95,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Получаем ветку lists, если она есть
           git fetch origin lists 2>/dev/null || true
-          
-          # Переключаемся на существующую ветку или создаём новую
           git checkout lists 2>/dev/null || git checkout --orphan lists
           
-          # НЕ очищаем ветку — обновляем файлы на месте
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
-          cp -f mrs/ads_universal.mrs ./ads_universal.mrs
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           
-          # Apps Universal (YAML — не конвертируется в mrs)
           cp -f merged/apps_universal.yaml ./apps_universal.yaml
           
           cp -f hosts_out/hosts_pc.list ./hosts_pc.list
@@ -128,8 +111,7 @@ jobs:
           
           rm -rf mrs merged hosts_out
           
-          # Коммитим только если есть изменения
-          git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs apps_universal.yaml hosts_pc.list hosts_phone.list hosts_universal.list
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs apps_universal.yaml hosts_pc.list hosts_phone.list hosts_universal.list
           
           if git diff --cached --quiet; then
             echo "No changes to commit"

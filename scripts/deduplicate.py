@@ -5,7 +5,6 @@ from pathlib import Path
 FILES = [
     "merged/ads_pc.yaml",
     "merged/ads_phone.yaml",
-    "merged/ads_universal.yaml",
     "merged/apps_universal.yaml",
 ]
 
