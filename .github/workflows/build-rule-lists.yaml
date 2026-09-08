@@ -4,7 +4,6 @@ on:
   push:
     paths:
       - 'rules/ads/**.yaml'
-      - 'rules/apps/**.yaml'
       - 'hosts/**.txt'
       - 'rules/direct.yaml'
       - 'rules/proxy.yaml'
@@ -46,15 +45,6 @@ jobs:
           cat rules/ads/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
-          
-          # Apps Universal = все apps файлы
-          cat rules/apps/apps_pc_direct.yaml > merged/apps_universal.yaml
-          echo "" >> merged/apps_universal.yaml
-          sed '/^payload:/d' rules/apps/apps_pc_proxy.yaml >> merged/apps_universal.yaml
-          echo "" >> merged/apps_universal.yaml
-          sed '/^payload:/d' rules/apps/apps_phone_direct.yaml >> merged/apps_universal.yaml
-          echo "" >> merged/apps_universal.yaml
-          sed '/^payload:/d' rules/apps/apps_phone_proxy.yaml >> merged/apps_universal.yaml
           
           # Дедупликация правил
           python3 scripts/deduplicate.py
@@ -103,15 +93,13 @@ jobs:
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           
-          cp -f merged/apps_universal.yaml ./apps_universal.yaml
-          
           cp -f hosts_out/hosts_pc.list ./hosts_pc.list
           cp -f hosts_out/hosts_phone.list ./hosts_phone.list
           cp -f hosts_out/hosts_universal.list ./hosts_universal.list
           
           rm -rf mrs merged hosts_out
           
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs apps_universal.yaml hosts_pc.list hosts_phone.list hosts_universal.list
+          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
           
           if git diff --cached --quiet; then
             echo "No changes to commit"

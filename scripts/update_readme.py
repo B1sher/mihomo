@@ -18,7 +18,6 @@ LINKS_END = "<!-- LINKS_END -->"
 ADS_FILES = [
     ("ads_pc.mrs", "mrs"),
     ("ads_phone.mrs", "mrs"),
-    ("ads_universal.mrs", "mrs"),
 ]
 
 HOSTS_FILES = [
@@ -31,7 +30,6 @@ CUSTOM_ROUTES_FILES = [
     ("direct.mrs", "mrs"),
     ("proxy.mrs", "mrs"),
 ]
-
 
 LOCAL_TZ = timezone(timedelta(hours=3))
 
@@ -113,14 +111,8 @@ def generate_unified_table():
         add_table_row(rows, name, fmt, LISTS_BRANCH)
 
     # 4. Приложения
-    rows.append("| **4. Приложения** | | | |")
-
-    # apps_universal из ветки lists
-    for name, fmt in APPS_UNIVERSAL_FILES:
-        add_table_row(rows, name, fmt, LISTS_BRANCH)
-
-    # apps из main
     if APPS_DIR.exists():
+        rows.append("| **4. Приложения** | | | |")
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
             rel_path = yaml_file.as_posix()
             display_name = yaml_file.stem
