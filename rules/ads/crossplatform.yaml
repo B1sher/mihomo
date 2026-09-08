@@ -34,6 +34,8 @@ payload:
   - DOMAIN,sb.scorecardresearch.com                # Трекер ScorecardResearch (ComScore)
   - DOMAIN-SUFFIX,permutive.com                    # Рекламная DMP-платформа Permutive
   - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
+  - DOMAIN-SUFFIX,tatrck.com                       # Трекер ссылок платформы Take Link
+  - DOMAIN,usync.4dex.io                           # Синхронизация пользователей рекламной сети 4dex
 
 
 
