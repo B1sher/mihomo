@@ -55,7 +55,6 @@ hosts/                              # Блокировка телеметрии 
 | [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 14:23 | 03.09.26 |
 | [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 14:23 | 03.09.26 |
 | **4. Приложения** | | | |
-| [apps_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/apps_universal.yaml) | `yaml` | 07:51 | 08.09.26 |
 | [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 07:59 | 19.08.26 |
 | [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 07:59 | 19.08.26 |
 | [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 07:59 | 19.08.26 |
