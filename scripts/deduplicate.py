@@ -2,7 +2,12 @@
 """Удаляет дубликаты правил в объединённых YAML-файлах."""
 from pathlib import Path
 
-FILES = ["merged/ads_pc.yaml", "merged/ads_phone.yaml"]
+FILES = [
+    "merged/ads_pc.yaml",
+    "merged/ads_phone.yaml",
+    "merged/ads_universal.yaml",
+    "merged/apps_universal.yaml",
+]
 
 for file in FILES:
     path = Path(file)
@@ -13,6 +18,7 @@ for file in FILES:
     lines = path.read_text(encoding="utf-8").splitlines()
     seen_payload = False
     seen_rules = set()
+    seen_comments = set()
     result = []
 
     for line in lines:
@@ -33,9 +39,11 @@ for file in FILES:
                 result.append(line)
             continue
 
-        # Заголовки-комментарии оставляем
+        # Заголовки-комментарии: оставляем, но дедуплицируем одинаковые
         if stripped.startswith("#"):
-            result.append(line)
+            if stripped not in seen_comments:
+                seen_comments.add(stripped)
+                result.append(line)
             continue
 
         # Правила — дедупликация по содержимому

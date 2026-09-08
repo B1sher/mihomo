@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - 'rules/ads/**.yaml'
+      - 'rules/apps/**.yaml'
       - 'hosts/**.txt'
       - 'rules/direct.yaml'
       - 'rules/proxy.yaml'
@@ -46,6 +47,22 @@ jobs:
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
           
+          # Universal = PC + Crossplatform + Android (без дубликатов)
+          cat rules/ads/pc.yaml > merged/ads_universal.yaml
+          echo "" >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_universal.yaml
+          echo "" >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/android.yaml >> merged/ads_universal.yaml
+          
+          # Apps Universal = все apps файлы
+          cat rules/apps/apps_pc_direct.yaml > merged/apps_universal.yaml
+          echo "" >> merged/apps_universal.yaml
+          sed '/^payload:/d' rules/apps/apps_pc_proxy.yaml >> merged/apps_universal.yaml
+          echo "" >> merged/apps_universal.yaml
+          sed '/^payload:/d' rules/apps/apps_phone_direct.yaml >> merged/apps_universal.yaml
+          echo "" >> merged/apps_universal.yaml
+          sed '/^payload:/d' rules/apps/apps_phone_proxy.yaml >> merged/apps_universal.yaml
+          
           # Дедупликация правил
           python3 scripts/deduplicate.py
 
@@ -55,6 +72,7 @@ jobs:
           
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
+          ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
@@ -97,8 +115,12 @@ jobs:
           # НЕ очищаем ветку — обновляем файлы на месте
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
+          cp -f mrs/ads_universal.mrs ./ads_universal.mrs
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
+          
+          # Apps Universal (YAML — не конвертируется в mrs)
+          cp -f merged/apps_universal.yaml ./apps_universal.yaml
           
           cp -f hosts_out/hosts_pc.list ./hosts_pc.list
           cp -f hosts_out/hosts_phone.list ./hosts_phone.list
@@ -107,7 +129,7 @@ jobs:
           rm -rf mrs merged hosts_out
           
           # Коммитим только если есть изменения
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
+          git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs apps_universal.yaml hosts_pc.list hosts_phone.list hosts_universal.list
           
           if git diff --cached --quiet; then
             echo "No changes to commit"

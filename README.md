@@ -122,7 +122,7 @@ google-analytics.com 0.0.0.0    # Google Analytics
 
 | Источник | Type | Behavior | Format | Выход |
 |----------|------|----------|--------|-------|
-| `rules/ads/*.yaml` | http | domain | mrs/yaml | `ads_pc.mrs/yaml` и `ads_mobile.mrs/yaml` |
+| `rules/ads/*.yaml` | http | domain | mrs/yaml | `ads_*.mrs` |
 | `rules/direct.yaml` | http | domain | mrs | `direct.mrs` |
 | `rules/proxy.yaml` | http | domain | mrs | `proxy.mrs` |
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
