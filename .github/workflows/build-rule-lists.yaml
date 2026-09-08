@@ -46,6 +46,13 @@ jobs:
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
           
+          # Universal = PC + Crossplatform + Android (без дубликатов)
+          cat rules/ads/pc.yaml > merged/ads_universal.yaml
+          echo "" >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_universal.yaml
+          echo "" >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/android.yaml >> merged/ads_universal.yaml
+          
           # Дедупликация правил
           python3 scripts/deduplicate.py
 
@@ -55,6 +62,7 @@ jobs:
           
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
+          ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
 
@@ -90,6 +98,7 @@ jobs:
           
           cp -f mrs/ads_pc.mrs ./ads_pc.mrs
           cp -f mrs/ads_phone.mrs ./ads_phone.mrs
+          cp -f mrs/ads_universal.mrs ./ads_universal.mrs
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           
@@ -99,7 +108,7 @@ jobs:
           
           rm -rf mrs merged hosts_out
           
-          git add ads_pc.mrs ads_phone.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
+          git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
           
           if git diff --cached --quiet; then
             echo "No changes to commit"

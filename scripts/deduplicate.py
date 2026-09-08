@@ -5,6 +5,7 @@ from pathlib import Path
 FILES = [
     "merged/ads_pc.yaml",
     "merged/ads_phone.yaml",
+    "merged/ads_universal.yaml",
 ]
 
 for file in FILES:
@@ -22,7 +23,6 @@ for file in FILES:
     for line in lines:
         stripped = line.strip()
 
-        # Пропускаем подряд идущие пустые строки
         if stripped == "":
             if result and result[-1].strip() != "":
                 result.append(line)
@@ -30,21 +30,18 @@ for file in FILES:
                 result.append(line)
             continue
 
-        # Первый payload: оставляем, второй — пропускаем
         if stripped == "payload:":
             if not seen_payload:
                 seen_payload = True
                 result.append(line)
             continue
 
-        # Заголовки-комментарии: оставляем, но дедуплицируем одинаковые
         if stripped.startswith("#"):
             if stripped not in seen_comments:
                 seen_comments.add(stripped)
                 result.append(line)
             continue
 
-        # Правила — дедупликация по содержимому
         if line not in seen_rules:
             seen_rules.add(line)
             result.append(line)
