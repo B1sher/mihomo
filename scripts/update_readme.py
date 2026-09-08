@@ -42,11 +42,19 @@ LOCAL_TZ = timezone(timedelta(hours=3))
 def get_file_commit_time(name, branch):
     """Возвращает (время, дату) последнего коммита файла в ветке."""
     try:
+        # Сначала пробуем локальную ветку
         result = subprocess.run(
-            ["git", "log", "-1", "--format=%ai", f"origin/{branch}", "--", name],
+            ["git", "log", "-1", "--format=%ai", branch, "--", name],
             capture_output=True, text=True, check=True,
         )
         commit_time_str = result.stdout.strip()
+        if not commit_time_str:
+            # Пробуем origin/branch
+            result = subprocess.run(
+                ["git", "log", "-1", "--format=%ai", f"origin/{branch}", "--", name],
+                capture_output=True, text=True, check=True,
+            )
+            commit_time_str = result.stdout.strip()
         if not commit_time_str:
             return None, None
 

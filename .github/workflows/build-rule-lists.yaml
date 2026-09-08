@@ -126,6 +126,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           
           git checkout main
+          git fetch origin lists 2>/dev/null || true
           python3 scripts/update_readme.py
           
           git add README.md
