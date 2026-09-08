@@ -32,10 +32,6 @@ CUSTOM_ROUTES_FILES = [
     ("proxy.mrs", "mrs"),
 ]
 
-# Приложения из ветки lists (универсальный)
-APPS_UNIVERSAL_FILES = [
-    ("apps_universal.yaml", "yaml"),
-]
 
 LOCAL_TZ = timezone(timedelta(hours=3))
 
