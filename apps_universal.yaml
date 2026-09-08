@@ -1,0 +1,21 @@
+# =====================================================================
+# 🎮 Programs Direct — программы/игры
+# Формат: PROCESS-NAME или PROCESS-NAME-WILDCARD, PROCESS-NAME-REGEX
+payload:
+  # Roblox
+  - PROCESS-NAME,RobloxPlayerLauncher.exe        # Лаунчер Roblox
+  - PROCESS-NAME,RobloxPlayerBeta.exe            # Клиент Roblox
+  - PROCESS-NAME,RobloxStudioLauncherBeta.exe    # Лаунчер Roblox Studio
+  - PROCESS-NAME,RobloxStudioBeta.exe            # Roblox Studio
+
+# 🔀 Programs Proxy — программы/игры
+
+#  - PROCESS-NAME,example.exe # Пример
+
+# 📱 Programs Phone Direct — приложения для
+# телефона напрямую (PROCESS-NAME)
+
+#  - PROCESS-NAME,com.example.app # Пример
+
+# 📱 Programs Phone Proxy — приложения для
+# телефона через прокси (PROCESS-NAME)
