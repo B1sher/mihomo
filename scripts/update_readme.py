@@ -18,6 +18,7 @@ LINKS_END = "<!-- LINKS_END -->"
 ADS_FILES = [
     ("ads_pc.mrs", "mrs"),
     ("ads_phone.mrs", "mrs"),
+    ("ads_universal.mrs", "mrs"),
 ]
 
 HOSTS_FILES = [
