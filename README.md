@@ -6,10 +6,10 @@ rules/
 │   ├── android.yaml                # 📱 Андроид
 │   └── crossplatform.yaml          # ⛔ Кроссплатформа
 │       ↓ (слияние)                 
-│       ↓ (конвертация в mrs)       # оба содержат кроссплатформу
+│       ↓ (конвертация в mrs)       # все содержат кроссплатформу
 │       ├─> ads_pc.mrs
 │       ├─> ads_phone.mrs
-│       └─> ads_universal.mrs
+│       └─> ads_universal.mrs       # Universal = ПК + Андроид
 │
 ├── direct.yaml                     # 🌐 Домены и IP прямо
 │   ↓ (конвертация в mrs)
@@ -28,7 +28,7 @@ rules/
 hosts/                              # Блокировка телеметрии через hosts
 ├── hosts_pc.txt                    # 💻 ПК
 └── hosts_android.txt               # 📱 Андроид
-    ↓ (конвертация в list)          # ⛔ Universal = ПК + Андроид
+    ↓ (конвертация в list)          # Universal = ПК + Андроид
     ├─> hosts_pc.list
     ├─> hosts_phone.list
     └─> hosts_universal.list

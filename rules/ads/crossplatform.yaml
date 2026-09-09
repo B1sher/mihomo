@@ -7,10 +7,6 @@ payload:
   - DOMAIN-SUFFIX,hotjar.com                       # Шпион активности Hotjar
   - DOMAIN-SUFFIX,magicbot.link                    # Рекламный бот-шпион
   - DOMAIN,trk.pinterest.com                       # Телеметрия Pinterest
-  - DOMAIN,w3-reporting.reddit.com                 # Телеметрия Reddit
-  - DOMAIN,alb.reddit.com                          # Reddit шпион
-  - DOMAIN-SUFFIX,dc-telemetry.net                 # Телеметрия Discord
-  - DOMAIN-SUFFIX,discordstatus.com                # Фоновый сбор данных Discord
   - DOMAIN,sr-client-cfg.eu.amplitude.com          # Amplitude конфиг
   - DOMAIN,api.eu.amplitude.com                    # Amplitude API
   - DOMAIN,api.statsigcdn.com                      # Облачный трекер Statsig
@@ -18,27 +14,26 @@ payload:
   - DOMAIN,csp-reporting.cloudflare.com            # Cloudflare отчёты безопасности
   - DOMAIN,kiwi.mdldb.net                          # Рекламный трекер
   - DOMAIN,events.statsigapi.net                   # Телеметрия Statsig
-  - DOMAIN-SUFFIX,volces.com                       # Телеметрия ByteDance
-  - DOMAIN,sg-fp.apitd.net                         # ByteDance шпион
   - DOMAIN,intake-logging.wikimedia.org            # Телеметрия Wikipedia
   - DOMAIN,analytics.ahrefs.com                    # Аналитика Ahrefs
-  - DOMAIN,mon.tiktokv.com                         # TikTok системная метрика
-  - DOMAIN,mcs-va.tiktokv.com                      # TikTok маркетинговый трекер
   - DOMAIN-SUFFIX,agl010.pro                       # Рекламная сеть
-  - DOMAIN,w3-reporting-nel.reddit.com             # Reddit Network Error Logging телеметрия
   - DOMAIN-SUFFIX,indoleads.com                    # Трекер глобальной CPA-сети Indoleads
   - DOMAIN,static.cloudflareinsights.com           # Cloudflare Web Analytics трекер
   - DOMAIN,cs.alfasense.com                        # Телеметрия AlphaSense
   - DOMAIN,track.customer.io                       # Трекер маркетинговой платформы Customer.io
-  - DOMAIN,dd.reuters.com                          # Телеметрия Reuters
   - DOMAIN,sb.scorecardresearch.com                # Трекер ScorecardResearch (ComScore)
   - DOMAIN-SUFFIX,permutive.com                    # Рекламная DMP-платформа Permutive
-  - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
   - DOMAIN-SUFFIX,tatrck.com                       # Трекер ссылок платформы Take Link
   - DOMAIN,usync.4dex.io                           # Синхронизация пользователей рекламной сети 4dex
 
 
 
+  # ByteDance телеметрия
+  - DOMAIN,analytics.us.tiktok.com                 # Аналитика TikTok
+  - DOMAIN,mon.tiktokv.com                         # TikTok системная метрика
+  - DOMAIN,mcs-va.tiktokv.com                      # TikTok маркетинговый трекер
+  - DOMAIN-SUFFIX,volces.com                       # Телеметрия ByteDance
+  - DOMAIN,sg-fp.apitd.net                         # ByteDance шпион
   # Google реклама и телеметрия
   - DOMAIN-SUFFIX,doubleclick.net                  # Рекламная сеть DoubleClick
   - DOMAIN-SUFFIX,pagead2.googlesyndication.com    # Google AdSense
@@ -47,6 +42,7 @@ payload:
   - DOMAIN-SUFFIX,firebaselogging.googleapis.com   # Firebase логи
   - DOMAIN,jnn-pa.googleapis.com                   # Google телеметрия
   - DOMAIN,www.google-analytics.com                # Google Analytics (www)
+  - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
   # Яндекс реклама и телеметрия
   - DOMAIN,an.yandex.ru                            # Яндекс рекламная сеть
   - DOMAIN-SUFFIX,awaps.yandex.net                 # Яндекс AWAPS
@@ -61,5 +57,11 @@ payload:
   - DOMAIN,top-fwz1.mail.ru                        # Шпион активности Mail.ru
   - DOMAIN,t.vk.com                                # Рекламный шпион ВК
   - DOMAIN,dit.whatsapp.net                        # Телеметрия WhatsApp
+  - DOMAIN,alb.reddit.com                          # Reddit шпион
+  - DOMAIN,w3-reporting.reddit.com                 # Телеметрия Reddit
+  - DOMAIN,w3-reporting-nel.reddit.com             # Reddit Network Error Logging телеметрия
+  - DOMAIN-SUFFIX,dc-telemetry.net                 # Телеметрия Discord
+  - DOMAIN-SUFFIX,discordstatus.com                # Фоновый сбор данных Discord
   # Новостные медиа
   - DOMAIN,ast.welt.de                             # Аналитика издания Welt
+  - DOMAIN,dd.reuters.com                          # Телеметрия Reuters
