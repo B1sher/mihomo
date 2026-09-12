@@ -46,9 +46,9 @@ hosts/                              # Блокировка телеметрии 
 | Файл | Формат | Время (UTC+3) | Дата |
 |------|--------|---------------|------|
 | **1. Реклама и телеметрия** | | | |
-| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 11:32 | 09.09.26 |
-| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 11:32 | 09.09.26 |
-| [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 11:32 | 09.09.26 |
+| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 23:52 | 12.09.26 |
+| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 23:52 | 12.09.26 |
+| [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 23:52 | 12.09.26 |
 | **2. Hosts** | | | |
 | [hosts_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_pc.list) | `list` | 14:23 | 03.09.26 |
 | [hosts_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_phone.list) | `list` | 14:37 | 03.09.26 |
