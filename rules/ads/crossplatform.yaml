@@ -25,6 +25,7 @@ payload:
   - DOMAIN-SUFFIX,permutive.com                    # Рекламная DMP-платформа Permutive
   - DOMAIN-SUFFIX,tatrck.com                       # Трекер ссылок платформы Take Link
   - DOMAIN,usync.4dex.io                           # Синхронизация пользователей рекламной сети 4dex
+  - DOMAIN-SUFFIX,shopnetic.com                    # Рекламный RTB/DMP трекер Shopnetic
 
 
 
