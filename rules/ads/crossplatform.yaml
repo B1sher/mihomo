@@ -26,6 +26,7 @@ payload:
   - DOMAIN-SUFFIX,tatrck.com                       # Трекер ссылок платформы Take Link
   - DOMAIN,usync.4dex.io                           # Синхронизация пользователей рекламной сети 4dex
   - DOMAIN-SUFFIX,shopnetic.com                    # Рекламный RTB/DMP трекер Shopnetic
+  - DOMAIN,events.mapbox.com                       # Телеметрия Mapbox
 
 
 
@@ -44,6 +45,7 @@ payload:
   - DOMAIN,jnn-pa.googleapis.com                   # Google телеметрия
   - DOMAIN,www.google-analytics.com                # Google Analytics (www)
   - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
+  - DOMAIN,ogads-pa.googleapis.com                 # Рекламная инфраструктура Google (asyncdata)
   # Яндекс реклама и телеметрия
   - DOMAIN,an.yandex.ru                            # Яндекс рекламная сеть
   - DOMAIN-SUFFIX,awaps.yandex.net                 # Яндекс AWAPS
