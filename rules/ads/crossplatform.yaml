@@ -28,7 +28,8 @@ payload:
   - DOMAIN-SUFFIX,shopnetic.com                    # Рекламный RTB/DMP трекер Shopnetic
   - DOMAIN,events.mapbox.com                       # Телеметрия Mapbox
   - DOMAIN-SUFFIX,c.go-mpulse.net                  # Аналитика Akamai mPulse
-
+  - DOMAIN,events.character.ai                     # Телеметрия Character.AI
+  - DOMAIN,cdn.id5-sync.com                        # ID5 (рекламный трекер идентификации)
 
 
   # ByteDance телеметрия
@@ -47,6 +48,8 @@ payload:
   - DOMAIN,www.google-analytics.com                # Google Analytics (www)
   - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
   - DOMAIN,ogads-pa.googleapis.com                 # Рекламная инфраструктура Google (asyncdata)
+  - DOMAIN-SUFFIX,federatedcompute-pa.googleapis.com    # Google Federated Compute
+  - DOMAIN,ogads-pa.clients6.google.com            # Google asyncdata (реклама)
   # Яндекс реклама и телеметрия
   - DOMAIN,an.yandex.ru                            # Яндекс рекламная сеть
   - DOMAIN-SUFFIX,awaps.yandex.net                 # Яндекс AWAPS
