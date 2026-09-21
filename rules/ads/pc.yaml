@@ -5,7 +5,6 @@
 payload:
   # Другое
   - DOMAIN,ecsv2.roblox.com                        # Roblox Error Reporting Service
-  - DOMAIN,crashlyticsreports-pa.googleapis.com    # Отчеты о сбоях Firebase Crashlytics
   - DOMAIN,s.go-mpulse.net                         # Akamai mPulse (телеметрия производительности)
 
 

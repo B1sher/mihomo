@@ -50,6 +50,7 @@ payload:
   - DOMAIN,ogads-pa.googleapis.com                 # Рекламная инфраструктура Google (asyncdata)
   - DOMAIN-SUFFIX,federatedcompute-pa.googleapis.com    # Google Federated Compute
   - DOMAIN,ogads-pa.clients6.google.com            # Google asyncdata (реклама)
+  - DOMAIN,crashlyticsreports-pa.googleapis.com    # Отчеты о сбоях Firebase Crashlytics
   # Яндекс реклама и телеметрия
   - DOMAIN,an.yandex.ru                            # Яндекс рекламная сеть
   - DOMAIN-SUFFIX,awaps.yandex.net                 # Яндекс AWAPS
