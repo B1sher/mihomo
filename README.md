@@ -47,7 +47,7 @@ hosts/                              # Блокировка телеметрии 
 |------|--------|---------------|------|
 | **1. Реклама и телеметрия** | | | |
 | [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 16:08 | 20.09.26 |
-| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 16:08 | 20.09.26 |
+| [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 11:36 | 21.09.26 |
 | [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 16:08 | 20.09.26 |
 | **2. Hosts** | | | |
 | [hosts_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_pc.list) | `list` | 14:23 | 03.09.26 |
