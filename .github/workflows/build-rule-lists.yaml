@@ -42,61 +42,26 @@ jobs:
           chmod +x mihomo
           ./mihomo -v
 
-      - name: Convert +.domain to AdGuard format for MRS
-        run: |
-          convert_for_mrs() {
-            local input="$1"
-            local output="$2"
-            
-            echo "=== Конвертация для MRS: $input ==="
-            
-            sed -E 's/#.*$//' "$input" \
-              | sed -E 's/^[[:space:]]*-[[:space:]]*\+\.//' \
-              | sed -E 's/^[[:space:]]*-[[:space:]]*//' \
-              | sed -E 's/[[:space:]]+$//' \
-              | grep -v '^$' \
-              | grep -v '^payload:' > /tmp/body.txt
-            
-            if [ ! -s /tmp/body.txt ]; then
-              echo "ERROR: $input → пустой файл!"
-              cat "$input"
-              exit 1
-            fi
-            
-            echo "payload:" > "$output"
-            cat /tmp/body.txt >> "$output"
-            
-            echo "OK: $output ($(wc -l < /tmp/body.txt) строк)"
-          }
-          
-          mkdir -p converted
-          
-          convert_for_mrs rules/ads/pc.yaml converted/pc.yaml
-          convert_for_mrs rules/ads/android.yaml converted/android.yaml
-          convert_for_mrs rules/ads/crossplatform.yaml converted/crossplatform.yaml
-          convert_for_mrs rules/direct.yaml converted/direct.yaml
-          convert_for_mrs rules/proxy.yaml converted/proxy.yaml
-
       - name: Merge YAML files
         run: |
           mkdir -p merged
           
           # PC + Crossplatform
-          cat converted/pc.yaml > merged/ads_pc.yaml
+          cat rules/ads/pc.yaml > merged/ads_pc.yaml
           echo "" >> merged/ads_pc.yaml
-          sed '/^payload:/d' converted/crossplatform.yaml >> merged/ads_pc.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
           
           # Android + Crossplatform
-          cat converted/android.yaml > merged/ads_phone.yaml
+          cat rules/ads/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
-          sed '/^payload:/d' converted/crossplatform.yaml >> merged/ads_phone.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
           
           # Universal = PC + Crossplatform + Android
-          cat converted/pc.yaml > merged/ads_universal.yaml
+          cat rules/ads/pc.yaml > merged/ads_universal.yaml
           echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' converted/crossplatform.yaml >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_universal.yaml
           echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' converted/android.yaml >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/android.yaml >> merged/ads_universal.yaml
           
           python3 scripts/deduplicate.py
 
@@ -114,10 +79,10 @@ jobs:
           ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs || echo "FAILED: ads_universal"
           
           echo "=== Сборка direct.mrs ==="
-          ./mihomo convert-ruleset domain yaml converted/direct.yaml mrs/direct.mrs || echo "FAILED: direct"
+          ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs || echo "FAILED: direct"
           
           echo "=== Сборка proxy.mrs ==="
-          ./mihomo convert-ruleset domain yaml converted/proxy.yaml mrs/proxy.mrs || echo "FAILED: proxy"
+          ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs || echo "FAILED: proxy"
           
           echo ""
           echo "=== РАЗМЕРЫ MRS ==="
@@ -163,7 +128,7 @@ jobs:
           cp -f hosts_out/hosts_phone.list ./hosts_phone.list
           cp -f hosts_out/hosts_universal.list ./hosts_universal.list
           
-          rm -rf mrs merged converted hosts_out
+          rm -rf mrs merged hosts_out
           
           git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
           
