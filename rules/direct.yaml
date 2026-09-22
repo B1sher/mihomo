@@ -3,4 +3,4 @@
 # ============================================
 
 payload:
-  - DOMAIN-SUFFIX,bybit.com    # ByBit
+  - +.bybit.com    # ByBit

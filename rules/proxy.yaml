@@ -4,22 +4,12 @@
 
 payload:
   # Разное
-  - DOMAIN-SUFFIX,rule34.xxx              # hehe
-  - DOMAIN-SUFFIX,e-hentai.org            # hehe
-  - DOMAIN-SUFFIX,cobalt.tools            # Cobalt downloader
-  - DOMAIN-SUFFIX,githubusercontent.com   # GitHub raw-контент
-  - DOMAIN-SUFFIX,jsdelivr.net            # jsDeliver
-  - DOMAIN-SUFFIX,notion.com              # Notion
-  - DOMAIN-SUFFIX,notion.so               # Notion (зеркало)
-
-    # Rule34video
-  - DOMAIN-SUFFIX,rule34video.com         # hehe
-  - DOMAIN-SUFFIX,rule34video.co          # hehe (зеркало)
-    #CDN
-    # Reddit
-  - DOMAIN-SUFFIX,redd.it                 # Основной CDN для картинок/видео/превью
-  - DOMAIN-SUFFIX,redditstatic.com        # Скрипты, стили, статика
-  - DOMAIN-SUFFIX,redditmedia.com         # Медиа-контент
-  - DOMAIN-SUFFIX,reddit.com              # Основной домен (на всякий случай, если где-то не покрыт)
-  - DOMAIN,oauth.reddit.com               # OAuth (для сторонних клиентов)
-  - DOMAIN,gql.reddit.com                 # GraphQL API (часто используется для лент)
+  - +.rule34.xxx              # hehe
+  - +.e-hentai.org            # hehe
+  - +.rule34video.com         # hehe
+  - +.rule34video.co          # hehe (зеркало)
+  - +.cobalt.tools            # Cobalt downloader
+  - +.githubusercontent.com   # GitHub raw-контент
+  - +.jsdelivr.net            # jsDeliver
+  - +.notion.com              # Notion
+  - +.notion.so               # Notion (зеркало)
