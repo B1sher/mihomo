@@ -30,6 +30,8 @@ payload:
   - DOMAIN-SUFFIX,c.go-mpulse.net                  # Аналитика Akamai mPulse
   - DOMAIN,events.character.ai                     # Телеметрия Character.AI
   - DOMAIN,cdn.id5-sync.com                        # ID5 (рекламный трекер идентификации)
+  - DOMAIN,events.character.ai                     # Телеметрия Character.AI (Statsig)
+  - DOMAIN,cdn.id5-sync.com                        # ID5 рекламный трекер идентификации
 
 
   # ByteDance телеметрия
