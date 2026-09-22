@@ -2,15 +2,28 @@
 
   sr-client-cfg.eu.amplitude.com: 0.0.0.0          # Аналитика Amplitude
   trk.indoleads.com: 0.0.0.0                       # Трекер CPA-сети Indoleads
-  pangle.io: 0.0.0.0                               # Рекламная сеть Pangle (ByteDance)
-  volces.com: 0.0.0.0                              # Телеметрия ByteDance
   doubleclick.net: 0.0.0.0                         # Рекламная сеть DoubleClick
+  trk.pinterest.com: 0.0.0.0                       # Телеметрия Pinterest
+  static.cloudflareinsights.com: 0.0.0.0           # Cloudflare Web Analytics трекер
+  events.statsigapi.net: 0.0.0.0                   # Телеметрия Statsig
+  branch.io: 0.0.0.0                               # Deeplink-трекер Branch
+  dit.whatsapp.net: 0.0.0.0                        # Телеметрия WhatsApp
+  events.mapbox.com: 0.0.0.0                       # Телеметрия Mapbox
+  api.statsigcdn.com: 0.0.0.3600                   # Statsig API (feature gates)
   google-analytics.com: 0.0.0.0                    # Google Analytics
   firebaselogging.googleapis.com: 0.0.0.0          # Firebase логи Google
+  ogads-pa.googleapis.com: 0.0.0.0                 # Рекламная инфраструктура Google
+  crashlyticsreports-pa.googleapis.com: 0.0.0.0   # Отчеты о сбоях Firebase Crashlytics
   events.telemetry.data.nvidia.com: 0.0.0.0        # Телеметрия событий NVIDIA
   prod.otel.kaizen.nvidia.com: 0.0.0.0             # NVIDIA OpenTelemetry
   feedbacks.telemetry.data.nvidia.com: 0.0.0.0     # Телеметрия отзывов NVIDIA
   gx-target-experiments-frontend-api.gx.nvidia.com: 0.0.0.0  # NVIDIA GX эксперименты
   w3-reporting-nel.reddit.com: 0.0.0.0             # Reddit Network Error Logging
-  w3-reporting.reddit.com: 0.0.0.0                 # Телеметрия Reddit# ============================================
+  w3-reporting.reddit.com: 0.0.0.0                 # Телеметрия Reddit
+  pangle.io: 0.0.0.0                               # Рекламная сеть Pangle (ByteDance)
+  isnssdk.com: 0.0.0.0                             # Рекламный SDK ByteDance (Pangolin)
+  volces.com: 0.0.0.0                              # Телеметрия ByteDance
+  analytics.us.tiktok.com: 0.0.0.0                 # Аналитика TikTok
+  sgsnssdk.com: 0.0.0.0                            # SDK ByteDance# ============================================
+  adsmetadata.startappservice.com: 0.0.0.0        # Рекламная метадата StartApp
   mediation.goog: 0.0.0.0                          # Google AdMob медиация

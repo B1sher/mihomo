@@ -4,14 +4,28 @@
   # Разное
   # Google телеметрия
   # Reddit телеметрия
+  # ByteDance телеметрия
 
   sr-client-cfg.eu.amplitude.com: 0.0.0.0          # Аналитика Amplitude
   trk.indoleads.com: 0.0.0.0                       # Трекер CPA-сети Indoleads
-  pangle.io: 0.0.0.0                               # Рекламная сеть Pangle (ByteDance)
-  volces.com: 0.0.0.0                              # Телеметрия ByteDance
   doubleclick.net: 0.0.0.0                         # Рекламная сеть DoubleClick
+  trk.pinterest.com: 0.0.0.0                       # Телеметрия Pinterest
+  static.cloudflareinsights.com: 0.0.0.0           # Cloudflare Web Analytics трекер
+  events.statsigapi.net: 0.0.0.0                   # Телеметрия Statsig
+  branch.io: 0.0.0.0                               # Deeplink-трекер Branch
+  dit.whatsapp.net: 0.0.0.0                        # Телеметрия WhatsApp
+  events.mapbox.com: 0.0.0.0                       # Телеметрия Mapbox
+  adsmetadata.startappservice.com: 0.0.0.0        # Рекламная метадата StartApp
+  api.statsigcdn.com: 0.0.0.3600                   # Statsig API (feature gates)
   google-analytics.com: 0.0.0.0                    # Google Analytics
   firebaselogging.googleapis.com: 0.0.0.0          # Firebase логи Google
   mediation.goog: 0.0.0.0                          # Google AdMob медиация
+  ogads-pa.googleapis.com: 0.0.0.0                 # Рекламная инфраструктура Google
+  crashlyticsreports-pa.googleapis.com: 0.0.0.0    # Отчёты о сбоях Firebase Crashlytics
   w3-reporting-nel.reddit.com: 0.0.0.0             # Reddit Network Error Logging
   w3-reporting.reddit.com: 0.0.0.0                 # Телеметрия Reddit
+  pangle.io: 0.0.0.0                               # Рекламная сеть Pangle (ByteDance)
+  isnssdk.com: 0.0.0.0                             # Рекламный SDK ByteDance (Pangolin)
+  volces.com: 0.0.0.0                              # Телеметрия ByteDance
+  analytics.us.tiktok.com: 0.0.0.0                 # Аналитика TikTok
+  sgsnssdk.com: 0.0.0.0                            # SDK ByteDance
