@@ -4,12 +4,12 @@
 
 payload:
   # Разное
-  - +.rule34.xxx              # hehe
-  - +.e-hentai.org            # hehe
-  - +.rule34video.com         # hehe
-  - +.rule34video.co          # hehe (зеркало)
-  - +.cobalt.tools            # Cobalt downloader
-  - +.githubusercontent.com   # GitHub raw-контент
-  - +.jsdelivr.net            # jsDeliver
-  - +.notion.com              # Notion
-  - +.notion.so               # Notion (зеркало)
+  - +.rule34.xxx
+  - +.e-hentai.org
+  - +.rule34video.com
+  - +.rule34video.co
+  - +.cobalt.tools
+  - +.githubusercontent.com
+  - +.jsdelivr.net
+  - +.notion.com
+  - +.notion.so
