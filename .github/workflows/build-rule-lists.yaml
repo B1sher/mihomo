@@ -34,40 +34,39 @@ jobs:
 
       - name: Convert AdGuard format to Mihomo format
         run: |
-          # Конвертер: +.домен → DOMAIN-SUFFIX,домен
-          # Также убирает комментарии после доменов и пустые строки
           convert_format() {
             local input="$1"
             local output="$2"
             
-            # Убираем комментарии (#...), конвертируем +.домен, убираем пустые строки
-            sed 's/#.*//' "$input" | \
-            sed 's/^[[:space:]]*-[[:space:]]*+\./DOMAIN-SUFFIX,/' | \
-            sed 's/^[[:space:]]*-[[:space:]]*//' | \
-            sed 's/[[:space:]]*$//' | \
-            grep -v '^$' | \
-            grep -v '^payload:' > /tmp/body.txt
+            echo "=== Обработка: $input ==="
+            
+            # Убираем комментарии, конвертируем +.домен, чистим пробелы и пустые строки
+            sed -E 's/#.*$//; s/^[[:space:]]*-[[:space:]]*\+\./DOMAIN-SUFFIX,/; s/^[[:space:]]*-[[:space:]]*//; s/[[:space:]]+$//' "$input" \
+              | grep -v '^$' \
+              | grep -v '^payload:' > /tmp/body.txt
+            
+            # Проверка: если тело пустое — падаем с ошибкой
+            if [ ! -s /tmp/body.txt ]; then
+              echo "ERROR: $input конвертировался в пустой файл!"
+              echo "=== ИСХОДНИК ==="
+              cat "$input"
+              exit 1
+            fi
             
             echo "payload:" > "$output"
             cat /tmp/body.txt >> "$output"
+            
+            echo "OK: $input → $output ($(wc -l < /tmp/body.txt) строк)"
+            echo ""
           }
           
           mkdir -p converted
           
-          # Конвертируем ads
           convert_format rules/ads/pc.yaml converted/pc.yaml
           convert_format rules/ads/android.yaml converted/android.yaml
           convert_format rules/ads/crossplatform.yaml converted/crossplatform.yaml
-          
-          # Конвертируем direct и proxy
           convert_format rules/direct.yaml converted/direct.yaml
           convert_format rules/proxy.yaml converted/proxy.yaml
-          
-          # Показать результат для проверки
-          echo "=== converted/pc.yaml ==="
-          head -20 converted/pc.yaml
-          echo "=== converted/proxy.yaml ==="
-          head -20 converted/proxy.yaml
 
       - name: Merge YAML files
         run: |
@@ -92,6 +91,23 @@ jobs:
           
           # Дедупликация правил
           python3 scripts/deduplicate.py
+
+      - name: Debug merged files
+        run: |
+          echo "=== merged/ads_pc.yaml ==="
+          head -30 merged/ads_pc.yaml
+          echo ""
+          echo "=== merged/ads_phone.yaml ==="
+          head -30 merged/ads_phone.yaml
+          echo ""
+          echo "=== merged/ads_universal.yaml ==="
+          head -30 merged/ads_universal.yaml
+          echo ""
+          echo "=== converted/direct.yaml ==="
+          cat converted/direct.yaml
+          echo ""
+          echo "=== converted/proxy.yaml ==="
+          cat converted/proxy.yaml
 
       - name: Compile MRS files
         run: |
