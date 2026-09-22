@@ -41,7 +41,7 @@ jobs:
             echo "=== Конвертация для MRS: $input ==="
             
             # Конвертируем +.домен → DOMAIN-SUFFIX,домен
-            # Просто домен → DOMAIN,домен (если он не начинается с +)
+            # Обычный домен → DOMAIN,домен
             sed -E 's/#.*$//' "$input" \
               | sed -E 's/^[[:space:]]*-[[:space:]]*\+\./DOMAIN-SUFFIX,/' \
               | sed -E 's/^[[:space:]]*-[[:space:]]*//' \
@@ -63,7 +63,6 @@ jobs:
           
           mkdir -p converted
           
-          # Конвертируем только для сборки MRS (исходники не трогаем)
           convert_for_mrs rules/ads/pc.yaml converted/pc.yaml
           convert_for_mrs rules/ads/android.yaml converted/android.yaml
           convert_for_mrs rules/ads/crossplatform.yaml converted/crossplatform.yaml
