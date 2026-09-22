@@ -32,14 +32,16 @@ jobs:
           chmod +x mihomo
           ./mihomo -v
 
-      - name: Convert +.domain to DOMAIN-SUFFIX
+      - name: Convert +.domain to DOMAIN-SUFFIX (temp copy for MRS)
         run: |
-          convert_adguard() {
+          convert_for_mrs() {
             local input="$1"
             local output="$2"
             
-            echo "=== $input ==="
+            echo "=== Конвертация для MRS: $input ==="
             
+            # Конвертируем +.домен → DOMAIN-SUFFIX,домен
+            # Просто домен → DOMAIN,домен (если он не начинается с +)
             sed -E 's/#.*$//' "$input" \
               | sed -E 's/^[[:space:]]*-[[:space:]]*\+\./DOMAIN-SUFFIX,/' \
               | sed -E 's/^[[:space:]]*-[[:space:]]*//' \
@@ -57,16 +59,16 @@ jobs:
             cat /tmp/body.txt >> "$output"
             
             echo "OK: $output ($(wc -l < /tmp/body.txt) строк)"
-            echo ""
           }
           
           mkdir -p converted
           
-          convert_adguard rules/ads/pc.yaml converted/pc.yaml
-          convert_adguard rules/ads/android.yaml converted/android.yaml
-          convert_adguard rules/ads/crossplatform.yaml converted/crossplatform.yaml
-          convert_adguard rules/direct.yaml converted/direct.yaml
-          convert_adguard rules/proxy.yaml converted/proxy.yaml
+          # Конвертируем только для сборки MRS (исходники не трогаем)
+          convert_for_mrs rules/ads/pc.yaml converted/pc.yaml
+          convert_for_mrs rules/ads/android.yaml converted/android.yaml
+          convert_for_mrs rules/ads/crossplatform.yaml converted/crossplatform.yaml
+          convert_for_mrs rules/direct.yaml converted/direct.yaml
+          convert_for_mrs rules/proxy.yaml converted/proxy.yaml
 
       - name: Merge YAML files
         run: |
