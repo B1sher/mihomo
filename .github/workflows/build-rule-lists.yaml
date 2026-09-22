@@ -24,10 +24,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Download mihomo binary
+      - name: Download latest mihomo binary
         run: |
-          MIHOMO_VERSION="v1.19.31"
-          curl -L -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
+          # Получаем ссылку на последнюю версию для linux-amd64
+          LATEST_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | \
+            grep "browser_download_url.*linux-amd64-v1.*\.gz" | \
+            grep -v "go12" | \
+            cut -d '"' -f 4 | \
+            head -n 1)
+          
+          echo "Скачиваем: $LATEST_URL"
+          curl -L -o mihomo.gz "$LATEST_URL"
           gunzip mihomo.gz
           chmod +x mihomo
           ./mihomo -v
@@ -68,14 +75,6 @@ jobs:
           convert_for_mrs rules/ads/crossplatform.yaml converted/crossplatform.yaml
           convert_for_mrs rules/direct.yaml converted/direct.yaml
           convert_for_mrs rules/proxy.yaml converted/proxy.yaml
-
-      - name: Debug converted files
-        run: |
-          echo "=== converted/pc.yaml ==="
-          head -20 converted/pc.yaml
-          echo ""
-          echo "=== converted/proxy.yaml ==="
-          cat converted/proxy.yaml
 
       - name: Merge YAML files
         run: |
@@ -181,6 +180,7 @@ jobs:
           
           git checkout main
           git fetch origin lists 2>/dev/null || true
+          git pull --rebase origin main
           python3 scripts/update_readme.py
           
           git add README.md
