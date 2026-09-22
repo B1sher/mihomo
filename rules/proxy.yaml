@@ -4,12 +4,12 @@
 
 payload:
   # Разное
-  - +.rule34.xxx
-  - +.e-hentai.org
-  - +.rule34video.com
-  - +.rule34video.co
-  - +.cobalt.tools
-  - +.githubusercontent.com
-  - +.jsdelivr.net
-  - +.notion.com
-  - +.notion.so
+  - DOMAIN-SUFFIX,rule34.xxx
+  - DOMAIN-SUFFIX,e-hentai.org
+  - DOMAIN-SUFFIX,rule34video.com
+  - DOMAIN-SUFFIX,rule34video.co
+  - DOMAIN-SUFFIX,cobalt.tools
+  - DOMAIN-SUFFIX,githubusercontent.com
+  - DOMAIN-SUFFIX,jsdelivr.net
+  - DOMAIN-SUFFIX,notion.com
+  - DOMAIN-SUFFIX,notion.so
