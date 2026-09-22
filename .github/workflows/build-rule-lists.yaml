@@ -26,7 +26,7 @@ jobs:
 
       - name: Download mihomo binary
         run: |
-          MIHOMO_VERSION="v1.19.0"
+          MIHOMO_VERSION="v1.19.31"
           curl -L -o mihomo.gz "https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-linux-amd64-${MIHOMO_VERSION}.gz"
           gunzip mihomo.gz
           chmod +x mihomo
