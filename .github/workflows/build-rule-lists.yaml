@@ -42,7 +42,7 @@ jobs:
           chmod +x mihomo
           ./mihomo -v
 
-      - name: Convert +.domain to DOMAIN-SUFFIX (temp copy for MRS)
+      - name: Convert +.domain to AdGuard format for MRS
         run: |
           convert_for_mrs() {
             local input="$1"
@@ -51,13 +51,11 @@ jobs:
             echo "=== Конвертация для MRS: $input ==="
             
             sed -E 's/#.*$//' "$input" \
-              | sed -E 's/^[[:space:]]*-[[:space:]]*\+\./DOMAIN-SUFFIX,/' \
+              | sed -E 's/^[[:space:]]*-[[:space:]]*\+\.//' \
               | sed -E 's/^[[:space:]]*-[[:space:]]*//' \
               | sed -E 's/[[:space:]]+$//' \
               | grep -v '^$' \
-              | grep -v '^payload:' \
-              | sed -E '/^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN-REGEX|IP-CIDR|IP-CIDR6|GEOIP|GEOSITE|SRC-IP-CIDR|PROCESS-NAME)/!s/^/DOMAIN,/' \
-              | sed -E 's/^/  - /' > /tmp/body.txt
+              | grep -v '^payload:' > /tmp/body.txt
             
             if [ ! -s /tmp/body.txt ]; then
               echo "ERROR: $input → пустой файл!"
@@ -173,7 +171,12 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "update: lists $(date -u +'%Y-%m-%d %H:%M UTC')"
-            git push origin lists --force-with-lease || git push origin lists --force
+            
+            git push origin lists --force-with-lease || {
+              echo "Push failed, retrying with pull --rebase..."
+              git pull --rebase origin lists
+              git push origin lists --force-with-lease || git push origin lists --force
+            }
           fi
 
       - name: Update README in main branch
@@ -189,7 +192,6 @@ jobs:
           git add README.md
           git commit -m "update: readme links $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
           
-          # Push с retry
           git push origin main || {
             echo "Push failed, retrying with pull --rebase..."
             git pull --rebase origin main
