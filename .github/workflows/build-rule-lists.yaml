@@ -40,8 +40,6 @@ jobs:
             
             echo "=== $input ==="
             
-            # Конвертер: +.домен → DOMAIN-SUFFIX,домен
-            # Убирает комментарии (#...), пустые строки, лишние пробелы
             sed -E 's/#.*$//' "$input" \
               | sed -E 's/^[[:space:]]*-[[:space:]]*\+\./DOMAIN-SUFFIX,/' \
               | sed -E 's/^[[:space:]]*-[[:space:]]*//' \
