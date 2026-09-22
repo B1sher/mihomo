@@ -4,76 +4,76 @@
 
 payload:
   # Другое
-  - DOMAIN-SUFFIX,hotjar.com
-  - DOMAIN-SUFFIX,magicbot.link
-  - DOMAIN,trk.pinterest.com
-  - DOMAIN,sr-client-cfg.eu.amplitude.com
-  - DOMAIN,api.eu.amplitude.com
-  - DOMAIN,api.statsigcdn.com
-  - DOMAIN,ups.analytics.yahoo.com
-  - DOMAIN,csp-reporting.cloudflare.com
-  - DOMAIN,kiwi.mdldb.net
-  - DOMAIN,events.statsigapi.net
-  - DOMAIN,intake-logging.wikimedia.org
-  - DOMAIN,analytics.ahrefs.com
-  - DOMAIN-SUFFIX,agl010.pro
-  - DOMAIN-SUFFIX,indoleads.com
-  - DOMAIN,static.cloudflareinsights.com
-  - DOMAIN,cs.alfasense.com
-  - DOMAIN,track.customer.io
-  - DOMAIN,sb.scorecardresearch.com
-  - DOMAIN-SUFFIX,permutive.com
-  - DOMAIN-SUFFIX,tatrck.com
-  - DOMAIN,usync.4dex.io
-  - DOMAIN-SUFFIX,shopnetic.com
-  - DOMAIN,events.mapbox.com
-  - DOMAIN-SUFFIX,c.go-mpulse.net
-  - DOMAIN,events.character.ai
-  - DOMAIN,cdn.id5-sync.com
+  - +.hotjar.com
+  - +.magicbot.link
+  - trk.pinterest.com
+  - sr-client-cfg.eu.amplitude.com
+  - api.eu.amplitude.com
+  - api.statsigcdn.com
+  - ups.analytics.yahoo.com
+  - csp-reporting.cloudflare.com
+  - kiwi.mdldb.net
+  - events.statsigapi.net
+  - intake-logging.wikimedia.org
+  - analytics.ahrefs.com
+  - +.agl010.pro
+  - +.indoleads.com
+  - static.cloudflareinsights.com
+  - cs.alfasense.com
+  - track.customer.io
+  - sb.scorecardresearch.com
+  - +.permutive.com
+  - +.tatrck.com
+  - usync.4dex.io
+  - +.shopnetic.com
+  - events.mapbox.com
+  - +.c.go-mpulse.net
+  - events.character.ai
+  - cdn.id5-sync.com
 
   # ByteDance телеметрия
-  - DOMAIN,analytics.us.tiktok.com
-  - DOMAIN,mon.tiktokv.com
-  - DOMAIN,mcs-va.tiktokv.com
-  - DOMAIN-SUFFIX,volces.com
-  - DOMAIN,sg-fp.apitd.net
+  - analytics.us.tiktok.com
+  - mon.tiktokv.com
+  - mcs-va.tiktokv.com
+  - +.volces.com
+  - sg-fp.apitd.net
 
   # Google реклама и телеметрия
-  - DOMAIN-SUFFIX,doubleclick.net
-  - DOMAIN-SUFFIX,pagead2.googlesyndication.com
-  - DOMAIN-SUFFIX,adservice.google.com
-  - DOMAIN-SUFFIX,google-analytics.com
-  - DOMAIN-SUFFIX,firebaselogging.googleapis.com
-  - DOMAIN,jnn-pa.googleapis.com
-  - DOMAIN,www.google-analytics.com
-  - DOMAIN-SUFFIX,googletagmanager.com
-  - DOMAIN,ogads-pa.googleapis.com
-  - DOMAIN-SUFFIX,federatedcompute-pa.googleapis.com
-  - DOMAIN,ogads-pa.clients6.google.com
-  - DOMAIN,crashlyticsreports-pa.googleapis.com
+  - +.doubleclick.net
+  - +.pagead2.googlesyndication.com
+  - +.adservice.google.com
+  - +.google-analytics.com
+  - +.firebaselogging.googleapis.com
+  - jnn-pa.googleapis.com
+  - www.google-analytics.com
+  - +.googletagmanager.com
+  - ogads-pa.googleapis.com
+  - +.federatedcompute-pa.googleapis.com
+  - ogads-pa.clients6.google.com
+  - crashlyticsreports-pa.googleapis.com
 
   # Яндекс реклама и телеметрия
-  - DOMAIN,an.yandex.ru
-  - DOMAIN-SUFFIX,awaps.yandex.net
-  - DOMAIN-SUFFIX,context.modules.yandex.ru
-  - DOMAIN-SUFFIX,mc.yandex.ru
-  - DOMAIN-SUFFIX,ext.metrika.yandex.net
+  - an.yandex.ru
+  - +.awaps.yandex.net
+  - +.context.modules.yandex.ru
+  - +.mc.yandex.ru
+  - +.ext.metrika.yandex.net
 
   # Criteo & Taboola рекламные сети
-  - DOMAIN-SUFFIX,criteo.com
-  - DOMAIN-SUFFIX,criteo.net
-  - DOMAIN-SUFFIX,taboola.com
+  - +.criteo.com
+  - +.criteo.net
+  - +.taboola.com
 
   # Соцсети и мессенджеры
-  - DOMAIN,top-fwz1.mail.ru
-  - DOMAIN,t.vk.com
-  - DOMAIN,dit.whatsapp.net
-  - DOMAIN,alb.reddit.com
-  - DOMAIN,w3-reporting.reddit.com
-  - DOMAIN,w3-reporting-nel.reddit.com
-  - DOMAIN-SUFFIX,dc-telemetry.net
-  - DOMAIN-SUFFIX,discordstatus.com
+  - top-fwz1.mail.ru
+  - t.vk.com
+  - dit.whatsapp.net
+  - alb.reddit.com
+  - w3-reporting.reddit.com
+  - w3-reporting-nel.reddit.com
+  - +.dc-telemetry.net
+  - +.discordstatus.com
 
   # Новостные медиа
-  - DOMAIN,ast.welt.de
-  - DOMAIN,dd.reuters.com
+  - ast.welt.de
+  - dd.reuters.com
