@@ -14,6 +14,10 @@ README_PATH = Path("README.md")
 LINKS_START = "<!-- LINKS_START -->"
 LINKS_END = "<!-- LINKS_END -->"
 
+# ============================================
+# Категории файлов в ветке lists
+# ============================================
+
 ADS_FILES = [
     ("ads_pc.mrs", "mrs"),
     ("ads_phone.mrs", "mrs"),
@@ -31,18 +35,23 @@ CUSTOM_ROUTES_FILES = [
     ("proxy.mrs", "mrs"),
 ]
 
+# Приложения из ветки lists (универсальный)
+APPS_UNIVERSAL_FILES = []
+
 LOCAL_TZ = timezone(timedelta(hours=3))
 
 
 def get_file_commit_time(name, branch):
     """Возвращает (время, дату) последнего коммита файла в ветке."""
     try:
+        # Сначала пробуем локальную ветку
         result = subprocess.run(
             ["git", "log", "-1", "--format=%ai", branch, "--", name],
             capture_output=True, text=True, check=True,
         )
         commit_time_str = result.stdout.strip()
         if not commit_time_str:
+            # Пробуем origin/branch
             result = subprocess.run(
                 ["git", "log", "-1", "--format=%ai", f"origin/{branch}", "--", name],
                 capture_output=True, text=True, check=True,
@@ -89,21 +98,26 @@ def add_table_row(rows, name, fmt, branch):
 def generate_unified_table():
     rows = []
 
+    # Заголовок таблицы
     rows.append("| Файл | Формат | Время (UTC+3) | Дата |")
     rows.append("|------|--------|---------------|------|")
 
+    # 1. Реклама и телеметрия
     rows.append("| **1. Реклама и телеметрия** | | | |")
     for name, fmt in ADS_FILES:
         add_table_row(rows, name, fmt, LISTS_BRANCH)
 
+    # 2. Hosts
     rows.append("| **2. Hosts** | | | |")
     for name, fmt in HOSTS_FILES:
         add_table_row(rows, name, fmt, LISTS_BRANCH)
 
+    # 3. Кастомные маршруты
     rows.append("| **3. Кастомные маршруты** | | | |")
     for name, fmt in CUSTOM_ROUTES_FILES:
         add_table_row(rows, name, fmt, LISTS_BRANCH)
 
+    # 4. Приложения
     if APPS_DIR.exists():
         rows.append("| **4. Приложения** | | | |")
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
