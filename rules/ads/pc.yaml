@@ -4,24 +4,25 @@
 
 payload:
   # Другое
-  - DOMAIN,ecsv2.roblox.com                        # Roblox Error Reporting Service
-  - DOMAIN,s.go-mpulse.net                         # Akamai mPulse (телеметрия производительности)
-
-
+  - DOMAIN,ecsv2.roblox.com
+  - DOMAIN,s.go-mpulse.net
 
   # Microsoft телеметрия
-  - DOMAIN-SUFFIX,telemetry.microsoft.com          # Телеметрия Microsoft
-  - DOMAIN-SUFFIX,events.data.microsoft.com        # Телеметрия событий Microsoft
-  - DOMAIN-SUFFIX,activity.windows.com             # Активность Windows
-  - DOMAIN,settings-win.data.microsoft.com         # Настройки Windows телеметрия
+  - DOMAIN-SUFFIX,telemetry.microsoft.com
+  - DOMAIN-SUFFIX,events.data.microsoft.com
+  - DOMAIN-SUFFIX,activity.windows.com
+  - DOMAIN,settings-win.data.microsoft.com
+
   # Google телеметрия
-  - DOMAIN,ogads-pa.clients6.google.com            # Рекламная инфраструктура Google (asyncdata)
+  - DOMAIN,ogads-pa.clients6.google.com
+
   # NVIDIA телеметрия
-  - DOMAIN,prod.otel.kaizen.nvidia.com             # NVIDIA OpenTelemetry
-  - DOMAIN,events.telemetry.data.nvidia.com        # Телеметрия событий NVIDIA
-  - DOMAIN-SUFFIX,gx.nvidia.com                    # NVIDIA GeForce Experience
-  - DOMAIN,feedbacks.telemetry.data.nvidia.com     # Телеметрия отзывов NVIDIA
+  - DOMAIN,prod.otel.kaizen.nvidia.com
+  - DOMAIN,events.telemetry.data.nvidia.com
+  - DOMAIN-SUFFIX,gx.nvidia.com
+  - DOMAIN,feedbacks.telemetry.data.nvidia.com
+
   # Телеметрия игровых лаунчеров
-  - DOMAIN,telemetry.thesims3.com                  # Телеметрия The Sims 3
-  - DOMAIN,telemetry.ea.com                        # Телеметрия EA
-  - DOMAIN,et.epicgames.com                        # Телеметрия Epic Games
+  - DOMAIN,telemetry.thesims3.com
+  - DOMAIN,telemetry.ea.com
+  - DOMAIN,et.epicgames.com

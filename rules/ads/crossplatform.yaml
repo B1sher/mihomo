@@ -4,74 +4,76 @@
 
 payload:
   # Другое
-  - DOMAIN-SUFFIX,hotjar.com                       # Шпион активности Hotjar
-  - DOMAIN-SUFFIX,magicbot.link                    # Рекламный бот-шпион
-  - DOMAIN,trk.pinterest.com                       # Телеметрия Pinterest
-  - DOMAIN,sr-client-cfg.eu.amplitude.com          # Amplitude конфиг
-  - DOMAIN,api.eu.amplitude.com                    # Amplitude API
-  - DOMAIN,api.statsigcdn.com                      # Облачный трекер Statsig
-  - DOMAIN,ups.analytics.yahoo.com                 # Yahoo аналитика
-  - DOMAIN,csp-reporting.cloudflare.com            # Cloudflare отчёты безопасности
-  - DOMAIN,kiwi.mdldb.net                          # Рекламный трекер
-  - DOMAIN,events.statsigapi.net                   # Телеметрия Statsig
-  - DOMAIN,intake-logging.wikimedia.org            # Телеметрия Wikipedia
-  - DOMAIN,analytics.ahrefs.com                    # Аналитика Ahrefs
-  - DOMAIN-SUFFIX,agl010.pro                       # Рекламная сеть
-  - DOMAIN-SUFFIX,indoleads.com                    # Трекер глобальной CPA-сети Indoleads
-  - DOMAIN,static.cloudflareinsights.com           # Cloudflare Web Analytics трекер
-  - DOMAIN,cs.alfasense.com                        # Телеметрия AlphaSense
-  - DOMAIN,track.customer.io                       # Трекер маркетинговой платформы Customer.io
-  - DOMAIN,sb.scorecardresearch.com                # Трекер ScorecardResearch (ComScore)
-  - DOMAIN-SUFFIX,permutive.com                    # Рекламная DMP-платформа Permutive
-  - DOMAIN-SUFFIX,tatrck.com                       # Трекер ссылок платформы Take Link
-  - DOMAIN,usync.4dex.io                           # Синхронизация пользователей рекламной сети 4dex
-  - DOMAIN-SUFFIX,shopnetic.com                    # Рекламный RTB/DMP трекер Shopnetic
-  - DOMAIN,events.mapbox.com                       # Телеметрия Mapbox
-  - DOMAIN-SUFFIX,c.go-mpulse.net                  # Аналитика Akamai mPulse
-  - DOMAIN,events.character.ai                     # Телеметрия Character.AI
-  - DOMAIN,cdn.id5-sync.com                        # ID5 (рекламный трекер идентификации)
-  - DOMAIN,events.character.ai                     # Телеметрия Character.AI (Statsig)
-  - DOMAIN,cdn.id5-sync.com                        # ID5 рекламный трекер идентификации
-
+  - DOMAIN-SUFFIX,hotjar.com
+  - DOMAIN-SUFFIX,magicbot.link
+  - DOMAIN,trk.pinterest.com
+  - DOMAIN,sr-client-cfg.eu.amplitude.com
+  - DOMAIN,api.eu.amplitude.com
+  - DOMAIN,api.statsigcdn.com
+  - DOMAIN,ups.analytics.yahoo.com
+  - DOMAIN,csp-reporting.cloudflare.com
+  - DOMAIN,kiwi.mdldb.net
+  - DOMAIN,events.statsigapi.net
+  - DOMAIN,intake-logging.wikimedia.org
+  - DOMAIN,analytics.ahrefs.com
+  - DOMAIN-SUFFIX,agl010.pro
+  - DOMAIN-SUFFIX,indoleads.com
+  - DOMAIN,static.cloudflareinsights.com
+  - DOMAIN,cs.alfasense.com
+  - DOMAIN,track.customer.io
+  - DOMAIN,sb.scorecardresearch.com
+  - DOMAIN-SUFFIX,permutive.com
+  - DOMAIN-SUFFIX,tatrck.com
+  - DOMAIN,usync.4dex.io
+  - DOMAIN-SUFFIX,shopnetic.com
+  - DOMAIN,events.mapbox.com
+  - DOMAIN-SUFFIX,c.go-mpulse.net
+  - DOMAIN,events.character.ai
+  - DOMAIN,cdn.id5-sync.com
 
   # ByteDance телеметрия
-  - DOMAIN,analytics.us.tiktok.com                 # Аналитика TikTok
-  - DOMAIN,mon.tiktokv.com                         # TikTok системная метрика
-  - DOMAIN,mcs-va.tiktokv.com                      # TikTok маркетинговый трекер
-  - DOMAIN-SUFFIX,volces.com                       # Телеметрия ByteDance
-  - DOMAIN,sg-fp.apitd.net                         # ByteDance шпион
+  - DOMAIN,analytics.us.tiktok.com
+  - DOMAIN,mon.tiktokv.com
+  - DOMAIN,mcs-va.tiktokv.com
+  - DOMAIN-SUFFIX,volces.com
+  - DOMAIN,sg-fp.apitd.net
+
   # Google реклама и телеметрия
-  - DOMAIN-SUFFIX,doubleclick.net                  # Рекламная сеть DoubleClick
-  - DOMAIN-SUFFIX,pagead2.googlesyndication.com    # Google AdSense
-  - DOMAIN-SUFFIX,adservice.google.com             # Google AdService
-  - DOMAIN-SUFFIX,google-analytics.com             # Google Analytics
-  - DOMAIN-SUFFIX,firebaselogging.googleapis.com   # Firebase логи
-  - DOMAIN,jnn-pa.googleapis.com                   # Google телеметрия
-  - DOMAIN,www.google-analytics.com                # Google Analytics (www)
-  - DOMAIN-SUFFIX,googletagmanager.com             # Google Tag Manager
-  - DOMAIN,ogads-pa.googleapis.com                 # Рекламная инфраструктура Google (asyncdata)
-  - DOMAIN-SUFFIX,federatedcompute-pa.googleapis.com    # Google Federated Compute
-  - DOMAIN,ogads-pa.clients6.google.com            # Google asyncdata (реклама)
-  - DOMAIN,crashlyticsreports-pa.googleapis.com    # Отчеты о сбоях Firebase Crashlytics
+  - DOMAIN-SUFFIX,doubleclick.net
+  - DOMAIN-SUFFIX,pagead2.googlesyndication.com
+  - DOMAIN-SUFFIX,adservice.google.com
+  - DOMAIN-SUFFIX,google-analytics.com
+  - DOMAIN-SUFFIX,firebaselogging.googleapis.com
+  - DOMAIN,jnn-pa.googleapis.com
+  - DOMAIN,www.google-analytics.com
+  - DOMAIN-SUFFIX,googletagmanager.com
+  - DOMAIN,ogads-pa.googleapis.com
+  - DOMAIN-SUFFIX,federatedcompute-pa.googleapis.com
+  - DOMAIN,ogads-pa.clients6.google.com
+  - DOMAIN,crashlyticsreports-pa.googleapis.com
+
   # Яндекс реклама и телеметрия
-  - DOMAIN,an.yandex.ru                            # Яндекс рекламная сеть
-  - DOMAIN-SUFFIX,awaps.yandex.net                 # Яндекс AWAPS
-  - DOMAIN-SUFFIX,context.modules.yandex.ru        # Яндекс контекстная реклама
-  - DOMAIN-SUFFIX,mc.yandex.ru                     # Яндекс Метрика
-  - DOMAIN-SUFFIX,ext.metrika.yandex.net           # Яндекс Метрика (расширенная)
+  - DOMAIN,an.yandex.ru
+  - DOMAIN-SUFFIX,awaps.yandex.net
+  - DOMAIN-SUFFIX,context.modules.yandex.ru
+  - DOMAIN-SUFFIX,mc.yandex.ru
+  - DOMAIN-SUFFIX,ext.metrika.yandex.net
+
   # Criteo & Taboola рекламные сети
-  - DOMAIN-SUFFIX,criteo.com                       # Ретаргетинг Criteo
-  - DOMAIN-SUFFIX,criteo.net                       # Ретаргетинг Criteo (зеркало)
-  - DOMAIN-SUFFIX,taboola.com                      # Нативная реклама Taboola
+  - DOMAIN-SUFFIX,criteo.com
+  - DOMAIN-SUFFIX,criteo.net
+  - DOMAIN-SUFFIX,taboola.com
+
   # Соцсети и мессенджеры
-  - DOMAIN,top-fwz1.mail.ru                        # Шпион активности Mail.ru
-  - DOMAIN,t.vk.com                                # Рекламный шпион ВК
-  - DOMAIN,dit.whatsapp.net                        # Телеметрия WhatsApp
-  - DOMAIN,alb.reddit.com                          # Reddit шпион
-  - DOMAIN,w3-reporting.reddit.com                 # Телеметрия Reddit
-  - DOMAIN,w3-reporting-nel.reddit.com             # Reddit Network Error Logging телеметрия
-  - DOMAIN-SUFFIX,dc-telemetry.net                 # Телеметрия Discord
-  - DOMAIN-SUFFIX,discordstatus.com                # Фоновый сбор данных Discord
+  - DOMAIN,top-fwz1.mail.ru
+  - DOMAIN,t.vk.com
+  - DOMAIN,dit.whatsapp.net
+  - DOMAIN,alb.reddit.com
+  - DOMAIN,w3-reporting.reddit.com
+  - DOMAIN,w3-reporting-nel.reddit.com
+  - DOMAIN-SUFFIX,dc-telemetry.net
+  - DOMAIN-SUFFIX,discordstatus.com
+
   # Новостные медиа
-  - DOMAIN,ast.welt.de                             # Аналитика издания Welt
-  - DOMAIN,dd.reuters.com                          # Телеметрия Reuters
+  - DOMAIN,ast.welt.de
+  - DOMAIN,dd.reuters.com

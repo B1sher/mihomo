@@ -4,70 +4,81 @@
 
 payload:
   # Другое
-  - DOMAIN,adsmetadata.startappservice.com         # Рекламная метадата StartApp
-
-
+  - DOMAIN,adsmetadata.startappservice.com
 
   # AppLovin мобильная реклама
-  - DOMAIN-SUFFIX,applovin.com                     # Мобильная рекламная сеть AppLovin
-  - DOMAIN-SUFFIX,applovin.col                     # Домен обхода фильтров AppLovin
-  - DOMAIN-SUFFIX,applvn.com                       # Домен обхода фильтров AppLovin (зеркало)
-  - DOMAIN-SUFFIX,applvn.col                       # Домен обхода фильтров AppLovin (зеркало, TLD .col)
+  - DOMAIN-SUFFIX,applovin.com
+  - DOMAIN-SUFFIX,applovin.col
+  - DOMAIN-SUFFIX,applvn.com
+  - DOMAIN-SUFFIX,applvn.col
+
   # InMobi мобильная реклама
-  - DOMAIN-SUFFIX,inmobi.com                       # Мобильная реклама InMobi
-  - DOMAIN-SUFFIX,inmobi.col                       # Домен обхода фильтров InMobi (TLD .col)
+  - DOMAIN-SUFFIX,inmobi.com
+  - DOMAIN-SUFFIX,inmobi.col
+
   # Pangle / TikTok реклама
-  - DOMAIN-SUFFIX,pangle.io                        # Рекламная сеть Pangle (ByteDance)
-  - DOMAIN-SUFFIX,i18n-pglstatp.com                # Трекер Pangle
-  - DOMAIN-SUFFIX,sgsnssdk.com                     # SDK ByteDance
-  - DOMAIN-SUFFIX,isnssdk.com                      # Рекламный SDK ByteDance (Pangolin)
+  - DOMAIN-SUFFIX,pangle.io
+  - DOMAIN-SUFFIX,i18n-pglstatp.com
+  - DOMAIN-SUFFIX,sgsnssdk.com
+  - DOMAIN-SUFFIX,isnssdk.com
+
   # Яндекс мобильная реклама и телеметрия
-  - DOMAIN,startup.mobile.yandex.net               # Сборщик логов Яндекс (мобильный)
-  - DOMAIN,startup.mobile.yandex.nes               # Сборщик логов Яндекс (мобильный, резерв)
-  - DOMAIN,report.appmetrica.yandex.net            # AppMetrica отчёты
+  - DOMAIN,startup.mobile.yandex.net
+  - DOMAIN,startup.mobile.yandex.nes
+  - DOMAIN,report.appmetrica.yandex.net
+
   # Google реклама в приложениях
-  - DOMAIN-SUFFIX,mediation.goog                   # Google AdMob медиация
-  - DOMAIN,admob.googleapis.com                    # Google AdMob API
+  - DOMAIN-SUFFIX,mediation.goog
+  - DOMAIN,admob.googleapis.com
+
   # Facebook реклама в приложениях
-  - DOMAIN,an.facebook.com                         # Facebook Audience Network
+  - DOMAIN,an.facebook.com
+
   # Unity Ads & Vungle — видеореклама
-  - DOMAIN-SUFFIX,unity3d.com                      # Unity Ads
-  - DOMAIN-SUFFIX,vungle.com                       # Видеореклама Vungle
+  - DOMAIN-SUFFIX,unity3d.com
+  - DOMAIN-SUFFIX,vungle.com
+
   # Крупнейшие мобильные трекеры
-  - DOMAIN-SUFFIX,adjust.com                       # Мобильный трекер Adjust
-  - DOMAIN-SUFFIX,adjust.io                        # Мобильный трекер Adjust (зеркало)
-  - DOMAIN-SUFFIX,appsflyer.com                    # Мобильная атрибуция AppsFlyer
-  - DOMAIN-SUFFIX,kochava.com                      # Мобильный трекер Kochava
-  - DOMAIN-SUFFIX,branch.io                        # Deeplink-трекер Branch
+  - DOMAIN-SUFFIX,adjust.com
+  - DOMAIN-SUFFIX,adjust.io
+  - DOMAIN-SUFFIX,appsflyer.com
+  - DOMAIN-SUFFIX,kochava.com
+  - DOMAIN-SUFFIX,branch.io
+
   # Apple реклама и телеметрия
-  - DOMAIN-SUFFIX,iad-apple.com                    # Apple iAd реклама
-  - DOMAIN,ads.apple.com                           # Реклама Apple
-  - DOMAIN,securemetrics.apple.com                 # Телеметрия Apple
-  - DOMAIN,诊断.apple.com                           # Диагностика Apple (punycode)
+  - DOMAIN-SUFFIX,iad-apple.com
+  - DOMAIN,ads.apple.com
+  - DOMAIN,securemetrics.apple.com
+  - DOMAIN,诊断.apple.com
+
   # Xiaomi / Redmi / POCO
-  - DOMAIN-SUFFIX,tracking.miui.com                # Телеметрия MIUI
-  - DOMAIN-SUFFIX,data.mioffice.cn                 # Телеметрия Mi Office
-  - DOMAIN-SUFFIX,api.ad.xiaomi.com                # Реклама Xiaomi
-  - DOMAIN,sdkconfig.ad.xiaomi.com                 # Конфиг рекламы Xiaomi
-  - DOMAIN,tracking.intl.miui.com                  # Международная телеметрия MIUI
-  - DOMAIN,anonymous.support.miui.com              # Анонимная поддержка MIUI
+  - DOMAIN-SUFFIX,tracking.miui.com
+  - DOMAIN-SUFFIX,data.mioffice.cn
+  - DOMAIN-SUFFIX,api.ad.xiaomi.com
+  - DOMAIN,sdkconfig.ad.xiaomi.com
+  - DOMAIN,tracking.intl.miui.com
+  - DOMAIN,anonymous.support.miui.com
+
   # Samsung телеметрия
-  - DOMAIN-SUFFIX,samsunganalytics-api.com         # Аналитика Samsung
-  - DOMAIN,samsung-com-cn.vhost.pandora.xiaomi.com # Samsung CN (через Xiaomi)
-  - DOMAIN,log-config.samsungdm.com                # Конфиг логов Samsung
-  - DOMAIN,errlog.samsungdm.com                    # Логи ошибок Samsung
+  - DOMAIN-SUFFIX,samsunganalytics-api.com
+  - DOMAIN,samsung-com-cn.vhost.pandora.xiaomi.com
+  - DOMAIN,log-config.samsungdm.com
+  - DOMAIN,errlog.samsungdm.com
+
   # Huawei / Honor телеметрия
-  - DOMAIN-SUFFIX,log.hicloud.com                  # Логи Huawei
-  - DOMAIN-SUFFIX,metrics.data.hicloud.com         # Метрики Huawei
-  - DOMAIN-SUFFIX,metrics1.data.hicloud.com        # Метрики Huawei (резерв)
-  - DOMAIN-SUFFIX,grs.hicloud.com                  # GRS Huawei
-  - DOMAIN,ads.huawei.com                          # Реклама Huawei
-  - DOMAIN,metrics.unihonor.com                    # Метрики Honor
+  - DOMAIN-SUFFIX,log.hicloud.com
+  - DOMAIN-SUFFIX,metrics.data.hicloud.com
+  - DOMAIN-SUFFIX,metrics1.data.hicloud.com
+  - DOMAIN-SUFFIX,grs.hicloud.com
+  - DOMAIN,ads.huawei.com
+  - DOMAIN,metrics.unihonor.com
+
   # Realme / OPPO / OnePlus / Vivo
-  - DOMAIN-SUFFIX,allawnos.com                     # Телеметрия ColorOS
-  - DOMAIN-SUFFIX,heytapmobile.com                 # Телеметрия OPPO/Realme
-  - DOMAIN,log.dcs.oppomobile.com                  # Логи OPPO
-  - DOMAIN,telemetry.vivosmartphone.com            # Телеметрия Vivo
+  - DOMAIN-SUFFIX,allawnos.com
+  - DOMAIN-SUFFIX,heytapmobile.com
+  - DOMAIN,log.dcs.oppomobile.com
+  - DOMAIN,telemetry.vivosmartphone.com
+
   # Pixel / Google базовая телеметрия Android
-  - DOMAIN,android-api.crashlytics.com             # Crashlytics Android
-  - DOMAIN,play.googleapis.com                     # Google Play логи
+  - DOMAIN,android-api.crashlytics.com
+  - DOMAIN,play.googleapis.com
