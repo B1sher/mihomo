@@ -109,6 +109,10 @@ jobs:
           
           echo "=== Сборка proxy.mrs ==="
           ./mihomo convert-ruleset domain yaml converted/proxy.yaml mrs/proxy.mrs || echo "FAILED: proxy"
+          
+          echo ""
+          echo "=== РАЗМЕРЫ MRS ==="
+          ls -la mrs/
 
       - name: Convert hosts TXT to LIST
         run: |
