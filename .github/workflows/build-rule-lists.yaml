@@ -2,6 +2,7 @@ name: Build Rule Lists
 
 on:
   push:
+    branches: [main]
     paths:
       - 'rules/ads/**.yaml'
       - 'hosts/**.txt'
@@ -9,11 +10,14 @@ on:
       - 'rules/proxy.yaml'
       - 'scripts/deduplicate.py'
       - 'scripts/update_readme.py'
-      - '.github/workflows/build-rule-lists.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
+
+concurrency:
+  group: build-rule-lists
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -26,7 +30,6 @@ jobs:
 
       - name: Download latest mihomo binary
         run: |
-          # Получаем ссылку на последнюю версию для linux-amd64
           LATEST_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | \
             grep "browser_download_url.*linux-amd64-v1.*\.gz" | \
             grep -v "go12" | \
@@ -185,4 +188,10 @@ jobs:
           
           git add README.md
           git commit -m "update: readme links $(date -u +'%Y-%m-%d %H:%M UTC')" || echo "No changes to commit"
-          git push origin main
+          
+          # Push с retry
+          git push origin main || {
+            echo "Push failed, retrying with pull --rebase..."
+            git pull --rebase origin main
+            git push origin main
+          }
