@@ -68,6 +68,23 @@ jobs:
           convert_for_mrs rules/direct.yaml converted/direct.yaml
           convert_for_mrs rules/proxy.yaml converted/proxy.yaml
 
+      - name: Debug converted files
+        run: |
+          echo "=== converted/pc.yaml ==="
+          cat converted/pc.yaml
+          echo ""
+          echo "=== converted/android.yaml ==="
+          head -30 converted/android.yaml
+          echo ""
+          echo "=== converted/crossplatform.yaml ==="
+          head -30 converted/crossplatform.yaml
+          echo ""
+          echo "=== converted/direct.yaml ==="
+          cat converted/direct.yaml
+          echo ""
+          echo "=== converted/proxy.yaml ==="
+          cat converted/proxy.yaml
+
       - name: Merge YAML files
         run: |
           mkdir -p merged
