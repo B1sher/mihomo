@@ -95,11 +95,20 @@ jobs:
         run: |
           mkdir -p mrs
           
-          ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
-          ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
-          ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs
-          ./mihomo convert-ruleset domain yaml converted/direct.yaml mrs/direct.mrs
-          ./mihomo convert-ruleset domain yaml converted/proxy.yaml mrs/proxy.mrs
+          echo "=== Сборка ads_pc.mrs ==="
+          ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs || echo "FAILED: ads_pc"
+          
+          echo "=== Сборка ads_phone.mrs ==="
+          ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs || echo "FAILED: ads_phone"
+          
+          echo "=== Сборка ads_universal.mrs ==="
+          ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs || echo "FAILED: ads_universal"
+          
+          echo "=== Сборка direct.mrs ==="
+          ./mihomo convert-ruleset domain yaml converted/direct.yaml mrs/direct.mrs || echo "FAILED: direct"
+          
+          echo "=== Сборка proxy.mrs ==="
+          ./mihomo convert-ruleset domain yaml converted/proxy.yaml mrs/proxy.mrs || echo "FAILED: proxy"
 
       - name: Convert hosts TXT to LIST
         run: |
