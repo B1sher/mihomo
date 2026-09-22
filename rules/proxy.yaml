@@ -8,6 +8,7 @@ payload:
   - DOMAIN-SUFFIX,e-hentai.org            # hehe
   - DOMAIN-SUFFIX,cobalt.tools            # Cobalt downloader
   - DOMAIN-SUFFIX,githubusercontent.com   # GitHub raw-контент
+  - DOMAIN-SUFFIX,jsdelivr.net            # jsDeliver
   - DOMAIN-SUFFIX,notion.com              # Notion
   - DOMAIN-SUFFIX,notion.so               # Notion (зеркало)
 
@@ -15,7 +16,7 @@ payload:
   - DOMAIN-SUFFIX,rule34video.com    # hehe
   - DOMAIN-SUFFIX,rule34video.co     # hehe (зеркало)
   - DOMAIN-SUFFIX,ddos-guard.net     # DDoS-Guard (защита Rule34video)
-    # Reddit CDN и медиа
+    # Reddit
   - DOMAIN-SUFFIX,redd.it              # Основной CDN для картинок/видео/превью
   - DOMAIN-SUFFIX,redditstatic.com     # Скрипты, стили, статика
   - DOMAIN-SUFFIX,redditmedia.com      # Медиа-контент
