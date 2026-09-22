@@ -13,13 +13,14 @@ payload:
   - DOMAIN-SUFFIX,notion.so               # Notion (зеркало)
 
     # Rule34video
-  - DOMAIN-SUFFIX,rule34video.com    # hehe
-  - DOMAIN-SUFFIX,rule34video.co     # hehe (зеркало)
-  - DOMAIN-SUFFIX,ddos-guard.net     # DDoS-Guard (защита Rule34video)
+  - DOMAIN-SUFFIX,rule34video.com         # hehe
+  - DOMAIN-SUFFIX,rule34video.co          # hehe (зеркало)
+  - DOMAIN-SUFFIX,ddos-guard.net          # DDoS-Guard (защита Rule34video)
+    #CDN
     # Reddit
-  - DOMAIN-SUFFIX,redd.it              # Основной CDN для картинок/видео/превью
-  - DOMAIN-SUFFIX,redditstatic.com     # Скрипты, стили, статика
-  - DOMAIN-SUFFIX,redditmedia.com      # Медиа-контент
-  - DOMAIN-SUFFIX,reddit.com           # Основной домен (на всякий случай, если где-то не покрыт)
-  - DOMAIN,oauth.reddit.com            # OAuth (для сторонних клиентов)
-  - DOMAIN,gql.reddit.com              # GraphQL API (часто используется для лент)
+  - DOMAIN-SUFFIX,redd.it                 # Основной CDN для картинок/видео/превью
+  - DOMAIN-SUFFIX,redditstatic.com        # Скрипты, стили, статика
+  - DOMAIN-SUFFIX,redditmedia.com         # Медиа-контент
+  - DOMAIN-SUFFIX,reddit.com              # Основной домен (на всякий случай, если где-то не покрыт)
+  - DOMAIN,oauth.reddit.com               # OAuth (для сторонних клиентов)
+  - DOMAIN,gql.reddit.com                 # GraphQL API (часто используется для лент)
