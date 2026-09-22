@@ -46,7 +46,8 @@ jobs:
               | sed -E 's/[[:space:]]+$//' \
               | grep -v '^$' \
               | grep -v '^payload:' \
-              | sed -E '/^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN-REGEX|IP-CIDR|IP-CIDR6|GEOIP|GEOSITE|SRC-IP-CIDR|PROCESS-NAME)/!s/^/DOMAIN,/' > /tmp/body.txt
+              | sed -E '/^(DOMAIN|DOMAIN-SUFFIX|DOMAIN-KEYWORD|DOMAIN-REGEX|IP-CIDR|IP-CIDR6|GEOIP|GEOSITE|SRC-IP-CIDR|PROCESS-NAME)/!s/^/DOMAIN,/' \
+              | sed -E 's/^/  - /' > /tmp/body.txt
             
             if [ ! -s /tmp/body.txt ]; then
               echo "ERROR: $input → пустой файл!"
@@ -71,16 +72,7 @@ jobs:
       - name: Debug converted files
         run: |
           echo "=== converted/pc.yaml ==="
-          cat converted/pc.yaml
-          echo ""
-          echo "=== converted/android.yaml ==="
-          head -30 converted/android.yaml
-          echo ""
-          echo "=== converted/crossplatform.yaml ==="
-          head -30 converted/crossplatform.yaml
-          echo ""
-          echo "=== converted/direct.yaml ==="
-          cat converted/direct.yaml
+          head -20 converted/pc.yaml
           echo ""
           echo "=== converted/proxy.yaml ==="
           cat converted/proxy.yaml
