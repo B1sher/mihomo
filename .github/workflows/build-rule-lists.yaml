@@ -32,26 +32,63 @@ jobs:
           chmod +x mihomo
           ./mihomo -v
 
+      - name: Convert AdGuard format to Mihomo format
+        run: |
+          # Конвертер: +.домен → DOMAIN-SUFFIX,домен
+          # Также убирает комментарии после доменов и пустые строки
+          convert_format() {
+            local input="$1"
+            local output="$2"
+            
+            # Убираем комментарии (#...), конвертируем +.домен, убираем пустые строки
+            sed 's/#.*//' "$input" | \
+            sed 's/^[[:space:]]*-[[:space:]]*+\./DOMAIN-SUFFIX,/' | \
+            sed 's/^[[:space:]]*-[[:space:]]*//' | \
+            sed 's/[[:space:]]*$//' | \
+            grep -v '^$' | \
+            grep -v '^payload:' > /tmp/body.txt
+            
+            echo "payload:" > "$output"
+            cat /tmp/body.txt >> "$output"
+          }
+          
+          mkdir -p converted
+          
+          # Конвертируем ads
+          convert_format rules/ads/pc.yaml converted/pc.yaml
+          convert_format rules/ads/android.yaml converted/android.yaml
+          convert_format rules/ads/crossplatform.yaml converted/crossplatform.yaml
+          
+          # Конвертируем direct и proxy
+          convert_format rules/direct.yaml converted/direct.yaml
+          convert_format rules/proxy.yaml converted/proxy.yaml
+          
+          # Показать результат для проверки
+          echo "=== converted/pc.yaml ==="
+          head -20 converted/pc.yaml
+          echo "=== converted/proxy.yaml ==="
+          head -20 converted/proxy.yaml
+
       - name: Merge YAML files
         run: |
           mkdir -p merged
           
           # PC + Crossplatform
-          cat rules/ads/pc.yaml > merged/ads_pc.yaml
+          cat converted/pc.yaml > merged/ads_pc.yaml
           echo "" >> merged/ads_pc.yaml
-          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
+          sed '/^payload:/d' converted/crossplatform.yaml >> merged/ads_pc.yaml
           
           # Android + Crossplatform
-          cat rules/ads/android.yaml > merged/ads_phone.yaml
+          cat converted/android.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
-          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
+          sed '/^payload:/d' converted/crossplatform.yaml >> merged/ads_phone.yaml
           
           # Universal = PC + Crossplatform + Android (без дубликатов)
-          cat rules/ads/pc.yaml > merged/ads_universal.yaml
+          cat converted/pc.yaml > merged/ads_universal.yaml
           echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_universal.yaml
+          sed '/^payload:/d' converted/crossplatform.yaml >> merged/ads_universal.yaml
           echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' rules/ads/android.yaml >> merged/ads_universal.yaml
+          sed '/^payload:/d' converted/android.yaml >> merged/ads_universal.yaml
           
           # Дедупликация правил
           python3 scripts/deduplicate.py
@@ -63,8 +100,8 @@ jobs:
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs
           ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs
-          ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs
-          ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs
+          ./mihomo convert-ruleset domain yaml converted/direct.yaml mrs/direct.mrs
+          ./mihomo convert-ruleset domain yaml converted/proxy.yaml mrs/proxy.mrs
 
       - name: Convert hosts TXT to LIST
         run: |
@@ -106,7 +143,7 @@ jobs:
           cp -f hosts_out/hosts_phone.list ./hosts_phone.list
           cp -f hosts_out/hosts_universal.list ./hosts_universal.list
           
-          rm -rf mrs merged hosts_out
+          rm -rf mrs merged converted hosts_out
           
           git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
           
