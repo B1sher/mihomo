@@ -40,8 +40,6 @@ jobs:
             
             echo "=== Конвертация для MRS: $input ==="
             
-            # Конвертируем +.домен → DOMAIN-SUFFIX,домен
-            # Обычный домен → DOMAIN,домен
             sed -E 's/#.*$//' "$input" \
               | sed -E 's/^[[:space:]]*-[[:space:]]*\+\./DOMAIN-SUFFIX,/' \
               | sed -E 's/^[[:space:]]*-[[:space:]]*//' \
@@ -91,6 +89,26 @@ jobs:
           sed '/^payload:/d' converted/android.yaml >> merged/ads_universal.yaml
           
           python3 scripts/deduplicate.py
+
+      - name: Debug merged files
+        run: |
+          echo "=== merged/ads_pc.yaml (первые 20 строк) ==="
+          head -20 merged/ads_pc.yaml
+          echo ""
+          echo "=== merged/ads_phone.yaml (первые 20 строк) ==="
+          head -20 merged/ads_phone.yaml
+          echo ""
+          echo "=== merged/ads_universal.yaml (первые 20 строк) ==="
+          head -20 merged/ads_universal.yaml
+          echo ""
+          echo "=== converted/direct.yaml ==="
+          cat converted/direct.yaml
+          echo ""
+          echo "=== converted/proxy.yaml ==="
+          cat converted/proxy.yaml
+          echo ""
+          echo "=== РАЗМЕРЫ ФАЙЛОВ ==="
+          wc -l merged/ads_pc.yaml merged/ads_phone.yaml merged/ads_universal.yaml converted/direct.yaml converted/proxy.yaml
 
       - name: Compile MRS files
         run: |
