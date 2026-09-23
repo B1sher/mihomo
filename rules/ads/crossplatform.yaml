@@ -30,6 +30,7 @@ payload:
   - +.c.go-mpulse.net
   - events.character.ai
   - cdn.id5-sync.com
+  - +.optimizely.com
 
   # ByteDance телеметрия
   - analytics.us.tiktok.com
