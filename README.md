@@ -103,7 +103,6 @@ rules/
 | `rules/proxy.yaml` | http | domain | mrs | `proxy.mrs` |
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
 | Любой новый YAML | http | любой | mrs | `<имя>.mrs` |
-| `hosts/*.txt` | http | — | list | `*.list` |
 
 Важно:
 Если в списке ads/direct/proxy 
