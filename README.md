@@ -11,19 +11,21 @@ rules/
 │       ├─> ads_phone.mrs
 │       └─> ads_universal.mrs       # Universal = ПК + Андроид
 │
+│
+├── apps/                           # Приложения и игры (PROCESS-NAME)
+│   ├── apps_pc_direct.yaml         # 💻➜ ПК — процессы напрямую
+│   ├── apps_pc_proxy.yaml          # 💻🔀 ПК — процессы через прокси
+│   ├── apps_phone_direct.yaml      # 📱➜ Телефон — приложения напрямую
+│   └── apps_phone_proxy.yaml       # 📱🔀 Телефон — приложения через прокси
+│
+│
 ├── direct.yaml                     # ➜ Домены и IP прямо
 │   ↓ (конвертация в mrs)
 │   └─> direct.mrs
 │
-├── proxy.yaml                      # 🔀 Домены и IP через прокси
-│   ↓ (конвертация в mrs)
-│   └─> proxy.mrs
-│
-└── apps/                           # Приложения и игры (PROCESS-NAME)
-    ├── apps_pc_direct.yaml         # 💻➜ ПК — процессы напрямую
-    ├── apps_pc_proxy.yaml          # 💻🔀 ПК — процессы через прокси
-    ├── apps_phone_direct.yaml      # 📱➜ Телефон — приложения напрямую
-    └── apps_phone_proxy.yaml       # 📱🔀 Телефон — приложения через прокси
+└── proxy.yaml                      # 🔀 Домены и IP через прокси
+    ↓ (конвертация в mrs)
+    └─> proxy.mrs
 
 *Блок рекламы предполагается совместно с HaGeZi PRO и PRO-mini списками
 
