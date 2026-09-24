@@ -5,10 +5,16 @@
 payload:
   # Другое
   - ecsv2.roblox.com
+  - s.go-mpulse.net
 
   # Microsoft телеметрия
+  - +.telemetry.microsoft.com
+  - +.events.data.microsoft.com
   - +.activity.windows.com
   - settings-win.data.microsoft.com
+
+  # Google телеметрия
+  - ogads-pa.clients6.google.com
 
   # NVIDIA телеметрия
   - prod.otel.kaizen.nvidia.com

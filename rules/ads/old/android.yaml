@@ -4,44 +4,81 @@
 
 payload:
   # Другое
+  - adsmetadata.startappservice.com
 
   # AppLovin мобильная реклама
+  - +.applovin.com
   - +.applovin.col
+  - +.applvn.com
   - +.applvn.col
+
   # InMobi мобильная реклама
   - +.inmobi.com
   - +.inmobi.col
+
   # Pangle / TikTok реклама
+  - +.pangle.io
   - +.i18n-pglstatp.com
   - +.sgsnssdk.com
+  - +.isnssdk.com
+
   # Яндекс мобильная реклама и телеметрия
   - startup.mobile.yandex.net
   - startup.mobile.yandex.nes
+  - report.appmetrica.yandex.net
+
+  # Google реклама в приложениях
+  - +.mediation.goog
+  - admob.googleapis.com
+
+  # Facebook реклама в приложениях
+  - an.facebook.com
+
   # Unity Ads & Vungle — видеореклама
   - +.unity3d.com
+  - +.vungle.com
+
   # Крупнейшие мобильные трекеры
   - +.adjust.com
   - +.adjust.io
   - +.appsflyer.com
   - +.kochava.com
+  - +.branch.io
+
+  # Apple реклама и телеметрия
+  - +.iad-apple.com
+  - ads.apple.com
+  - securemetrics.apple.com
+  - 诊断.apple.com
 
   # Xiaomi / Redmi / POCO
+  - +.tracking.miui.com
   - +.data.mioffice.cn
+  - +.api.ad.xiaomi.com
+  - sdkconfig.ad.xiaomi.com
+  - tracking.intl.miui.com
   - anonymous.support.miui.com
+
   # Samsung телеметрия
   - +.samsunganalytics-api.com
   - samsung-com-cn.vhost.pandora.xiaomi.com
   - log-config.samsungdm.com
   - errlog.samsungdm.com
+
   # Huawei / Honor телеметрия
   - +.log.hicloud.com
+  - +.metrics.data.hicloud.com
+  - +.metrics1.data.hicloud.com
+  - +.grs.hicloud.com
+  - ads.huawei.com
   - metrics.unihonor.com
+
   # Realme / OPPO / OnePlus / Vivo
   - +.allawnos.com
   - +.heytapmobile.com
   - log.dcs.oppomobile.com
   - telemetry.vivosmartphone.com
 
-  # Apple реклама и телеметрия
-  - +.iad-apple.com
-  - diagnostics.apple.com
+  # Pixel / Google базовая телеметрия Android
+  - android-api.crashlytics.com
+  - play.googleapis.com

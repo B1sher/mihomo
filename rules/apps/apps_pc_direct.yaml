@@ -4,7 +4,8 @@
 # Формат: PROCESS-NAME или PROCESS-NAME-WILDCARD, PROCESS-NAME-REGEX
 # =====================================================================
 payload:
-  # Roblox
+  #Windows
+    # Roblox
   - PROCESS-NAME,RobloxPlayerLauncher.exe
   - PROCESS-NAME,RobloxPlayerBeta.exe
   - PROCESS-NAME,RobloxStudioLauncherBeta.exe

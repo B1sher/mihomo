@@ -4,36 +4,77 @@
 
 payload:
   # Другое
+  - +.hotjar.com
   - +.magicbot.link
+  - trk.pinterest.com
   - sr-client-cfg.eu.amplitude.com
   - api.eu.amplitude.com
+  - api.statsigcdn.com
   - ups.analytics.yahoo.com
   - csp-reporting.cloudflare.com
+  - kiwi.mdldb.net
   - events.statsigapi.net
+  - intake-logging.wikimedia.org
+  - analytics.ahrefs.com
+  - +.agl010.pro
+  - +.indoleads.com
   - static.cloudflareinsights.com
   - cs.alfasense.com
   - track.customer.io
   - sb.scorecardresearch.com
+  - +.permutive.com
+  - +.tatrck.com
   - usync.4dex.io
+  - +.shopnetic.com
+  - events.mapbox.com
+  - +.c.go-mpulse.net
+  - events.character.ai
   - cdn.id5-sync.com
   - +.optimizely.com
-  - sg-fp.apitd.net
 
   # ByteDance телеметрия
+  - analytics.us.tiktok.com
+  - mon.tiktokv.com
+  - mcs-va.tiktokv.com
   - +.volces.com
   - sg-fp.apitd.net
+
   # Google реклама и телеметрия
   - +.doubleclick.net
   - +.pagead2.googlesyndication.com
   - +.adservice.google.com
+  - +.google-analytics.com
+  - +.firebaselogging.googleapis.com
   - jnn-pa.googleapis.com
   - www.google-analytics.com
   - +.googletagmanager.com
+  - ogads-pa.googleapis.com
+  - +.federatedcompute-pa.googleapis.com
+  - ogads-pa.clients6.google.com
+  - crashlyticsreports-pa.googleapis.com
+
   # Яндекс реклама и телеметрия
+  - an.yandex.ru
   - +.awaps.yandex.net
   - +.context.modules.yandex.ru
+  - +.mc.yandex.ru
   - +.ext.metrika.yandex.net
+
+  # Criteo & Taboola рекламные сети
+  - +.criteo.com
+  - +.criteo.net
+  - +.taboola.com
+
   # Соцсети и мессенджеры
+  - top-fwz1.mail.ru
   - t.vk.com
+  - dit.whatsapp.net
   - alb.reddit.com
+  - w3-reporting.reddit.com
+  - w3-reporting-nel.reddit.com
+  - +.dc-telemetry.net
   - +.discordstatus.com
+
+  # Новостные медиа
+  - ast.welt.de
+  - dd.reuters.com
