@@ -34,7 +34,7 @@ jobs:
             cut -d '"' -f 4 | \
             head -n 1)
           
-          echo "Скачиваем: $LATEST_URL"
+          echo "Downloading: $LATEST_URL"
           curl -L -o mihomo.gz "$LATEST_URL"
           gunzip mihomo.gz
           chmod +x mihomo
@@ -49,17 +49,17 @@ jobs:
           echo "" >> merged/ads_pc.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_pc.yaml
           
-          # Android + Crossplatform
-          cat rules/ads/android.yaml > merged/ads_phone.yaml
+          # Phone + Crossplatform
+          cat rules/ads/phone.yaml > merged/ads_phone.yaml
           echo "" >> merged/ads_phone.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_phone.yaml
           
-          # Universal = PC + Crossplatform + Android
+          # Universal = PC + Crossplatform + Phone
           cat rules/ads/pc.yaml > merged/ads_universal.yaml
           echo "" >> merged/ads_universal.yaml
           sed '/^payload:/d' rules/ads/crossplatform.yaml >> merged/ads_universal.yaml
           echo "" >> merged/ads_universal.yaml
-          sed '/^payload:/d' rules/ads/android.yaml >> merged/ads_universal.yaml
+          sed '/^payload:/d' rules/ads/phone.yaml >> merged/ads_universal.yaml
           
           python3 scripts/deduplicate.py
 
@@ -67,23 +67,23 @@ jobs:
         run: |
           mkdir -p mrs
           
-          echo "=== Сборка ads_pc.mrs ==="
+          echo "=== Compile ads_pc.mrs ==="
           ./mihomo convert-ruleset domain yaml merged/ads_pc.yaml mrs/ads_pc.mrs || echo "FAILED: ads_pc"
           
-          echo "=== Сборка ads_phone.mrs ==="
+          echo "=== Compile ads_phone.mrs ==="
           ./mihomo convert-ruleset domain yaml merged/ads_phone.yaml mrs/ads_phone.mrs || echo "FAILED: ads_phone"
           
-          echo "=== Сборка ads_universal.mrs ==="
+          echo "=== Compile ads_universal.mrs ==="
           ./mihomo convert-ruleset domain yaml merged/ads_universal.yaml mrs/ads_universal.mrs || echo "FAILED: ads_universal"
           
-          echo "=== Сборка direct.mrs ==="
+          echo "=== Compile direct.mrs ==="
           ./mihomo convert-ruleset domain yaml rules/direct.yaml mrs/direct.mrs || echo "FAILED: direct"
           
-          echo "=== Сборка proxy.mrs ==="
+          echo "=== Compile proxy.mrs ==="
           ./mihomo convert-ruleset domain yaml rules/proxy.yaml mrs/proxy.mrs || echo "FAILED: proxy"
           
           echo ""
-          echo "=== РАЗМЕРЫ MRS ==="
+          echo "=== MRS SIZES ==="
           ls -la mrs/
 
       - name: Deploy to lists branch (incremental)
