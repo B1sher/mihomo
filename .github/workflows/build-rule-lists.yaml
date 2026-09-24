@@ -30,8 +30,7 @@ jobs:
       - name: Download latest mihomo binary
         run: |
           LATEST_URL=$(curl -s https://api.github.com/repos/MetaCubeX/mihomo/releases/latest | \
-            grep "browser_download_url.*linux-amd64-v1.*\.gz" | \
-            grep -v "go12" | \
+            grep "browser_download_url.*mihomo-linux-amd64-v1-v.*\.gz" | \
             cut -d '"' -f 4 | \
             head -n 1)
           
