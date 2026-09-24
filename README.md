@@ -38,6 +38,7 @@ rules/
 
 <!-- LINKS_START -->
 
+<<<<<<< Updated upstream
 | Файл | Формат | Время (UTC+3) | Дата |
 |------|--------|---------------|------|
 | **1. Реклама и телеметрия** | | | |
@@ -53,6 +54,8 @@ rules/
 | [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 06:01 | 24.09.26 |
 | [apps_phone_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_proxy.yaml) | `yaml` | 06:01 | 24.09.26 |
 
+=======
+>>>>>>> Stashed changes
 <!-- LINKS_END -->
 
 ### Домены, IP и подсети (.mrs)
