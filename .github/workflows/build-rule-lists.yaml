@@ -5,7 +5,6 @@ on:
     branches: [main]
     paths:
       - 'rules/ads/**.yaml'
-      - 'hosts/**.txt'
       - 'rules/direct.yaml'
       - 'rules/proxy.yaml'
       - 'scripts/deduplicate.py'
@@ -88,28 +87,6 @@ jobs:
           echo "=== РАЗМЕРЫ MRS ==="
           ls -la mrs/
 
-      - name: Convert hosts TXT to LIST
-        run: |
-          mkdir -p hosts_out
-          
-          cp hosts/hosts_pc.txt hosts_out/hosts_pc.list
-          cp hosts/hosts_phone.txt hosts_out/hosts_phone.list
-          
-          for f in hosts_out/hosts_pc.list hosts_out/hosts_phone.list; do
-            grep '^\s*#' "$f" > /tmp/comments.txt
-            grep -v '^\s*#' "$f" | grep -v '^\s*$' | awk '!seen[$1]++' > /tmp/domains.txt
-            cat /tmp/comments.txt > "$f"
-            echo "" >> "$f"
-            cat /tmp/domains.txt >> "$f"
-          done
-          
-          echo "# Universal hosts — объединение PC + Phone" > hosts_out/hosts_universal.list
-          echo "" >> hosts_out/hosts_universal.list
-          cat hosts/hosts_pc.txt hosts/hosts_phone.txt \
-            | grep -v '^\s*#' \
-            | grep -v '^\s*$' \
-            | awk '!seen[$1]++' >> hosts_out/hosts_universal.list
-
       - name: Deploy to lists branch (incremental)
         run: |
           git config user.name "github-actions[bot]"
@@ -124,13 +101,9 @@ jobs:
           cp -f mrs/direct.mrs ./direct.mrs
           cp -f mrs/proxy.mrs ./proxy.mrs
           
-          cp -f hosts_out/hosts_pc.list ./hosts_pc.list
-          cp -f hosts_out/hosts_phone.list ./hosts_phone.list
-          cp -f hosts_out/hosts_universal.list ./hosts_universal.list
+          rm -rf mrs merged
           
-          rm -rf mrs merged hosts_out
-          
-          git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs hosts_pc.list hosts_phone.list hosts_universal.list
+          git add ads_pc.mrs ads_phone.mrs ads_universal.mrs direct.mrs proxy.mrs
           
           if git diff --cached --quiet; then
             echo "No changes to commit"
