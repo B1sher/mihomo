@@ -11,7 +11,7 @@ rules/
 │       ├─> ads_phone.mrs
 │       └─> ads_universal.mrs       # Universal = ПК + Андроид
 │
-├── direct.yaml                     # 🌐 Домены и IP прямо
+├── direct.yaml                     # ➜ Домены и IP прямо
 │   ↓ (конвертация в mrs)
 │   └─> direct.mrs
 │
