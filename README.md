@@ -25,14 +25,6 @@ rules/
     ├── apps_phone_direct.yaml      # 📱 Телефон — приложения напрямую
     └── apps_phone_proxy.yaml       # 📱 Телефон — приложения через прокси
 
-hosts/                              # Блокировка телеметрии через hosts
-├── hosts_pc.txt                    # 💻 ПК
-└── hosts_android.txt               # 📱 Андроид
-    ↓ (конвертация в list)          # Universal = ПК + Андроид
-    ├─> hosts_pc.list
-    ├─> hosts_phone.list
-    └─> hosts_universal.list
-
 *(QUIC часто не цепляется обычными правилами, дублирую в hosts)
 
 ```
