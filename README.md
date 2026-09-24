@@ -104,7 +104,7 @@ rules/
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
 | Любой новый YAML | http | любой | mrs | `<имя>.mrs` |
 
-Важно:
+`Важно:`  
 Если в списке ads/direct/proxy 
 
 >только домены, то в rule-providers нужно указывать `behavior: domain`  
