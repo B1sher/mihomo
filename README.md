@@ -49,14 +49,10 @@ hosts/                              # Блокировка телеметрии 
 | [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 06:01 | 24.09.26 |
 | [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 06:01 | 24.09.26 |
 | [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 06:01 | 24.09.26 |
-| **2. Hosts** | | | |
-| [hosts_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_pc.list) | `list` | 15:54 | 22.09.26 |
-| [hosts_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_phone.list) | `list` | 15:54 | 22.09.26 |
-| [hosts_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/hosts_universal.list) | `list` | 15:54 | 22.09.26 |
-| **3. Кастомные маршруты** | | | |
+| **2. Кастомные маршруты** | | | |
 | [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 17:36 | 22.09.26 |
 | [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 20:14 | 23.09.26 |
-| **4. Приложения** | | | |
+| **3. Приложения** | | | |
 | [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 06:01 | 24.09.26 |
 | [apps_pc_proxy](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_proxy.yaml) | `yaml` | 06:01 | 24.09.26 |
 | [apps_phone_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_phone_direct.yaml) | `yaml` | 06:01 | 24.09.26 |
