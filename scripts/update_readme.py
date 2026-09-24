@@ -29,7 +29,7 @@ LOCAL_TZ = timezone(timedelta(hours=3))
 
 
 def get_file_commit_time(name, branch):
-    """Returns (time, date) of last commit of file in branch."""
+    """Возвращает (время, дату) последнего коммита файла в ветке."""
     try:
         result = subprocess.run(
             ["git", "log", "-1", "--format=%ai", branch, "--", name],
@@ -53,7 +53,7 @@ def get_file_commit_time(name, branch):
 
 
 def get_apps_file_time(yaml_file):
-    """Returns (time, date) of last commit of file in main."""
+    """Возвращает (время, дату) последнего коммита файла в main."""
     try:
         rel_path = yaml_file.as_posix()
         result = subprocess.run(
@@ -83,19 +83,22 @@ def add_table_row(rows, name, fmt, branch):
 def generate_unified_table():
     rows = []
 
-    rows.append("| File | Format | Time (UTC+3) | Date |")
-    rows.append("|------|--------|--------------|------|")
+    rows.append("| Файл | Формат | Время (UTC+3) | Дата |")
+    rows.append("|------|--------|---------------|------|")
 
-    rows.append("| **1. Ads and telemetry** | | | |")
+    # 1. Реклама и телеметрия
+    rows.append("| **1. Реклама и телеметрия** | | | |")
     for name, fmt in ADS_FILES:
         add_table_row(rows, name, fmt, LISTS_BRANCH)
 
-    rows.append("| **2. Custom routes** | | | |")
+    # 2. Кастомные маршруты
+    rows.append("| **2. Кастомные маршруты** | | | |")
     for name, fmt in CUSTOM_ROUTES_FILES:
         add_table_row(rows, name, fmt, LISTS_BRANCH)
 
+    # 3. Приложения
     if APPS_DIR.exists():
-        rows.append("| **3. Applications** | | | |")
+        rows.append("| **3. Приложения** | | | |")
         for yaml_file in sorted(APPS_DIR.glob("*.yaml")):
             rel_path = yaml_file.as_posix()
             display_name = yaml_file.stem
