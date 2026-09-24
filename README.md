@@ -98,7 +98,7 @@ rules/
 
 | Источник | Type | Behavior | Format | Выход |
 |----------|------|----------|--------|-------|
-| `rules/ads/*.yaml` | http | domain | mrs/yaml | `ads_*.mrs` |
+| `rules/ads/*.yaml` | http | domain | mrs | `ads_*.mrs` |
 | `rules/direct.yaml` | http | domain | mrs | `direct.mrs` |
 | `rules/proxy.yaml` | http | domain | mrs | `proxy.mrs` |
 | `rules/apps/*.yaml` | http | classical | yaml | не изменяется |
