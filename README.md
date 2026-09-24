@@ -111,4 +111,4 @@ rules/
 >если только подсети, то `behavior: ipcidr`  
 >если и то, и другое, то `behavior: classical` (работает медленнее)
 
-В `apps` с процессами `только yaml` + для правил `(behavior: classical)`
+В `apps` с процессами `только yaml` и для правил `behavior: classical`
