@@ -18,6 +18,7 @@ payload:
   - cdn.id5-sync.com
   - +.optimizely.com
   - sg-fp.apitd.net
+  - +.amazon-adsystem.com
 
   # ByteDance телеметрия
   - +.volces.com
