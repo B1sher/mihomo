@@ -1,7 +1,7 @@
 # НИКОГДА не пушить
 setup-token.bat
 push-rules.bat
-rules/!ЗАКОМИТИТЬ ПРАВИЛА.bat.lnk
+rules/push-rules.bat
 rules/!hosts
 Переустановил винду.txt
 
