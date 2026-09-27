@@ -1,6 +1,5 @@
 # НИКОГДА не пушить
 setup-token.bat
-GitHub_push.bat
 *.bat
 *.lnk
 rules/*.bat
