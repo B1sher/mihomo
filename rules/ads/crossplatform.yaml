@@ -28,7 +28,7 @@ payload:
   - +.pagead2.googlesyndication.com
   - +.adservice.google.com
   - jnn-pa.googleapis.com
-  - www.google-analytics.com
+  - +.google-analytics.com
   - +.googletagmanager.com
   # Яндекс реклама и телеметрия
   - +.awaps.yandex.net
