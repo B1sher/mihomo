@@ -19,6 +19,7 @@ payload:
   - +.optimizely.com
   - sg-fp.apitd.net
   - +.amazon-adsystem.com
+  - +.doubleverify.com
 
   # ByteDance телеметрия
   - +.volces.com
