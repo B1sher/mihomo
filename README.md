@@ -45,7 +45,7 @@ rules/
 | [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 13:49 | 02.10.26 |
 | [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 13:49 | 02.10.26 |
 | **2. Кастомные маршруты** | | | |
-| [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 17:36 | 22.09.26 |
+| [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 13:17 | 03.10.26 |
 | [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 20:14 | 23.09.26 |
 | **3. Приложения** | | | |
 | [apps_pc_direct](https://raw.githubusercontent.com/B1sher/mihomo/main/rules/apps/apps_pc_direct.yaml) | `yaml` | 06:01 | 24.09.26 |
