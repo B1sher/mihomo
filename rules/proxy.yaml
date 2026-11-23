@@ -13,6 +13,15 @@ payload:
   - +.emberglade.net # media CDN
   - +.cdn.sadbaguette.com # video CDN
   - +.boomio-cdn.com # video CDN
+    #Realme обновление прошивок
+  - +.realme.com
+  - +.realme.net
+  - +.allawntech.com
+  - +.allawnfs.com
+  - +.heytap.com
+  - +.heytapmobi.com
+  - +.oppo.com
+  - +.oppomobile.com
     #Other
   - +.nocookie.net # Fandom Wiki media
   - +.cobalt.tools # Download manager
