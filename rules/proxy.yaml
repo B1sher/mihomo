@@ -5,13 +5,17 @@
 payload:
   # Разное
   - +.rule34.xxx
+    #E-hentai
   - +.e-hentai.org
-  - +.hath.network
+  - +.hath.network # media CDN
+    #Rule34video
   - +.rule34video.com
-  - +.emberglade.net
-  - +.sadbaguette.com
-  - +.boomio-cdn.com
-  - +.cobalt.tools
+  - +.emberglade.net # media CDN
+  - +.cdn.sadbaguette.com # video CDN
+  - +.boomio-cdn.com # video CDN
+    #Other
+  - +.nocookie.net # Fandom Wiki media
+  - +.cobalt.tools # Download manager
   - +.githubusercontent.com
   - +.jsdelivr.net
   - +.morphe.software
