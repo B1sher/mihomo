@@ -41,9 +41,9 @@ rules/
 | Файл | Формат | Время (UTC+3) | Дата |
 |------|--------|---------------|------|
 | **1. Реклама и телеметрия** | | | |
-| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 20:38 | 14.10.26 |
+| [ads_pc](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_pc.mrs) | `mrs` | 12:44 | 24.11.26 |
 | [ads_phone](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_phone.mrs) | `mrs` | 20:38 | 14.10.26 |
-| [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 20:38 | 14.10.26 |
+| [ads_universal](https://raw.githubusercontent.com/B1sher/mihomo/lists/ads_universal.mrs) | `mrs` | 12:44 | 24.11.26 |
 | **2. Кастомные маршруты** | | | |
 | [direct](https://raw.githubusercontent.com/B1sher/mihomo/lists/direct.mrs) | `mrs` | 13:17 | 03.10.26 |
 | [proxy](https://raw.githubusercontent.com/B1sher/mihomo/lists/proxy.mrs) | `mrs` | 17:49 | 23.11.26 |
