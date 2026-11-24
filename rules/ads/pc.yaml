@@ -5,6 +5,7 @@
 payload:
   # Другое
   - ecsv2.roblox.com
+  - aepxlg.adobe.com # Телеметрия Adobe
 
   # Microsoft телеметрия
   - +.activity.windows.com
